@@ -37,7 +37,7 @@ export default function Leaderboard({ onSelect }: Props) {
   const list = HALL_OF_SHAME
 
   return (
-    <div style={{ fontFamily: FONT, width: '100%', border: `1.5px solid ${C_LIGHT}`, borderRadius: '10px', overflow: 'hidden' }}>
+    <div style={{ fontFamily: FONT, width: '100%', border: `1.5px solid ${C_LIGHT}`, borderRadius: '10px', overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.07)' }}>
 
       <div className="lb-scroll">
       {/* Table */}
@@ -91,7 +91,7 @@ export default function Leaderboard({ onSelect }: Props) {
             }}
             onMouseEnter={e => {
               e.currentTarget.style.background = '#f0f0f0'
-              e.currentTarget.style.borderLeftColor = '#8b0000'
+              e.currentTarget.style.borderLeftColor = '#0a0a0a'
             }}
             onMouseLeave={e => {
               e.currentTarget.style.background = 'transparent'
@@ -104,7 +104,7 @@ export default function Leaderboard({ onSelect }: Props) {
               fontFamily: FONT,
               fontSize: '15px',
               fontWeight: 700,
-              color: '#8b0000',
+              color: '#0a0a0a',
               lineHeight: '1.5',
               minWidth: 0,
               overflow: 'hidden',
@@ -125,7 +125,7 @@ export default function Leaderboard({ onSelect }: Props) {
                 {entry.cause}
               </span>
               {entry.lastWords && (
-                <span style={{
+                <span className="lb-last-words" style={{
                   fontFamily: FONT,
                   fontSize: '12px',
                   color: '#aaa',

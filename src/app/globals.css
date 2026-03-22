@@ -401,7 +401,8 @@ a.subpage-inline-mail {
   }
   .lb-name { white-space: normal; }
   .lb-date { justify-self: start; margin-top: 0 !important; }
-  .lb-commit-msg { white-space: normal !important; }
+  .lb-commit-msg { white-space: normal !important; overflow: visible !important; text-overflow: unset !important; }
+  .lb-last-words { display: none !important; }
 }
 
 @layer base {
@@ -441,6 +442,12 @@ a.subpage-inline-mail {
 
   /* Certificate action buttons: outside zoom wrapper, full width */
   .cert-actions { flex-direction: column !important; width: 100% !important; }
+
+  /* Hero: more breathing room on mobile */
+  .page-hero { padding-bottom: 20px; }
+  .page-hero-emoji { font-size: 52px; margin-bottom: 12px; }
+  .page-hero-title { margin-bottom: 14px; }
+  .page-hero-sub { font-size: 15px; }
 
   /* Footer: larger tap targets */
   footer a { font-size: 13px !important; padding: 4px 0; }
