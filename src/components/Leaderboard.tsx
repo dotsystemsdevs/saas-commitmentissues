@@ -57,7 +57,7 @@ export default function Leaderboard({ onSelect }: Props) {
             <span style={{ fontSize: '13px', lineHeight: 1 }}>💀</span>
           </div>
           <span style={{ fontSize: '13px', fontWeight: 700, color: C_DARKEST }}>the_grim_reaper</span>
-          <span className="lb-commit-msg" style={{ fontSize: '13px', fontStyle: 'italic', color: C_WARM_GR, flex: '1 1 160px', minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          <span className="lb-commit-msg" style={{ fontSize: '13px', fontStyle: 'italic', color: C_WARM_GR, marginLeft: 'auto', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {'chore: collect souls and close issues permanently'}
           </span>
         </div>
