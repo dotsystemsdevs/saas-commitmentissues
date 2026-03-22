@@ -101,40 +101,37 @@ export default function CertificateCard({ cert, onReset }: Props) {
       {/* ── Actions: Share → Download → issue another ── */}
       <div className="cert-actions" style={{ display: 'flex', gap: '10px', marginBottom: '16px' }}>
 
-        {/* 1. Share free — lowest friction first */}
+        {/* 1. Share free */}
         <button
           onClick={handleShare}
-          style={{ flex: 1, fontFamily: UI, background: '#1a1a1a', color: '#fff', border: 'none', borderRadius: '8px', padding: '14px 12px 12px', cursor: 'pointer', transition: 'background 0.15s, transform 0.12s, box-shadow 0.12s', transform: 'translateY(0)', boxShadow: 'none', textAlign: 'center' }}
+          style={{ flex: 1, fontFamily: UI, background: '#1a1a1a', color: '#fff', border: 'none', borderRadius: '8px', padding: '16px 12px', cursor: 'pointer', transition: 'background 0.15s, transform 0.12s, box-shadow 0.12s', transform: 'translateY(0)', boxShadow: 'none', textAlign: 'center' }}
           onMouseEnter={e => { e.currentTarget.style.background = '#8b0000'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(139,0,0,0.25)' }}
           onMouseLeave={e => { e.currentTarget.style.background = '#1a1a1a'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
         >
-          <div style={{ fontSize: '18px', marginBottom: '4px' }}>↗</div>
           <div style={{ fontSize: '13px', fontWeight: 700 }}>{shareLabel === 'Share' ? 'Share free' : shareLabel}</div>
-          <div style={{ fontSize: '12px', fontStyle: 'italic', color: '#c8b090', marginTop: '4px' }}>post it before they forget →</div>
+          <div style={{ fontSize: '11px', fontStyle: 'italic', color: '#c8b090', marginTop: '5px' }}>post it before they forget →</div>
         </button>
 
-        {/* 2. Download A4 */}
+        {/* 2. Download A4 — black, high priority */}
         <button
           onClick={handleDownload}
-          style={{ flex: 1, fontFamily: UI, background: 'transparent', color: '#1a1a1a', border: '1.5px solid #1a1a1a', borderRadius: '8px', padding: '14px 12px 12px', cursor: 'pointer', transition: 'background 0.15s, color 0.15s, transform 0.12s, box-shadow 0.12s', transform: 'translateY(0)', boxShadow: 'none', textAlign: 'center' }}
-          onMouseEnter={e => { e.currentTarget.style.background = '#1a1a1a'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.12)' }}
-          onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#1a1a1a'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
+          style={{ flex: 1, fontFamily: UI, background: '#1a1a1a', color: '#fff', border: 'none', borderRadius: '8px', padding: '16px 12px', cursor: 'pointer', transition: 'background 0.15s, transform 0.12s, box-shadow 0.12s', transform: 'translateY(0)', boxShadow: 'none', textAlign: 'center' }}
+          onMouseEnter={e => { e.currentTarget.style.background = '#8b0000'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(139,0,0,0.25)' }}
+          onMouseLeave={e => { e.currentTarget.style.background = '#1a1a1a'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
         >
-          <div style={{ fontSize: '18px', marginBottom: '4px' }}>⬇</div>
-          <div style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.04em' }}>Download A4 — $4.99</div>
-          <div style={{ fontSize: '12px', fontStyle: 'italic', color: '#888', marginTop: '4px' }}>official PDF, frame it or forget it →</div>
+          <div style={{ fontSize: '13px', fontWeight: 700 }}>Download A4 — $4.99</div>
+          <div style={{ fontSize: '11px', fontStyle: 'italic', color: '#c8b090', marginTop: '5px' }}>official PDF, frame it or forget it →</div>
         </button>
 
-        {/* 3. issue another — viral loop */}
+        {/* 3. issue another — light, viral loop */}
         <button
           onClick={onReset}
-          style={{ flex: 1, fontFamily: UI, background: 'transparent', color: '#1a1a1a', border: '1.5px solid #1a1a1a', borderRadius: '8px', padding: '14px 12px 12px', cursor: 'pointer', transition: 'background 0.15s, color 0.15s, border-color 0.15s, transform 0.12s', transform: 'translateY(0)', textAlign: 'center' }}
-          onMouseEnter={e => { e.currentTarget.style.background = '#1a1a1a'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#1a1a1a'; e.currentTarget.style.transform = 'translateY(-2px)' }}
-          onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#1a1a1a'; e.currentTarget.style.borderColor = '#1a1a1a'; e.currentTarget.style.transform = 'translateY(0)' }}
+          style={{ flex: 1, fontFamily: UI, background: 'transparent', color: '#555', border: '1.5px solid #c8c8c8', borderRadius: '8px', padding: '16px 12px', cursor: 'pointer', transition: 'color 0.15s, border-color 0.15s, transform 0.12s', transform: 'translateY(0)', textAlign: 'center' }}
+          onMouseEnter={e => { e.currentTarget.style.color = '#1a1a1a'; e.currentTarget.style.borderColor = '#555'; e.currentTarget.style.transform = 'translateY(-2px)' }}
+          onMouseLeave={e => { e.currentTarget.style.color = '#555'; e.currentTarget.style.borderColor = '#c8c8c8'; e.currentTarget.style.transform = 'translateY(0)' }}
         >
-          <div style={{ fontSize: '18px', marginBottom: '4px' }}>↺</div>
-          <div style={{ fontSize: '13px', fontWeight: 700 }}>issue another</div>
-          <div style={{ fontSize: '12px', fontStyle: 'italic', color: '#888', marginTop: '4px' }}>kill another repo →</div>
+          <div style={{ fontSize: '13px', fontWeight: 600 }}>issue another</div>
+          <div style={{ fontSize: '11px', fontStyle: 'italic', color: '#aaa', marginTop: '5px' }}>kill another repo →</div>
         </button>
 
       </div>
