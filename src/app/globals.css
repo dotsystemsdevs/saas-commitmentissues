@@ -36,13 +36,8 @@
   /* Certificate action buttons: match zoomed width */
   .cert-actions { flex-direction: column !important; width: calc(480px * 0.65) !important; margin: 0 auto !important; }
 
-  /* Leaderboard rows: stack vertically on mobile */
-  .lb-row { flex-direction: column !important; gap: 4px !important; align-items: stretch !important; }
-  .lb-row-header { width: 100%; }
-  .lb-cause-desktop { display: none !important; }
-  .lb-cause-mobile { display: block !important; }
-  .lb-date { display: none !important; }
-  .lb-name { min-width: 0 !important; max-width: 200px !important; }
+  /* Leaderboard: horizontal scroll on mobile */
+  .lb-table { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
 }
 
 @media print {

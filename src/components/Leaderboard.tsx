@@ -43,7 +43,7 @@ export default function Leaderboard({ onSelect }: Props) {
     <div style={{ fontFamily: FONT, width: '100%', border: `1.5px solid ${C_LIGHT}`, borderRadius: '10px', overflow: 'hidden' }}>
 
       {/* Table */}
-      <div style={{ overflow: 'hidden' }}>
+      <div className="lb-table" style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}>
 
         {/* Commit bar */}
         <div style={{
@@ -53,8 +53,11 @@ export default function Leaderboard({ onSelect }: Props) {
           padding: '9px 16px',
           background: '#ebebeb',
           borderBottom: `1.5px solid ${C_LIGHT}`,
+          minWidth: '520px',
         }}>
-          <span style={{ fontSize: '14px', flexShrink: 0 }}>🪦</span>
+          <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#111', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <span style={{ fontSize: '13px', lineHeight: 1 }}>🪦</span>
+          </div>
           <span style={{ fontSize: '13px', fontWeight: 700, color: C_DARKEST }}>the_grim_reaper</span>
           <span style={{ fontSize: '13px', fontStyle: 'italic', color: C_WARM_GR, flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {'chore: collect souls and close issues permanently'}
@@ -79,6 +82,7 @@ export default function Leaderboard({ onSelect }: Props) {
               alignItems: 'flex-start',
               gap: '14px',
               width: '100%',
+              minWidth: '520px',
               padding: '12px 16px',
               background: 'transparent',
               border: 'none',
@@ -98,7 +102,9 @@ export default function Leaderboard({ onSelect }: Props) {
           >
             {/* Header: tombstone + name + date */}
             <div className="lb-row-header" style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', flex: 1, minWidth: 0 }}>
-              <span style={{ fontSize: '17px', flexShrink: 0, lineHeight: '1.4', marginTop: '1px' }}>🪦</span>
+              <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#111', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <span style={{ fontSize: '13px', lineHeight: 1 }}>🪦</span>
+              </div>
 
               <span className="lb-name" style={{
                 fontFamily: FONT,
