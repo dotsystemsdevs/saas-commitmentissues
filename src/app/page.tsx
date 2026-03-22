@@ -36,7 +36,7 @@ export default function Page() {
       {!certificate && (
         <>
           <PageHero
-            subtitle="Turn any GitHub repo into its official death certificate."
+            subtitle="Paste any GitHub URL. Get an official death certificate for your abandoned repo."
             microcopy={null}
           />
 
