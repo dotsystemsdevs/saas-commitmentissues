@@ -25,10 +25,10 @@ const HALL_OF_SHAME: LeaderboardEntry[] = [
 ]
 
 const FONT = `var(--font-dm), -apple-system, sans-serif`
-const C_WARM_GR = '#6b6560'
-const C_LIGHT   = '#e0ddd9'
-const C_DARK    = '#462D21'
-const C_DARKEST = '#160A06'
+const C_WARM_GR = '#555555'
+const C_LIGHT   = '#c8c8c8'
+const C_DARK    = '#222222'
+const C_DARKEST = '#111111'
 
 
 interface Props {
@@ -39,7 +39,7 @@ export default function Leaderboard({ onSelect }: Props) {
   const list = HALL_OF_SHAME
 
   return (
-    <div style={{ fontFamily: FONT, width: '100%', border: `1px solid ${C_LIGHT}`, borderRadius: '10px', overflow: 'hidden' }}>
+    <div style={{ fontFamily: FONT, width: '100%', border: `1.5px solid ${C_LIGHT}`, borderRadius: '10px', overflow: 'hidden' }}>
 
       {/* Table */}
       <div style={{ overflow: 'hidden' }}>
@@ -50,8 +50,8 @@ export default function Leaderboard({ onSelect }: Props) {
           alignItems: 'center',
           gap: '10px',
           padding: '9px 16px',
-          background: '#eceae6',
-          borderBottom: `1px solid ${C_LIGHT}`,
+          background: '#ebebeb',
+          borderBottom: `1.5px solid ${C_LIGHT}`,
         }}>
           <span style={{ fontSize: '14px', flexShrink: 0 }}>🪦</span>
           <span style={{ fontSize: '13px', fontWeight: 700, color: C_DARKEST }}>the_grim_reaper</span>
@@ -81,13 +81,14 @@ export default function Leaderboard({ onSelect }: Props) {
               background: 'transparent',
               border: 'none',
               borderTop: i === 0 ? 'none' : `1px solid ${C_LIGHT}`,
+              borderBottom: 'none',
               borderLeft: '3px solid transparent',
               cursor: 'pointer',
               textAlign: 'left',
               transition: 'background 0.12s, border-left-color 0.12s',
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.background = '#eceae6'
+              e.currentTarget.style.background = '#f0f0f0'
               e.currentTarget.style.borderLeftColor = '#8b0000'
             }}
             onMouseLeave={e => {
