@@ -3,7 +3,6 @@ import { Playfair_Display, Courier_Prime, UnifrakturMaguntia, DM_Sans } from 'ne
 import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import TopBar from '@/components/TopBar'
 import './globals.css'
 
 const playfair = Playfair_Display({
@@ -55,10 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${playfair.variable} ${courierPrime.variable} ${unifraktur.variable} ${dmSans.variable} antialiased`}>
-        <TopBar />
-        <div style={{ paddingTop: '52px' }}>
         {children}
-        </div>
         <Analytics />
         <SpeedInsights />
         <Script
