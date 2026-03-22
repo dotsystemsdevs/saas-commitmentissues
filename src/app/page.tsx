@@ -31,7 +31,7 @@ export default function Page() {
   const idle = !loading && !certificate && !error
 
   return (
-    <main style={{ minHeight: '100vh', background: '#111111', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 24px' }}>
+    <main style={{ minHeight: '100vh', background: '#f5f5f5', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 24px' }}>
 
       {/* Hero */}
       {!certificate && (
@@ -41,14 +41,14 @@ export default function Page() {
             <h1 style={{
               fontFamily: 'var(--font-gothic), serif',
               fontSize: 'clamp(2.4rem, 7vw, 3.6rem)',
-              color: '#edebe8',
+              color: '#160A06',
               lineHeight: 0.95,
               marginBottom: '20px',
             }}>
               Certificate of Death
             </h1>
           </button>
-          <p style={{ fontFamily: FONT, fontSize: '15px', color: '#888', lineHeight: 1.6, margin: '0 auto', maxWidth: '420px' }}>
+          <p style={{ fontFamily: FONT, fontSize: '15px', color: '#938882', lineHeight: 1.6, margin: '0 auto', maxWidth: '420px' }}>
             Paste any GitHub URL. We issue an official death certificate for your abandoned repo.
           </p>
         </header>
@@ -71,7 +71,7 @@ export default function Page() {
 
       {/* Leaderboard section */}
       {idle && (
-        <div style={{ width: '100%', maxWidth: '680px', borderTop: '1px solid #2a2a2a', marginTop: '40px', paddingTop: '28px', paddingBottom: '52px' }}>
+        <div style={{ width: '100%', maxWidth: '680px', borderTop: '1px solid #e0e0e0', marginTop: '40px', paddingTop: '28px', paddingBottom: '52px' }}>
           <Leaderboard onSelect={handleSelect} />
         </div>
       )}
@@ -85,10 +85,10 @@ export default function Page() {
             { href: '/terms',   label: 'Terms'   },
             { href: '/refund',  label: 'Refunds' },
           ].map(({ href, label }) => (
-            <a key={href} href={href} style={{ fontFamily: FONT, fontSize: '11px', color: '#555', textDecoration: 'none' }}>{label}</a>
+            <a key={href} href={href} style={{ fontFamily: FONT, fontSize: '11px', color: '#938882', textDecoration: 'none' }}>{label}</a>
           ))}
         </div>
-        <span style={{ fontFamily: FONT, fontSize: '11px', color: '#444' }}>© commitmentissues.dev</span>
+        <span style={{ fontFamily: FONT, fontSize: '11px', color: '#b0aca8' }}>© commitmentissues.dev</span>
       </footer>
     </main>
   )
