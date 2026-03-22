@@ -108,8 +108,7 @@ function handleTweet() {
   }
 
   const { repoData: r } = cert
-  const MONO = `var(--font-courier), "Courier New", monospace`
-  const UI   = `var(--font-dm), -apple-system, sans-serif`
+  const UI = `var(--font-dm), -apple-system, sans-serif`
 
   return (
     <div style={{ width: '100%', maxWidth: '480px', margin: '0 auto' }}>

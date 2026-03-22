@@ -189,6 +189,21 @@
   padding: 0 0 18px 0;
 }
 
+/* Subpage ← back link */
+.subpage-back-link {
+  font-family: var(--font-dm), -apple-system, sans-serif;
+  font-size: 13px;
+  color: #938882;
+  text-decoration: none;
+  display: inline-block;
+  padding-top: 12px;
+  padding-bottom: 4px;
+  transition: color 0.15s;
+}
+.subpage-back-link:hover {
+  color: #160A06;
+}
+
 /* Pricing page bottom CTA button */
 .pricing-cta-btn {
   display: inline-block;

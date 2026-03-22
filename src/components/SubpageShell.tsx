@@ -15,21 +15,7 @@ export default function SubpageShell({ subtitle, microcopy, headerExtra, childre
   return (
     <main className="page-shell-main">
       <div className="page-shell-inner">
-        <Link
-          href="/"
-          style={{
-            fontFamily: `var(--font-dm), -apple-system, sans-serif`,
-            fontSize: '13px',
-            color: '#938882',
-            textDecoration: 'none',
-            display: 'inline-block',
-            paddingTop: '12px',
-            paddingBottom: '4px',
-            transition: 'color 0.15s',
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = '#160A06')}
-          onMouseLeave={(e) => (e.currentTarget.style.color = '#938882')}
-        >
+        <Link href="/" className="subpage-back-link">
           ← back
         </Link>
         <PageHero subtitle={subtitle} microcopy={microcopy} brandHref="/" />
