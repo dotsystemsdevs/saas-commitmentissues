@@ -81,9 +81,8 @@ export default function Page() {
           {[
             { href: '/about',   label: 'About'   },
             { href: '/pricing', label: 'Pricing' },
-            { href: '/privacy', label: 'Privacy' },
             { href: '/terms',   label: 'Terms'   },
-            { href: '/refund',  label: 'Refunds' },
+            { href: '/privacy', label: 'Privacy' },
           ].map(({ href, label }) => (
             <a key={href} href={href} style={{ fontFamily: FONT, fontSize: '11px', color: '#938882', textDecoration: 'none' }}>{label}</a>
           ))}
