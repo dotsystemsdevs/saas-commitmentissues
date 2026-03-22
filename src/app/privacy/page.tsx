@@ -6,7 +6,7 @@ const SECTIONS = [
   { title: 'What we collect', body: 'We do not store GitHub URLs you paste. Each request is processed in real time and discarded. No user accounts, no email addresses, no personal data.' },
   { title: 'GitHub API', body: 'We fetch publicly available repository metadata from the GitHub API. This data is already public. We do not access private repositories.' },
   { title: 'Payments', body: 'Payments are handled by Stripe. We do not store your card details. Stripe may collect your payment information subject to their own privacy policy.' },
-  { title: 'Analytics', body: 'We use Plausible Analytics — a privacy-friendly, cookieless tool that collects no personal data. Aggregate pageview counts only.' },
+  { title: 'Analytics', body: 'We use Plausible Analytics - a privacy-friendly, cookieless tool that collects no personal data. Aggregate pageview counts only.' },
   { title: 'Cookies', body: 'We set no tracking cookies. Your recently analyzed repos are stored in your browser\'s localStorage and never leave your device.' },
   { title: 'Contact', body: 'Questions? ', email: 'dot.systems@proton.me' },
 ]

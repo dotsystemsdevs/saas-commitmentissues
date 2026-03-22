@@ -3,9 +3,9 @@ import Link from 'next/link'
 const UI = `var(--font-dm), -apple-system, sans-serif`
 
 const FAQ = [
-  { q: 'Is the data real?', a: 'Yes. Everything comes from GitHub\'s public API — last commit date, stars, forks, open issues, and archive status.' },
+  { q: 'Is the data real?', a: 'Yes. Everything comes from GitHub\'s public API - last commit date, stars, forks, open issues, and archive status.' },
   { q: 'How is the cause of death determined?', a: 'A scoring algorithm weighs inactivity, star count, open issues, and whether the repo is archived. The highest-matching rule wins.' },
-  { q: 'Can I analyze private repos?', a: 'No — we only have access to public repositories.' },
+  { q: 'Can I analyze private repos?', a: 'No - we only have access to public repositories.' },
   { q: 'How do I share the certificate?', a: 'Hit "Share free" to get a 1080×1350 image perfect for Instagram or X. Download A4 gives you a printable version.' },
   { q: 'Is this serious?', a: 'The data is real. The certificates are not.' },
 ]
@@ -33,7 +33,7 @@ export default function AboutPage() {
               Official death certificates for abandoned GitHub repos.
             </p>
             <p style={{ fontFamily: UI, fontSize: '15px', fontStyle: 'italic', color: '#555', lineHeight: 1.8, marginBottom: '16px' }}>
-              Paste any public GitHub URL. We analyze commit history, stars, open issues, and archive status — then issue a certified cause of death.
+              Paste any public GitHub URL. We analyze commit history, stars, open issues, and archive status - then issue a certified cause of death.
             </p>
             <p style={{ fontFamily: UI, fontSize: '15px', color: '#555', lineHeight: 1.8 }}>
               Download the certificate. Share it. Mourn accordingly.

@@ -38,10 +38,10 @@ export default function PricingPage() {
           <div style={{ border: '2px solid #160A06', borderRadius: '8px', padding: '28px', marginBottom: '40px' }}>
             <p style={{ fontFamily: UI, fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#8b0000', marginBottom: '12px' }}>Premium</p>
             <p style={{ fontFamily: UI, fontSize: '2rem', fontWeight: 700, color: '#160A06', marginBottom: '4px' }}>$4.99 <span style={{ fontSize: '14px', fontWeight: 400, color: '#938882' }}>per certificate</span></p>
-            <p style={{ fontFamily: UI, fontSize: '13px', fontStyle: 'italic', color: '#938882', marginBottom: '20px' }}>one flat fee — no subscription, no nonsense</p>
+            <p style={{ fontFamily: UI, fontSize: '13px', fontStyle: 'italic', color: '#938882', marginBottom: '20px' }}>one flat fee - no subscription, no nonsense</p>
             <ul style={{ fontFamily: UI, fontSize: '14px', color: '#555', lineHeight: 2, paddingLeft: '20px', margin: '0 0 24px 0' }}>
               <li>Everything in Free</li>
-              <li>Download as A4 PNG — print-ready</li>
+              <li>Download as A4 PNG - print-ready</li>
               <li>High resolution (3× scale)</li>
               <li>official PDF, frame it or forget it</li>
             </ul>

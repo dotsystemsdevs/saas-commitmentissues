@@ -119,7 +119,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
           onMouseEnter={e => { e.currentTarget.style.background = '#8b0000'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(139,0,0,0.25)' }}
           onMouseLeave={e => { e.currentTarget.style.background = '#1a1a1a'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
         >
-          <div style={{ fontSize: '13px', fontWeight: 700 }}>Download A4 — $4.99</div>
+          <div style={{ fontSize: '13px', fontWeight: 700 }}>Download A4 - $4.99</div>
           <div style={{ fontSize: '11px', fontStyle: 'italic', color: '#c8b090', marginTop: '5px' }}>official PDF, frame it or forget it →</div>
         </button>
 

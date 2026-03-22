@@ -11,7 +11,7 @@ export default function CancelPage() {
           Payment cancelled.
         </h1>
         <p style={{ fontFamily: SERIF, fontSize: '15px', fontStyle: 'italic', color: '#462D21', lineHeight: 1.8, marginBottom: '36px' }}>
-          No charge was made. The repo remains unprinted — but no less dead.
+          No charge was made. The repo remains unprinted - but no less dead.
         </p>
         <Link href="/" style={{ fontFamily: SERIF, fontSize: '13px', fontWeight: 700, letterSpacing: '0.06em', background: '#1a1a1a', color: '#fff', padding: '12px 28px', textDecoration: 'none', display: 'block', marginBottom: '24px', textAlign: 'center' }}>
           Try again →
