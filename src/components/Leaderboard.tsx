@@ -24,6 +24,8 @@ const HALL_OF_SHAME: LeaderboardEntry[] = [
   { fullName: 'yahoo/mojito',           cause: 'Yahoo happened',                                            score: 9,  deathDate: 'Mar 2014' },
 ]
 
+const ICONS = ['🪦', '💀', '🕯️', '⚰️', '💀', '🕯️', '🪦', '⚰️', '💀', '🕯️', '🪦', '⚰️', '💀', '🕯️', '🪦', '💀', '🕯️', '⚰️']
+
 const FONT = `var(--font-dm), -apple-system, sans-serif`
 const C_WARM_GR = '#555555'
 const C_LIGHT   = '#c8c8c8'
@@ -98,7 +100,7 @@ export default function Leaderboard({ onSelect }: Props) {
           >
             {/* Header: tombstone + name + date */}
             <div className="lb-row-header" style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', flex: 1, minWidth: 0 }}>
-              <span style={{ fontSize: '17px', flexShrink: 0, lineHeight: '1.4', marginTop: '1px' }}>🪦</span>
+              <span style={{ fontSize: '17px', flexShrink: 0, lineHeight: '1.4', marginTop: '1px' }}>{ICONS[i]}</span>
 
               <span className="lb-name" style={{
                 fontFamily: FONT,
@@ -106,9 +108,8 @@ export default function Leaderboard({ onSelect }: Props) {
                 fontWeight: 700,
                 color: '#8b0000',
                 whiteSpace: 'nowrap',
-                minWidth: '120px',
-                maxWidth: '210px',
-                flexShrink: 1,
+                width: '190px',
+                flexShrink: 0,
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
                 lineHeight: '1.5',
