@@ -138,10 +138,10 @@ function handleTweet() {
       <PageHero
         subtitle={
           <>
-            <strong style={{ color: '#160A06' }}>{r.fullName}</strong> is officially dead. Here&apos;s the certificate.
+            The death of <strong style={{ color: '#160A06' }}>{r.fullName}</strong> has been officially recorded.
           </>
         }
-        microcopy="Share it, print it, or run another repo."
+        microcopy="The record is sealed. You may now share or preserve the certificate."
         onBrandClick={onReset}
       />
 
