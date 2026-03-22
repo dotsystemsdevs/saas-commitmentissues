@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, Courier_Prime, UnifrakturMaguntia, DM_Sans } from 'next/font/google'
 import Script from 'next/script'
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import TopBar from '@/components/TopBar'
 import './globals.css'
 
@@ -57,6 +59,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div style={{ paddingTop: '52px' }}>
         {children}
         </div>
+        <Analytics />
+        <SpeedInsights />
         <Script
           defer
           data-domain="commitmentissues.dev"
