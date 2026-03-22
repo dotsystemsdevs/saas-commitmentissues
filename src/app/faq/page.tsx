@@ -14,6 +14,7 @@ const FAQS = [
 export default function FaqPage() {
   return (
     <SubpageShell
+      title="FAQ"
       subtitle="Official death certificates for abandoned GitHub repos."
       microcopy="Data is real. The certificates are not."
     >

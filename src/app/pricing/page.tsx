@@ -19,6 +19,7 @@ const PREMIUM_FEATURES = [
 export default function PricingPage() {
   return (
     <SubpageShell
+      title="Pricing"
       subtitle="Death is free. The paperwork costs $4.99."
       microcopy={null}
     >

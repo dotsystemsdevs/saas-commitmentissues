@@ -3,6 +3,8 @@ import Link from 'next/link'
 
 type Props = {
   subtitle: ReactNode
+  /** Override the gothic h1 — defaults to "Certificate of Death" */
+  title?: string
   /** Second gray line under subtitle (same slot on every page). */
   microcopy?: ReactNode | null
   /** Wrap 🪦 + title in `<a href="/">` */
@@ -13,6 +15,7 @@ type Props = {
 
 export default function PageHero({
   subtitle,
+  title = 'Certificate of Death',
   microcopy,
   brandHref,
   onBrandClick,
@@ -22,7 +25,7 @@ export default function PageHero({
       <div className="page-hero-emoji" aria-hidden>
         🪦
       </div>
-      <h1 className="certificate-of-death-title page-hero-title">Certificate of Death</h1>
+      <h1 className="certificate-of-death-title page-hero-title">{title}</h1>
     </>
   )
 

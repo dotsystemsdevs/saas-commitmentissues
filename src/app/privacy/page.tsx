@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import SubpageShell from '@/components/SubpageShell'
-import { CTA_ISSUE_ARROW } from '@/lib/cta'
 
 const UI = `var(--font-dm), -apple-system, sans-serif`
 
@@ -16,6 +15,7 @@ const SECTIONS = [
 export default function PrivacyPage() {
   return (
     <SubpageShell
+      title="Privacy"
       subtitle="We know nothing. We store nothing. We are ghosts."
       microcopy="Last updated March 2026"
     >
@@ -42,10 +42,7 @@ export default function PrivacyPage() {
       ))}
       <div className="subpage-bottom-links">
         <Link href="/" className="subpage-bottom-primary">
-          {CTA_ISSUE_ARROW}
-        </Link>
-        <Link href="/terms" className="subpage-bottom-secondary">
-          Terms of Service →
+          issue a certificate →
         </Link>
       </div>
     </SubpageShell>

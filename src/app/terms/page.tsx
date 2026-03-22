@@ -16,6 +16,7 @@ const SECTIONS = [
 export default function TermsPage() {
   return (
     <SubpageShell
+      title="Terms"
       subtitle="The fine print for the fine dead. Terms and refund policy."
       microcopy="Last updated March 2026"
     >
@@ -43,9 +44,6 @@ export default function TermsPage() {
       <div className="subpage-bottom-links">
         <Link href="/" className="subpage-bottom-primary">
           issue a certificate →
-        </Link>
-        <Link href="/privacy" className="subpage-bottom-secondary">
-          Privacy Policy →
         </Link>
       </div>
     </SubpageShell>
