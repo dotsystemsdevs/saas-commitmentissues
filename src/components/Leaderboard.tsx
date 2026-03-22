@@ -24,7 +24,6 @@ const HALL_OF_SHAME: LeaderboardEntry[] = [
   { fullName: 'yahoo/mojito',           cause: 'Yahoo happened',                                            score: 9,  deathDate: 'Mar 2014' },
 ]
 
-const ICONS = ['🪦', '💀', '🕯️', '⚰️', '💀', '🕯️', '🪦', '⚰️', '💀', '🕯️', '🪦', '⚰️', '💀', '🕯️', '🪦', '💀', '🕯️', '⚰️']
 
 const FONT = `var(--font-dm), -apple-system, sans-serif`
 const C_WARM_GR = '#555555'
@@ -70,8 +69,9 @@ export default function Leaderboard({ onSelect }: Props) {
             <p style={{ fontSize: '14px', fontStyle: 'italic', color: C_WARM_GR }}>Paste a GitHub URL above to issue your first death certificate.</p>
           </div>
         ) : list.map((entry, i) => (
-          <button
-            key={entry.fullName + i}
+          <div key={entry.fullName + i} style={{ position: 'relative' }}>
+            {i !== 0 && <div style={{ height: '1px', background: C_LIGHT, margin: '0' }} />}
+            <button
             className="lb-row"
             onClick={() => onSelect(`https://github.com/${entry.fullName}`)}
             style={{
@@ -82,8 +82,6 @@ export default function Leaderboard({ onSelect }: Props) {
               padding: '12px 16px',
               background: 'transparent',
               border: 'none',
-              borderTop: i === 0 ? 'none' : `1px solid ${C_LIGHT}`,
-              borderBottom: 'none',
               borderLeft: '3px solid transparent',
               cursor: 'pointer',
               textAlign: 'left',
@@ -100,7 +98,7 @@ export default function Leaderboard({ onSelect }: Props) {
           >
             {/* Header: tombstone + name + date */}
             <div className="lb-row-header" style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', flex: 1, minWidth: 0 }}>
-              <span style={{ fontSize: '17px', flexShrink: 0, lineHeight: '1.4', marginTop: '1px' }}>{ICONS[i]}</span>
+              <span style={{ fontSize: '17px', flexShrink: 0, lineHeight: '1.4', marginTop: '1px' }}>🪦</span>
 
               <span className="lb-name" style={{
                 fontFamily: FONT,
@@ -156,6 +154,7 @@ export default function Leaderboard({ onSelect }: Props) {
               {entry.cause}
             </span>
           </button>
+          </div>
         ))}
       </div>
     </div>
