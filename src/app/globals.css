@@ -2,26 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply antialiased;
+    font-family: var(--font-dm), -apple-system, sans-serif;
+    font-size: 14px;
+    color: #160A06;
+    background-color: #faf8f4;
   }
+  * { box-sizing: border-box; }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  /* TopBar: hide center nav + star, show hamburger */
+  .topbar-nav { display: none !important; }
+  .topbar { padding: 0 16px !important; }
+  .topbar-star { display: none !important; }
+  .topbar-hamburger { display: flex !important; }
+
+  /* Certificate: zoom to fit, keep internal dimensions */
+  .certificate-scroll-zone { width: 100%; padding: 0; margin: 0; overflow: visible; }
+  .certificate-wrapper { zoom: 0.65; margin: 0 auto; }
+
+  /* Certificate action buttons: match zoomed width */
+  .cert-actions { flex-direction: column !important; width: calc(480px * 0.65) !important; margin: 0 auto !important; }
+
+  /* Leaderboard rows: stack vertically on mobile */
+  .lb-row { flex-direction: column !important; gap: 4px !important; align-items: stretch !important; }
+  .lb-row-header { width: 100%; }
+  .lb-cause-desktop { display: none !important; }
+  .lb-cause-mobile { display: block !important; }
+  .lb-date { display: none !important; }
+  .lb-name { min-width: 0 !important; max-width: 200px !important; }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+@media print {
+  @page { size: A4 portrait; margin: 12mm; }
+  body::before, body::after { display: none !important; }
+  body { background: white !important; }
+  main > *:not(.certificate-wrapper) { display: none !important; }
+  .certificate-actions { display: none !important; }
+  .certificate-wrapper { display: block !important; width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important; position: static !important; }
+  .certificate-card { width: 100% !important; max-width: 100% !important; height: auto !important; aspect-ratio: 210 / 297 !important; box-shadow: none !important; opacity: 1 !important; transform: none !important; page-break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }

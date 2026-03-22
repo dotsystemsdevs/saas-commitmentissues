@@ -1,101 +1,74 @@
-import Image from "next/image";
+'use client'
 
-export default function Home() {
+import { useRepoAnalysis } from '@/hooks/useRepoAnalysis'
+import SearchForm from '@/components/SearchForm'
+import LoadingState from '@/components/LoadingState'
+import ErrorDisplay from '@/components/ErrorDisplay'
+import CertificateCard from '@/components/CertificateCard'
+import Leaderboard from '@/components/Leaderboard'
+
+const FONT = `var(--font-dm), -apple-system, sans-serif`
+const EXAMPLE_URL = 'https://github.com/atom/atom'
+
+export default function Page() {
+  const { url, setUrl, certificate, error, loading, analyze, reset } = useRepoAnalysis()
+
+  function handleReset() {
+    reset()
+    setTimeout(() => document.querySelector<HTMLInputElement>('input[type="text"]')?.focus(), 50)
+  }
+
+  function handleSelect(selectedUrl: string) {
+    setUrl(selectedUrl)
+    analyze(selectedUrl)
+  }
+
+  async function handleExample() {
+    setUrl(EXAMPLE_URL)
+    await analyze(EXAMPLE_URL)
+  }
+
+  const idle = !loading && !certificate && !error
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main style={{ minHeight: '100vh', background: '#faf8f4', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 24px' }}>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Search — hide when certificate is showing */}
+      {!certificate && (
+        <div style={{ width: '100%', maxWidth: '680px', marginBottom: '12px', marginTop: '32px' }}>
+          <SearchForm url={url} setUrl={setUrl} onSubmit={() => analyze(url)} onExample={handleExample} loading={loading} />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      )}
+
+      {loading && <LoadingState />}
+      {error && !loading && <ErrorDisplay error={error} onRetry={() => analyze(url)} />}
+      {certificate && !loading && (
+        <div className="certificate-scroll-zone">
+          <CertificateCard cert={certificate} onReset={handleReset} />
+        </div>
+      )}
+
+      {/* Leaderboard section */}
+      {idle && (
+        <div style={{ width: '100%', maxWidth: '680px', borderTop: '1px solid #E1DFDE', marginTop: '40px', paddingTop: '28px', paddingBottom: '52px' }}>
+          <Leaderboard onSelect={handleSelect} />
+        </div>
+      )}
+
+      <footer style={{ marginTop: 'auto', paddingTop: '64px', paddingBottom: '24px', textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          {[
+            { href: '/about',   label: 'About'   },
+            { href: '/pricing', label: 'Pricing' },
+            { href: '/privacy', label: 'Privacy' },
+            { href: '/terms',   label: 'Terms'   },
+            { href: '/refund',  label: 'Refunds' },
+          ].map(({ href, label }) => (
+            <a key={href} href={href} style={{ fontFamily: FONT, fontSize: '11px', color: '#938882', textDecoration: 'none' }}>{label}</a>
+          ))}
+        </div>
+        <span style={{ fontFamily: FONT, fontSize: '11px', color: '#b0aca8' }}>© commitmentissues.dev</span>
       </footer>
-    </div>
-  );
+    </main>
+  )
 }
