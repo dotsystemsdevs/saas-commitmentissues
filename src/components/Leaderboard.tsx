@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+
 import { LeaderboardEntry } from '@/lib/types'
 
 const HALL_OF_SHAME: LeaderboardEntry[] = [
@@ -56,7 +56,7 @@ export default function Leaderboard({ onSelect }: Props) {
           minWidth: '520px',
         }}>
           <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#111', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-            <span style={{ fontSize: '13px', lineHeight: 1 }}>🪦</span>
+            <span style={{ fontSize: '13px', lineHeight: 1 }}>💀</span>
           </div>
           <span style={{ fontSize: '13px', fontWeight: 700, color: C_DARKEST }}>the_grim_reaper</span>
           <span style={{ fontSize: '13px', fontStyle: 'italic', color: C_WARM_GR, flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>

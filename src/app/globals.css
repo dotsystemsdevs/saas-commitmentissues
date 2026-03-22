@@ -29,15 +29,21 @@
   .topbar-star { display: none !important; }
   .topbar-hamburger { display: flex !important; }
 
+  /* Page padding */
+  main { padding-left: 16px !important; padding-right: 16px !important; }
+
   /* Certificate: zoom to fit, keep internal dimensions */
   .certificate-scroll-zone { width: 100%; padding: 0; margin: 0; overflow: visible; }
   .certificate-wrapper { zoom: 0.65; margin: 0 auto; }
 
-  /* Certificate action buttons: match zoomed width */
-  .cert-actions { flex-direction: column !important; width: calc(480px * 0.65) !important; margin: 0 auto !important; }
+  /* Certificate action buttons: outside zoom wrapper, full width */
+  .cert-actions { flex-direction: column !important; width: 100% !important; }
 
   /* Leaderboard: horizontal scroll on mobile */
   .lb-table { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
+
+  /* Footer: larger tap targets */
+  footer a { font-size: 13px !important; padding: 4px 0; }
 }
 
 @media print {

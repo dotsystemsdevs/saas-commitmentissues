@@ -90,10 +90,10 @@ export default function CertificateCard({ cert, onReset }: Props) {
   const UI    = `var(--font-dm), -apple-system, sans-serif`
 
   return (
-    <div className="certificate-wrapper mx-auto mt-6 relative" style={{ width: '480px' }}>
+    <div style={{ width: '100%', maxWidth: '480px', margin: '0 auto' }}>
 
-      {/* ── Actions ── 3 buttons */}
-      <div className="cert-actions" style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
+      {/* ── Actions ── 3 buttons (outside zoom wrapper so they stay full-size on mobile) */}
+      <div className="cert-actions" style={{ display: 'flex', gap: '8px', marginBottom: '16px', marginTop: '24px' }}>
         <button
           onClick={handleDownload}
           style={{
@@ -190,6 +190,9 @@ export default function CertificateCard({ cert, onReset }: Props) {
           issue another →
         </button>
       </div>
+
+      {/* ── Certificate (zoomed on mobile) ── */}
+      <div className="certificate-wrapper relative" style={{ width: '480px' }}>
 
       {/* ── Stamp overlay ── */}
       {showStamp && (
@@ -361,6 +364,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
         </div>
       </div>
 
+      </div>{/* end certificate-wrapper */}
     </div>
   )
 }
