@@ -114,8 +114,8 @@ export default function CertificateCard({ cert, onReset }: Props) {
           onMouseLeave={e => { e.currentTarget.style.background = '#1a1a1a'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
         >
           <div style={{ fontSize: '18px', marginBottom: '4px' }}>⬇</div>
-          <div style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.04em' }}>Download A4</div>
-          <div style={{ fontSize: '11px', opacity: 0.65, marginTop: '2px' }}>$4.99 · high-res PNG</div>
+          <div style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.04em' }}>Download A4 — $4.99</div>
+          <div style={{ fontSize: '12px', fontStyle: 'italic', color: '#c8b090', marginTop: '4px' }}>print-ready, yours forever →</div>
         </button>
 
         {/* Share */}
@@ -127,7 +127,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
         >
           <div style={{ fontSize: '18px', marginBottom: '4px' }}>↗</div>
           <div style={{ fontSize: '13px', fontWeight: 600 }}>{shareLabel === 'Share' ? 'Share free' : shareLabel}</div>
-          <div style={{ fontSize: '11px', opacity: 0.5, marginTop: '2px' }}>Instagram · social</div>
+          <div style={{ fontSize: '12px', fontStyle: 'italic', color: '#888', marginTop: '4px' }}>post it before they forget →</div>
         </button>
 
         {/* New repo */}
@@ -139,7 +139,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
         >
           <div style={{ fontSize: '18px', marginBottom: '4px' }}>↺</div>
           <div style={{ fontSize: '13px', fontStyle: 'italic' }}>issue another</div>
-          <div style={{ fontSize: '11px', opacity: 0.5, marginTop: '2px' }}>analyze new repo</div>
+          <div style={{ fontSize: '12px', fontStyle: 'italic', color: '#aaa', marginTop: '4px' }}>kill another repo →</div>
         </button>
 
       </div>
