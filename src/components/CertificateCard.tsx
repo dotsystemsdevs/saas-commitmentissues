@@ -17,18 +17,16 @@ export default function CertificateCard({ cert, onReset }: Props) {
   const [visible,   setVisible]   = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [copyLabel, setCopyLabel] = useState('Copy link')
-  const [imgLabel,  setImgLabel]  = useState('Download image')
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 50)
     return () => clearTimeout(t)
   }, [])
 
-  // ONE source of truth — share uses pixelRatio 2, download uses 3
-  async function exportBlob(pixelRatio: number): Promise<Blob | null> {
+  // ONE source of truth — watermark=true adds "commitmentissues.dev" footer to the canvas
+  async function exportBlob(pixelRatio: number, watermark = false): Promise<Blob | null> {
     if (!cardRef.current) return null
     const wrapper = wrapperRef.current
-    // Reset mobile zoom so export is always the true 480×679 layout
     if (wrapper) wrapper.style.zoom = '1'
     const blob = await toBlob(cardRef.current, {
       cacheBust: true,
@@ -38,11 +36,26 @@ export default function CertificateCard({ cert, onReset }: Props) {
       height: 679,
     })
     if (wrapper) wrapper.style.zoom = ''
-    return blob
+    if (!blob || !watermark) return blob
+
+    // Stamp "commitmentissues.dev" across the bottom of the shared image
+    const img = await createImageBitmap(blob)
+    const canvas = document.createElement('canvas')
+    canvas.width = img.width
+    canvas.height = img.height
+    const ctx = canvas.getContext('2d')!
+    ctx.drawImage(img, 0, 0)
+    ctx.fillStyle = 'rgba(0,0,0,0.22)'
+    ctx.font = `${9 * pixelRatio}px "Courier New", monospace`
+    ctx.letterSpacing = `${0.12 * pixelRatio}px`
+    ctx.textAlign = 'center'
+    ctx.fillText('COMMITMENTISSUES.DEV', canvas.width / 2, canvas.height - 10 * pixelRatio)
+    return new Promise(resolve => canvas.toBlob(b => resolve(b), 'image/png'))
   }
 
   async function handleShare() {
-    const blob = await exportBlob(2)
+    // Share image gets watermark — social-friendly, not print-ready
+    const blob = await exportBlob(2, true)
     if (blob && navigator.canShare) {
       const file = new File([blob], `${cert.repoData.name}.png`, { type: 'image/png' })
       if (navigator.canShare({ files: [file] })) {
@@ -55,14 +68,9 @@ export default function CertificateCard({ cert, onReset }: Props) {
     setShowModal(true)
   }
 
-  async function handleDownload() {
-    const blob = await exportBlob(3)
-    if (!blob) return
-    const a = document.createElement('a')
-    a.href = URL.createObjectURL(blob)
-    a.download = `${cert.repoData.name}-death-certificate.png`
-    a.click()
-    fetch('/api/stats', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ counter: 'downloaded' }) }).catch(() => {})
+  // Download = paid product, links to pricing/checkout
+  function handleDownload() {
+    window.location.href = '/pricing'
   }
 
   async function handleCopyLink() {
@@ -74,20 +82,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
     fetch('/api/stats', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ counter: 'shared' }) }).catch(() => {})
   }
 
-  async function handleDownloadImage() {
-    const blob = await exportBlob(3)
-    if (!blob) return
-    setImgLabel('Saving...')
-    const a = document.createElement('a')
-    a.href = URL.createObjectURL(blob)
-    a.download = `${cert.repoData.name}-certificate.png`
-    a.click()
-    setImgLabel('Saved!')
-    setTimeout(() => setImgLabel('Download image'), 2000)
-    fetch('/api/stats', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ counter: 'shared' }) }).catch(() => {})
-  }
-
-  function handleTweet() {
+function handleTweet() {
     const text = encodeURIComponent(`${cert.repoData.fullName} has officially died.\n\nCause of death: ${cert.causeOfDeath}\n\nRIP 🪦`)
     const url  = encodeURIComponent('https://commitmentissues.dev')
     window.open(`https://x.com/intent/tweet?text=${text}&url=${url}`, '_blank')
@@ -117,7 +112,6 @@ export default function CertificateCard({ cert, onReset }: Props) {
             </div>
             {([
               { label: copyLabel, sub: 'commitmentissues.dev', fn: handleCopyLink },
-              { label: imgLabel,  sub: 'Full certificate as PNG', fn: handleDownloadImage },
               { label: 'Post on X', sub: 'Opens X with pre-filled text', fn: handleTweet },
             ] as { label: string; sub: string; fn: () => void }[]).map(({ label, sub, fn }) => (
               <button
