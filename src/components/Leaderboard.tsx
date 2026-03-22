@@ -25,8 +25,8 @@ const HALL_OF_SHAME: LeaderboardEntry[] = [
 ]
 
 const FONT = `var(--font-dm), -apple-system, sans-serif`
-const C_WARM_GR = '#938882'
-const C_LIGHT   = '#b0aca8'
+const C_WARM_GR = '#6b6560'
+const C_LIGHT   = '#ccc8c4'
 const C_DARK    = '#462D21'
 const C_DARKEST = '#160A06'
 
@@ -61,7 +61,7 @@ export default function Leaderboard({ onSelect }: Props) {
   const list = showRecent ? recent : HALL_OF_SHAME
 
   return (
-    <div style={{ fontFamily: FONT, width: '100%' }}>
+    <div style={{ fontFamily: FONT, width: '100%', border: `1px solid ${C_LIGHT}`, borderRadius: '10px', overflow: 'hidden' }}>
 
       {/* Tab header */}
       <div style={{ display: 'flex', alignItems: 'center', borderBottom: `1px solid ${C_LIGHT}` }}>
@@ -92,7 +92,7 @@ export default function Leaderboard({ onSelect }: Props) {
       </div>
 
       {/* Table */}
-      <div style={{ border: `1px solid ${C_LIGHT}`, borderTop: 'none', borderRadius: '0 0 4px 4px', overflow: 'hidden' }}>
+      <div style={{ overflow: 'hidden' }}>
 
         {/* Commit bar */}
         <div style={{
@@ -183,7 +183,7 @@ export default function Leaderboard({ onSelect }: Props) {
               <span className="lb-date" style={{
                 fontFamily: FONT,
                 fontSize: '13px',
-                color: C_WARM_GR,
+                color: C_DARK,
                 whiteSpace: 'nowrap',
                 flexShrink: 0,
                 lineHeight: '1.5',
