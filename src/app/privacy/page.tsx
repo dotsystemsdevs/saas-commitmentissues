@@ -21,7 +21,7 @@ export default function PrivacyPage() {
           { title: 'Payments', body: 'Payments are handled by Stripe. We do not store your card details. Stripe may collect your payment information subject to their own privacy policy.' },
           { title: 'Analytics', body: 'We use Plausible Analytics, a privacy-friendly tool that collects no personal data and sets no cookies. Aggregate pageview counts only.' },
           { title: 'Cookies', body: 'We set no tracking cookies. Plausible is cookieless. Your recently analyzed repos are stored in your browser\'s localStorage — this data never leaves your device.' },
-          { title: 'Contact', body: 'Questions? ', email: 'hello@commitmentissues.dev' },
+          { title: 'Contact', body: 'Questions? ', email: 'dot.systems@proton.me' },
         ].map(({ title, body, email }, i, arr) => (
           <div key={title} style={{ padding: '20px 0', borderBottom: i < arr.length - 1 ? '1px solid #E1DFDE' : 'none' }}>
             <p style={{ fontFamily: SERIF, fontSize: '15px', fontWeight: 700, color: '#160A06', marginBottom: '8px' }}>{title}</p>

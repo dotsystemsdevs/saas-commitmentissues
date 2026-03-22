@@ -21,7 +21,7 @@ export default function TermsPage() {
           { title: 'Acceptable use', body: 'You may use this service for personal, non-commercial use. Do not use it to harass, defame, or target individuals. Do not attempt to abuse the API or circumvent rate limits.' },
           { title: 'Paid downloads', body: 'The A4 PDF download is a digital product sold for $4.99 per certificate. See our refund policy for details.' },
           { title: 'Changes', body: 'We may update these terms at any time. Continued use of the service means you accept any changes.' },
-          { title: 'Contact', body: '', email: 'hello@commitmentissues.dev' },
+          { title: 'Contact', body: '', email: 'dot.systems@proton.me' },
         ].map(({ title, body, email }, i, arr) => (
           <div key={title} style={{ padding: '20px 0', borderBottom: i < arr.length - 1 ? '1px solid #E1DFDE' : 'none' }}>
             <p style={{ fontFamily: SERIF, fontSize: '15px', fontWeight: 700, color: '#160A06', marginBottom: '8px' }}>{title}</p>
