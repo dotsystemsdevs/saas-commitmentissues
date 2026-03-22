@@ -177,77 +177,76 @@ export default function CertificateCard({ cert, onReset }: Props) {
         }}
       >
         {/* Inner frame */}
-        <div style={{ flex: 1, border: '1px solid #1A0F06', display: 'flex', flexDirection: 'column', padding: '6% 8%' }}>
+        <div style={{ flex: 1, border: '1px solid #1A0F06', display: 'flex', flexDirection: 'column', padding: '4% 7%', overflow: 'hidden' }}>
 
           {/* HEADER */}
-          <div style={{ textAlign: 'center', paddingBottom: '5%', borderBottom: '2px solid #1A0F06' }}>
-            <p style={{ fontFamily: MONO, fontSize: '8px', letterSpacing: '0.6em', color: '#8B6B4A', textTransform: 'uppercase', margin: '0 0 4% 0' }}>
+          <div style={{ textAlign: 'center', paddingBottom: '3%', borderBottom: '2px solid #1A0F06' }}>
+            <p style={{ fontFamily: MONO, fontSize: '7px', letterSpacing: '0.6em', color: '#8B6B4A', textTransform: 'uppercase', margin: '0 0 2% 0' }}>
               commitmentissues.dev
             </p>
-
-            <h2 style={{ fontFamily: 'var(--font-gothic), serif', fontSize: '3rem', color: '#1A0F06', lineHeight: 1.05, margin: '0 0 3% 0' }}>
+            <h2 style={{ fontFamily: 'var(--font-gothic), serif', fontSize: '2.5rem', color: '#1A0F06', lineHeight: 1.05, margin: '0 0 2% 0' }}>
               Certificate of Death
             </h2>
-            <p style={{ fontFamily: MONO, fontSize: '8px', letterSpacing: '0.25em', color: '#8B6B4A', margin: 0, fontStyle: 'italic' }}>
+            <p style={{ fontFamily: MONO, fontSize: '7px', letterSpacing: '0.25em', color: '#8B6B4A', margin: 0, fontStyle: 'italic' }}>
               official record of abandonment
             </p>
           </div>
 
           {/* REPO */}
-          <div style={{ textAlign: 'center', padding: '5% 0', borderBottom: '1px solid #C4A882' }}>
-            <p style={{ fontFamily: MONO, fontSize: '8px', letterSpacing: '0.4em', color: '#8B6B4A', textTransform: 'uppercase', margin: '0 0 3% 0' }}>
+          <div style={{ textAlign: 'center', padding: '3% 0', borderBottom: '1px solid #C4A882' }}>
+            <p style={{ fontFamily: MONO, fontSize: '7px', letterSpacing: '0.4em', color: '#8B6B4A', textTransform: 'uppercase', margin: '0 0 2% 0' }}>
               this is to certify the death of
             </p>
-            <p style={{ fontFamily: MONO, fontSize: '9px', color: '#8B6B4A', margin: '0 0 1% 0' }}>
+            <p style={{ fontFamily: MONO, fontSize: '8px', color: '#8B6B4A', margin: '0 0 1% 0' }}>
               {r.fullName.split('/')[0]} /
             </p>
-            <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: '2.8rem', color: '#1A0F06', lineHeight: 1.05, margin: 0 }}>
+            <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: '2.4rem', color: '#1A0F06', lineHeight: 1.05, margin: 0 }}>
               {r.name}
             </h3>
             {r.description && (
-              <p style={{ fontFamily: MONO, fontSize: '10px', color: '#8B6B4A', margin: '3% 0 0 0', lineHeight: 1.7 }}>
+              <p style={{ fontFamily: MONO, fontSize: '9px', color: '#8B6B4A', margin: '2% 0 0 0', lineHeight: 1.6 }}>
                 {r.description}
               </p>
             )}
           </div>
 
-          {/* CAUSE — hero, fills remaining space */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '5% 0', borderBottom: '1px solid #C4A882' }}>
-            <p style={{ fontFamily: MONO, fontSize: '8px', letterSpacing: '0.55em', color: '#8B6B4A', textTransform: 'uppercase', margin: '0 0 5% 0' }}>
+          {/* CAUSE */}
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '3% 0', borderBottom: '1px solid #C4A882' }}>
+            <p style={{ fontFamily: MONO, fontSize: '7px', letterSpacing: '0.55em', color: '#8B6B4A', textTransform: 'uppercase', margin: '0 0 3% 0' }}>
               cause of death
             </p>
-            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: '1.75rem', color: '#8B0000', lineHeight: 1.4, maxWidth: '22ch', margin: 0 }}>
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: '1.5rem', color: '#8B0000', lineHeight: 1.4, maxWidth: '22ch', margin: 0 }}>
               {cert.causeOfDeath}
             </p>
           </div>
 
           {/* DATE + AGE */}
-          <div style={{ padding: '4% 0', borderBottom: '1px solid #C4A882' }}>
+          <div style={{ padding: '2.5% 0', borderBottom: '1px solid #C4A882' }}>
             {[
               { label: 'Date of death', value: cert.deathDate },
               { label: 'Age at death',  value: cert.age },
             ].map(({ label, value }, i) => (
-              <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '1.5% 0', borderBottom: i === 0 ? '1px solid #EDE5D8' : 'none' }}>
-                <span style={{ fontFamily: MONO, fontSize: '10px', color: '#8B6B4A', letterSpacing: '0.05em' }}>{label}</span>
-                <span style={{ fontFamily: MONO, fontSize: '11px', color: '#1A0F06', fontWeight: 600 }}>{value}</span>
+              <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '1% 0', borderBottom: i === 0 ? '1px solid #EDE5D8' : 'none' }}>
+                <span style={{ fontFamily: MONO, fontSize: '9px', color: '#8B6B4A', letterSpacing: '0.05em' }}>{label}</span>
+                <span style={{ fontFamily: MONO, fontSize: '10px', color: '#1A0F06', fontWeight: 600 }}>{value}</span>
               </div>
             ))}
           </div>
 
           {/* STATS */}
-          <div style={{ display: 'flex', padding: '4% 0', borderBottom: '1px solid #C4A882' }}>
+          <div style={{ display: 'flex', padding: '2.5% 0', borderBottom: '1px solid #C4A882' }}>
             {[
-              { icon: <svg width="14" height="14" viewBox="0 0 16 16" fill="#1A0F06"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>, value: r.stargazersCount.toLocaleString(), label: 'stars' },
-              { icon: <svg width="14" height="14" viewBox="0 0 16 16" fill="#1A0F06"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"/></svg>, value: r.forksCount.toLocaleString(), label: 'forks' },
+              { icon: <svg width="12" height="12" viewBox="0 0 16 16" fill="#1A0F06"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>, value: r.stargazersCount.toLocaleString(), label: 'stars' },
+              { icon: <svg width="12" height="12" viewBox="0 0 16 16" fill="#1A0F06"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"/></svg>, value: r.forksCount.toLocaleString(), label: 'forks' },
               ...(r.language ? [{ icon: null as React.ReactNode, value: r.language, label: 'language' }] : []),
             ].map(({ icon, value, label }, i, arr) => (
               <div key={label} style={{ flex: 1, display: 'flex', alignItems: 'stretch' }}>
                 <div style={{ flex: 1, textAlign: 'center' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
                     {icon}
-                    <span style={{ fontFamily: MONO, fontWeight: 700, fontSize: '1rem', color: '#1A0F06', lineHeight: 1, wordBreak: 'break-all' }}>{value}</span>
+                    <span style={{ fontFamily: MONO, fontWeight: 700, fontSize: '0.9rem', color: '#1A0F06', lineHeight: 1 }}>{value}</span>
                   </div>
-                  <p style={{ fontFamily: MONO, fontSize: '7px', color: '#8B6B4A', letterSpacing: '0.4em', textTransform: 'uppercase', margin: '6% 0 0 0' }}>{label}</p>
+                  <p style={{ fontFamily: MONO, fontSize: '6px', color: '#8B6B4A', letterSpacing: '0.4em', textTransform: 'uppercase', margin: '4px 0 0 0' }}>{label}</p>
                 </div>
                 {i < arr.length - 1 && <div style={{ width: '1px', background: '#C4A882' }} />}
               </div>
@@ -255,13 +254,12 @@ export default function CertificateCard({ cert, onReset }: Props) {
           </div>
 
           {/* LAST WORDS */}
-          <div style={{ padding: '4% 0', borderBottom: '1px solid #C4A882' }}>
-            <p style={{ fontFamily: MONO, fontSize: '8px', letterSpacing: '0.5em', textTransform: 'uppercase', color: '#8B6B4A', margin: '0 0 3% 0' }}>Last words</p>
-            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: '1rem', color: '#1A0F06', lineHeight: 1.7, margin: 0 }}>
+          <div style={{ padding: '2.5% 0' }}>
+            <p style={{ fontFamily: MONO, fontSize: '7px', letterSpacing: '0.5em', textTransform: 'uppercase', color: '#8B6B4A', margin: '0 0 2% 0' }}>Last words</p>
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: '0.9rem', color: '#1A0F06', lineHeight: 1.6, margin: 0 }}>
               &ldquo;{cert.lastWords}&rdquo;
             </p>
           </div>
-
 
         </div>
       </div>
