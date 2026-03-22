@@ -55,11 +55,16 @@ export default function Page() {
 
       {/* Leaderboard — right below input as viral trigger */}
       {idle && (
-        <div style={{ width: '100%', marginTop: '32px', paddingBottom: '52px' }}>
+        <div style={{ width: '100%', marginTop: '52px', paddingBottom: '52px' }}>
           <StatsBar />
-          <p style={{ fontFamily: FONT, fontSize: '12px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#938882', marginBottom: '10px' }}>
-            Historical repo deaths
-          </p>
+          <div style={{ marginBottom: '14px', marginTop: '8px' }}>
+            <p style={{ fontFamily: FONT, fontSize: '18px', fontWeight: 700, color: '#160A06', margin: '0 0 4px 0', letterSpacing: '-0.01em' }}>
+              The Great GitHub Graveyard
+            </p>
+            <p style={{ fontFamily: FONT, fontSize: '13px', color: '#938882', margin: 0 }}>
+              Repos that didn&apos;t make it. Pour one out.
+            </p>
+          </div>
           <Leaderboard onSelect={handleSelect} />
         </div>
       )}

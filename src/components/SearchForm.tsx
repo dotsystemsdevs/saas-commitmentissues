@@ -28,7 +28,7 @@ export default function SearchForm({ url, setUrl, onSubmit, onExample, loading }
           type="text"
           value={url}
           onChange={e => setUrl(e.target.value)}
-          placeholder="https://github.com/facebook/react"
+          placeholder="Paste your repo here"
           style={{
             fontFamily: FONT,
             fontSize: '16px',
