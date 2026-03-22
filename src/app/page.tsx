@@ -39,13 +39,11 @@ export default function Page() {
           <button onClick={handleReset} style={{ background: 'none', border: 'none', cursor: 'default', width: '100%', display: 'block' }}>
             <div style={{ fontSize: '56px', marginBottom: '12px', lineHeight: 1 }}>🪦</div>
             <h1 style={{
-              fontFamily: FONT,
-              fontSize: 'clamp(2rem, 6vw, 3rem)',
-              fontWeight: 800,
+              fontFamily: 'var(--font-gothic), serif',
+              fontSize: 'clamp(2.4rem, 7vw, 3.6rem)',
               color: '#160A06',
-              lineHeight: 1.05,
-              marginBottom: '16px',
-              letterSpacing: '-0.03em',
+              lineHeight: 0.95,
+              marginBottom: '20px',
             }}>
               Certificate of Death
             </h1>
