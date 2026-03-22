@@ -31,7 +31,7 @@ export default function Page() {
   const idle = !loading && !certificate && !error
 
   return (
-    <main style={{ minHeight: '100vh', background: 'radial-gradient(ellipse 900px 420px at 50% 0px, rgba(139,0,0,0.13) 0%, transparent 70%), #f5f5f5', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 24px' }}>
+    <main style={{ minHeight: '100vh', background: 'radial-gradient(ellipse 900px 480px at 50% 0px, rgba(139,0,0,0.22) 0%, transparent 70%), #f5f5f5', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 24px' }}>
 
       {/* Hero */}
       {!certificate && (
