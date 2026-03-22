@@ -223,7 +223,9 @@ export default function CertificateCard({ cert, onReset }: Props) {
           background: '#FAF6EF',
           border: '3px solid #1A0F06',
           boxShadow: '0 4px 32px rgba(42,26,14,0.15)',
-          aspectRatio: '210 / 297',
+          width: '480px',
+          height: '679px',
+          flexShrink: 0,
           display: 'flex',
           flexDirection: 'column',
           padding: '10px',
@@ -237,7 +239,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
             <p style={{ fontFamily: MONO, fontSize: '8px', letterSpacing: '0.6em', color: '#8B6B4A', textTransform: 'uppercase', margin: '0 0 4% 0' }}>
               commitmentissues.dev
             </p>
-            <div style={{ fontSize: '2.2rem', lineHeight: 1, marginBottom: '3%' }}>🪦</div>
+
             <h2 style={{ fontFamily: 'var(--font-gothic), serif', fontSize: '3rem', color: '#1A0F06', lineHeight: 1.05, margin: '0 0 3% 0' }}>
               Certificate of Death
             </h2>
