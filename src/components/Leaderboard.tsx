@@ -22,9 +22,46 @@ const HALL_OF_SHAME: LeaderboardEntry[] = [
 ]
 
 const FONT = `var(--font-dm), -apple-system, sans-serif`
+const MONO = `var(--font-courier), 'Courier New', monospace`
+const GOTHIC = `var(--font-gothic), serif`
 
 interface Props {
   onSelect: (url: string) => void
+}
+
+function MiniCert({ entry }: { entry: LeaderboardEntry }) {
+  const repoName = entry.fullName.split('/')[1]
+  return (
+    <div style={{
+      width: '86px',
+      height: '122px',
+      background: '#FAF6EF',
+      border: '1.5px solid #1A0F06',
+      flexShrink: 0,
+      display: 'flex',
+      flexDirection: 'column',
+      padding: '6px 5px 5px',
+      position: 'relative',
+      overflow: 'hidden',
+      borderRadius: '2px',
+    }}>
+      <div style={{ textAlign: 'center', borderBottom: '1px solid #1A0F06', paddingBottom: '3px', marginBottom: '4px' }}>
+        <p style={{ fontFamily: MONO, fontSize: '3.5px', letterSpacing: '0.3em', color: '#8B6B4A', margin: '0 0 2px 0', textTransform: 'uppercase' as const }}>commitmentissues.dev</p>
+        <p style={{ fontFamily: GOTHIC, fontSize: '7.5px', color: '#1A0F06', margin: 0, lineHeight: 1.1 }}>Certificate of Death</p>
+      </div>
+      <p style={{ fontFamily: MONO, fontSize: '5px', letterSpacing: '0.3em', color: '#8B6B4A', textAlign: 'center', margin: '0 0 3px 0', textTransform: 'uppercase' as const }}>this certifies the death of</p>
+      <p style={{ fontFamily: FONT, fontSize: '7px', fontWeight: 700, color: '#1A0F06', textAlign: 'center', margin: '0 0 5px 0', lineHeight: 1.2, wordBreak: 'break-word' as const }}>
+        {repoName}
+      </p>
+      <p style={{ fontFamily: FONT, fontSize: '5.5px', fontStyle: 'italic', color: '#8B0000', lineHeight: 1.5, textAlign: 'center', margin: 0, flex: 1, overflow: 'hidden' }}>
+        {entry.cause}
+      </p>
+      {/* Stamp */}
+      <div style={{ position: 'absolute', bottom: '10px', right: '3px', transform: 'rotate(-12deg)', border: '1px solid rgba(139,26,26,0.65)', padding: '1px 3px', background: 'rgba(139,26,26,0.03)' }}>
+        <span style={{ fontFamily: FONT, fontSize: '3.5px', fontWeight: 800, letterSpacing: '0.1em', color: 'rgba(139,26,26,0.65)', textTransform: 'uppercase' as const, display: 'block', whiteSpace: 'nowrap' as const }}>REST IN PRODUCTION</span>
+      </div>
+    </div>
+  )
 }
 
 function GraveyardCard({ entry, onSelect }: { entry: LeaderboardEntry; onSelect: (url: string) => void }) {
@@ -34,12 +71,12 @@ function GraveyardCard({ entry, onSelect }: { entry: LeaderboardEntry; onSelect:
       style={{
         fontFamily: FONT,
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        gap: '6px',
-        width: '260px',
+        flexDirection: 'row',
+        alignItems: 'stretch',
+        gap: '14px',
+        width: '300px',
         flexShrink: 0,
-        padding: '20px',
+        padding: '18px',
         background: '#fff',
         border: '1.5px solid #e0dbd5',
         borderRadius: '12px',
@@ -59,19 +96,24 @@ function GraveyardCard({ entry, onSelect }: { entry: LeaderboardEntry; onSelect:
         e.currentTarget.style.boxShadow = '0 1px 4px rgba(0,0,0,0.05)'
       }}
     >
-      <span style={{ fontSize: '20px', lineHeight: 1 }}>🪦</span>
-      <span style={{ fontSize: '14px', fontWeight: 700, color: '#0a0a0a', lineHeight: 1.3, wordBreak: 'break-word' }}>
-        {entry.fullName}
-      </span>
-      <span style={{ fontFamily: `var(--font-courier), 'Courier New', monospace`, fontSize: '9px', letterSpacing: '0.15em', color: '#b0aca8', textTransform: 'uppercase' as const, marginTop: '2px' }}>
-        Cause of death
-      </span>
-      <span style={{ fontSize: '12px', fontStyle: 'italic', color: '#938882', lineHeight: 1.5 }}>
-        {entry.cause}
-      </span>
-      <span style={{ fontSize: '11px', color: '#b0aca8', marginTop: '2px' }}>
-        {entry.deathDate}
-      </span>
+      {/* Text */}
+      <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: '5px' }}>
+        <span style={{ fontSize: '18px', lineHeight: 1 }}>🪦</span>
+        <span style={{ fontSize: '13px', fontWeight: 700, color: '#0a0a0a', lineHeight: 1.3, wordBreak: 'break-word' }}>
+          {entry.fullName}
+        </span>
+        <span style={{ fontFamily: MONO, fontSize: '8px', letterSpacing: '0.15em', color: '#b0aca8', textTransform: 'uppercase' as const }}>
+          Cause of death
+        </span>
+        <span style={{ fontSize: '11px', fontStyle: 'italic', color: '#938882', lineHeight: 1.5 }}>
+          {entry.cause}
+        </span>
+        <span style={{ fontSize: '10px', color: '#b0aca8', marginTop: 'auto' }}>
+          {entry.deathDate}
+        </span>
+      </div>
+      {/* Mini certificate */}
+      <MiniCert entry={entry} />
     </button>
   )
 }
