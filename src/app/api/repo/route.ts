@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { checkRateLimit } from '@/lib/rateLimit'
+
+// Allowlist: GitHub username/repo segments — letters, digits, hyphen, dot, underscore only
+const VALID_SEGMENT = /^[a-zA-Z0-9_.-]+$/
 import { addRecent } from '@/lib/recentStore'
 import {
   computeDeathIndex,
@@ -48,6 +51,12 @@ export async function GET(request: NextRequest) {
         { status: 400 }
       )
     }
+    if (!VALID_SEGMENT.test(owner) || !VALID_SEGMENT.test(cleanRepo)) {
+      return NextResponse.json(
+        { error: "This doesn't look like a GitHub URL. Try again." },
+        { status: 400 }
+      )
+    }
   } catch {
     return NextResponse.json(
       { error: "This doesn't look like a GitHub URL. Try again." },
@@ -63,16 +72,25 @@ export async function GET(request: NextRequest) {
       : {}),
   }
 
-  const [repoRes, commitsRes] = await Promise.all([
-    fetch(`https://api.github.com/repos/${owner}/${cleanRepo}`, {
-      headers,
-      next: { revalidate: 86400 },
-    }),
-    fetch(
-      `https://api.github.com/repos/${owner}/${cleanRepo}/commits?per_page=1`,
-      { headers, next: { revalidate: 86400 } }
-    ),
-  ])
+  let repoRes: Response
+  let commitsRes: Response
+  try {
+    ;[repoRes, commitsRes] = await Promise.all([
+      fetch(`https://api.github.com/repos/${owner}/${cleanRepo}`, {
+        headers,
+        next: { revalidate: 86400 },
+      }),
+      fetch(
+        `https://api.github.com/repos/${owner}/${cleanRepo}/commits?per_page=1`,
+        { headers, next: { revalidate: 86400 } }
+      ),
+    ])
+  } catch {
+    return NextResponse.json(
+      { error: 'The reaper is busy. Try again in a moment.' },
+      { status: 502 }
+    )
+  }
 
   if (repoRes.status === 404) {
     return NextResponse.json(
