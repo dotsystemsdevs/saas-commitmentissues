@@ -143,9 +143,9 @@ const CertificateSheet = forwardRef<HTMLDivElement, Props>(
 
         {/* Stamp — inside card so it's captured in share exports */}
         {showStamp && (
-          <div ref={stampRef} style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', userSelect: 'none' }}>
-            <div style={{ transform: 'rotate(-12deg)', border: '5px solid rgba(139,26,26,0.75)', borderRadius: '4px', padding: '12px 40px', background: 'rgba(139,26,26,0.04)' }}>
-              <span style={{ fontFamily: UI, fontSize: '2.15rem', fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(139,26,26,0.72)', display: 'block', textAlign: 'center', lineHeight: 1 }}>CERTIFIED DEAD</span>
+          <div ref={stampRef} style={{ position: 'absolute', bottom: '40px', right: '30px', pointerEvents: 'none', userSelect: 'none' }}>
+            <div style={{ transform: 'rotate(-12deg)', border: '3px solid rgba(139,26,26,0.75)', borderRadius: '4px', padding: '8px 20px', background: 'rgba(139,26,26,0.04)' }}>
+              <span style={{ fontFamily: UI, fontSize: '1.1rem', fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(139,26,26,0.72)', display: 'block', textAlign: 'center', lineHeight: 1 }}>CERTIFIED DEAD</span>
               <p style={{ fontFamily: MONO, fontSize: '9px', letterSpacing: '0.4em', textAlign: 'center', color: 'rgba(139,26,26,0.45)', textTransform: 'uppercase', margin: '6px 0 0 0' }}>COMMITMENTISSUES.DEV</p>
             </div>
           </div>
