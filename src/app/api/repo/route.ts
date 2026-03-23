@@ -38,7 +38,7 @@ export async function GET(request: NextRequest) {
     const urlObj = new URL(rawUrl)
     if (urlObj.hostname !== 'github.com') {
       return NextResponse.json(
-        { error: "This doesn't look like a GitHub URL. Try again." },
+        { error: "That repo is too alive to die. Paste a real GitHub URL." },
         { status: 400 }
       )
     }
@@ -47,19 +47,19 @@ export async function GET(request: NextRequest) {
     cleanRepo = (segments[1] ?? '').replace(/\.git$/, '')
     if (!owner || !cleanRepo) {
       return NextResponse.json(
-        { error: "This doesn't look like a GitHub URL. Try again." },
+        { error: "That repo is too alive to die. Paste a real GitHub URL." },
         { status: 400 }
       )
     }
     if (!VALID_SEGMENT.test(owner) || !VALID_SEGMENT.test(cleanRepo)) {
       return NextResponse.json(
-        { error: "This doesn't look like a GitHub URL. Try again." },
+        { error: "That repo is too alive to die. Paste a real GitHub URL." },
         { status: 400 }
       )
     }
   } catch {
     return NextResponse.json(
-      { error: "This doesn't look like a GitHub URL. Try again." },
+      { error: "That repo is too alive to die. Paste a real GitHub URL." },
       { status: 400 }
     )
   }

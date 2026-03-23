@@ -28,7 +28,7 @@ export default function ErrorDisplay({ error, onRetry }: Props) {
             onMouseEnter={e => (e.currentTarget.style.color = '#2A1A0E')}
             onMouseLeave={e => (e.currentTarget.style.color = '#7A5C38')}
           >
-            try again →
+            bury something else →
           </button>
         )}
       </div>
