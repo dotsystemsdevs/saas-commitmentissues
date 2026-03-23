@@ -7,7 +7,9 @@ export const contentType = 'image/png'
 export default function Icon() {
   return new ImageResponse(
     <div style={{ background: '#ffffff', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ fontSize: 22 }}>🪦</div>
+      <div style={{ background: '#1a1a1a', width: '28px', height: '28px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>
+        🪦
+      </div>
     </div>
   )
 }
