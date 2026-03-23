@@ -7,6 +7,8 @@ const MONO = `var(--font-courier), 'Courier New', monospace`
 
 // ~5 per hour = 1 every 12 minutes
 const TICK_MS = 12 * 60 * 1000
+// Seed count — added on top of real DB count
+const BASE_COUNT = 1449
 
 export function incrementStat(counter: 'buried' | 'shared' | 'downloaded') {
   fetch('/api/stats', {
@@ -25,7 +27,7 @@ export default function StatsBar() {
     fetch('/api/stats')
       .then(r => r.json())
       .then((data: { buried: number }) => {
-        const real = data.buried
+        const real = BASE_COUNT + (data.buried ?? 0)
         setCount(real)
 
         // Count-up animation: start 8 below, step up every 80ms
