@@ -29,12 +29,12 @@ export default function PricingPage() {
         {/* Free */}
         <div className="subpage-pricing-tier--free" style={{
           flex: '1 1 220px',
-          border: '1.5px solid #e0e0e0',
+          border: '1.5px solid var(--border)',
           borderRadius: '12px',
           padding: 'clamp(20px, 5vw, 28px)',
           display: 'flex',
           flexDirection: 'column',
-          background: '#fff',
+          background: 'var(--card-bg)',
           transition: 'transform 0.18s ease, box-shadow 0.18s ease',
         }}>
           <p style={{ fontFamily: UI, fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#938882', margin: '0 0 16px 0', fontWeight: 600 }}>
@@ -45,7 +45,7 @@ export default function PricingPage() {
           </p>
           <p style={{ fontFamily: UI, fontSize: '13px', color: '#b0aca8', margin: '0 0 24px 0' }}>forever</p>
 
-          <ul style={{ fontFamily: UI, fontSize: '14px', color: '#555', lineHeight: 1, listStyle: 'none', padding: 0, margin: '0 0 28px 0', display: 'flex', flexDirection: 'column', gap: '13px', flex: 1 }}>
+          <ul style={{ fontFamily: UI, fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1, listStyle: 'none', padding: 0, margin: '0 0 28px 0', display: 'flex', flexDirection: 'column', gap: '13px', flex: 1 }}>
             {FREE_FEATURES.map(f => (
               <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                 <span style={{ color: '#c8c8c8', fontWeight: 700, lineHeight: '1.4', flexShrink: 0 }}>•</span>
@@ -60,9 +60,9 @@ export default function PricingPage() {
               fontFamily: UI,
               fontSize: '14px',
               fontWeight: 600,
-              color: '#0a0a0a',
+              color: 'var(--accent)',
               textDecoration: 'none',
-              border: '1.5px solid #0a0a0a',
+              border: '1.5px solid var(--accent)',
               borderRadius: '8px',
               padding: '14px 16px',
               textAlign: 'center',
@@ -82,7 +82,7 @@ export default function PricingPage() {
           padding: 'clamp(20px, 5vw, 28px)',
           display: 'flex',
           flexDirection: 'column',
-          background: '#fff',
+          background: 'var(--card-bg)',
           position: 'relative',
           transition: 'transform 0.18s ease, box-shadow 0.18s ease',
         }}>
@@ -115,7 +115,7 @@ export default function PricingPage() {
           <p style={{ fontFamily: UI, fontSize: '13px', color: '#b0aca8', margin: '0 0 4px 0' }}>one-time · no subscription</p>
           <p style={{ fontFamily: UI, fontSize: '12px', color: '#b0aca8', margin: '0 0 24px 0' }}>Prices exclude VAT. VAT may be added at checkout where applicable.</p>
 
-          <ul style={{ fontFamily: UI, fontSize: '14px', color: '#555', lineHeight: 1, listStyle: 'none', padding: 0, margin: '0 0 28px 0', display: 'flex', flexDirection: 'column', gap: '13px', flex: 1 }}>
+          <ul style={{ fontFamily: UI, fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1, listStyle: 'none', padding: 0, margin: '0 0 28px 0', display: 'flex', flexDirection: 'column', gap: '13px', flex: 1 }}>
             {PREMIUM_FEATURES.map(f => (
               <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                 <span style={{ color: '#0a0a0a', fontWeight: 700, lineHeight: '1.4', flexShrink: 0 }}>•</span>

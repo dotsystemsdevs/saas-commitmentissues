@@ -64,17 +64,17 @@ export default function SuccessPage() {
         border: '2px solid #0a0a0a',
         borderRadius: '12px',
         padding: 'clamp(24px, 6vw, 36px)',
-        background: '#fff',
+        background: 'var(--card-bg)',
         marginBottom: '24px',
         textAlign: 'center',
       }}>
         <div style={{ fontSize: '40px', marginBottom: '16px' }}>🪦</div>
 
-        <p style={{ fontFamily: UI, fontSize: 'clamp(16px, 4vw, 18px)', fontWeight: 700, color: '#160A06', margin: '0 0 8px 0' }}>
+        <p style={{ fontFamily: UI, fontSize: 'clamp(16px, 4vw, 18px)', fontWeight: 700, color: 'var(--text-primary)', margin: '0 0 8px 0' }}>
           {status === 'done' ? 'Certificate downloaded.' : 'Your certificate is ready.'}
         </p>
 
-        <p style={{ fontFamily: UI, fontSize: '14px', color: '#938882', margin: '0 0 28px 0', lineHeight: 1.6 }}>
+        <p style={{ fontFamily: UI, fontSize: '14px', color: 'var(--text-secondary)', margin: '0 0 28px 0', lineHeight: 1.6 }}>
           {status === 'generating' && 'Generating your certificate…'}
           {status === 'done' && 'Check your downloads folder. High-res · No watermark.'}
           {status === 'idle' && !cert && 'High-res · Print-quality PNG · No watermark.'}
@@ -131,7 +131,7 @@ export default function SuccessPage() {
         )}
 
         {status === 'idle' && cert && (
-          <p style={{ fontFamily: UI, fontSize: '13px', color: '#b0aca8' }}>
+          <p style={{ fontFamily: UI, fontSize: '13px', color: 'var(--text-muted)' }}>
             Preparing your download…
           </p>
         )}

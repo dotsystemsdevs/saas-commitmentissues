@@ -122,11 +122,11 @@ export default function CertificateCard({ cert, onReset }: Props) {
         >
           <div
             onClick={e => e.stopPropagation()}
-            style={{ background: '#fff', borderRadius: '12px', width: '100%', maxWidth: '360px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(0,0,0,0.3)', animation: 'modal-fadein 0.18s ease' }}
+            style={{ background: 'var(--modal-bg)', borderRadius: '12px', width: '100%', maxWidth: '360px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(0,0,0,0.3)', animation: 'modal-fadein 0.18s ease' }}
           >
-            <div style={{ padding: '24px 24px 16px', borderBottom: '1px solid #eee' }}>
-              <p style={{ fontFamily: UI, fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#938882', margin: '0 0 4px 0' }}>Share</p>
-              <p style={{ fontFamily: UI, fontSize: '1.05rem', fontWeight: 600, color: '#160A06', margin: 0, lineHeight: 1.25 }}>{r.name} is officially dead</p>
+            <div style={{ padding: '24px 24px 16px', borderBottom: '1px solid var(--border)' }}>
+              <p style={{ fontFamily: UI, fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-secondary)', margin: '0 0 4px 0' }}>Share</p>
+              <p style={{ fontFamily: UI, fontSize: '1.05rem', fontWeight: 600, color: 'var(--text-primary)', margin: 0, lineHeight: 1.25 }}>{r.name} is officially dead</p>
             </div>
             {([
               { key: 'copy', label: copyLabel, sub: 'commitmentissues.dev', fn: handleCopyLink },
@@ -135,17 +135,17 @@ export default function CertificateCard({ cert, onReset }: Props) {
               <button
                 key={key}
                 onClick={fn}
-                style={{ display: 'block', width: '100%', padding: '16px 24px', background: 'none', border: 'none', borderBottom: '1px solid #f0f0f0', cursor: 'pointer', textAlign: 'left', transition: 'background 0.12s' }}
+                style={{ display: 'block', width: '100%', padding: '16px 24px', background: 'none', border: 'none', borderBottom: '1px solid var(--border)', cursor: 'pointer', textAlign: 'left', transition: 'background 0.12s' }}
                 onMouseEnter={e => (e.currentTarget.style.background = '#fafafa')}
                 onMouseLeave={e => (e.currentTarget.style.background = 'none')}
               >
-                <div style={{ fontFamily: UI, fontSize: '14px', fontWeight: 600, color: '#160A06' }}>{label}</div>
-                <div style={{ fontFamily: UI, fontSize: '12px', color: '#938882', marginTop: '2px' }}>{sub}</div>
+                <div style={{ fontFamily: UI, fontSize: '14px', fontWeight: 600, color: 'var(--text-primary)' }}>{label}</div>
+                <div style={{ fontFamily: UI, fontSize: '12px', color: 'var(--text-secondary)', marginTop: '2px' }}>{sub}</div>
               </button>
             ))}
             <button
               onClick={() => setShowModal(false)}
-              style={{ display: 'block', width: '100%', padding: '14px 24px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: UI, fontSize: '13px', color: '#938882', textAlign: 'center' }}
+              style={{ display: 'block', width: '100%', padding: '14px 24px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: UI, fontSize: '13px', color: 'var(--text-secondary)', textAlign: 'center' }}
             >
               Close
             </button>
@@ -156,7 +156,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
       <PageHero
         subtitle={
           <>
-            The death of <strong style={{ color: '#160A06' }}>{r.fullName}</strong> has been officially recorded.
+            The death of <strong style={{ color: 'var(--text-primary)' }}>{r.fullName}</strong> has been officially recorded.
           </>
         }
         microcopy={null}

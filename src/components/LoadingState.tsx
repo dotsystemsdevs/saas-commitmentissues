@@ -23,16 +23,16 @@ export default function LoadingState() {
 
   return (
     <div className="w-full max-w-2xl mx-auto mt-10 space-y-4">
-      <p className="text-sm min-h-[1.5rem]" style={{ fontFamily: GH_FONT, color: '#7A5C38' }}>
+      <p className="text-sm min-h-[1.5rem]" style={{ fontFamily: GH_FONT, color: 'var(--text-secondary)' }}>
         {MESSAGES[index]}
       </p>
-      <div style={{ background: '#FDFCF9', border: '1px solid rgba(42,26,14,0.15)', borderRadius: '6px' }}>
+      <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: '6px' }}>
         <div className="p-6 space-y-3">
           {WIDTHS.map((w, i) => (
             <div
               key={i}
               className="h-2 animate-pulse"
-              style={{ width: w, background: 'rgba(42,26,14,0.1)', animationDelay: `${i * 120}ms`, borderRadius: '2px' }}
+              style={{ width: w, background: 'var(--border)', animationDelay: `${i * 120}ms`, borderRadius: '2px' }}
             />
           ))}
         </div>

@@ -35,11 +35,11 @@ export default function SearchForm({ url, setUrl, onSubmit, onExample, loading }
             flex: 1,
             height: '54px',
             padding: '0 16px',
-            background: '#fff',
-            border: '2px solid #e0e0e0',
+            background: 'var(--input-bg)',
+            border: '2px solid var(--input-border)',
             borderRight: 'none',
             borderRadius: '8px 0 0 8px',
-            color: '#160A06',
+            color: 'var(--text-primary)',
             outline: 'none',
             minWidth: 0,
             transition: 'border-color 0.15s',
@@ -50,7 +50,7 @@ export default function SearchForm({ url, setUrl, onSubmit, onExample, loading }
             e.currentTarget.style.transform = 'scale(1.01)'
           }}
           onBlur={e => {
-            e.currentTarget.style.borderColor = '#e0e0e0'
+            e.currentTarget.style.borderColor = 'var(--input-border)'
             e.currentTarget.style.boxShadow = 'none'
             e.currentTarget.style.transform = 'scale(1)'
           }}

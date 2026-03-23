@@ -20,13 +20,13 @@ export default function ErrorDisplay({ error, onRetry }: Props) {
           {error.message}
         </p>
         {error.retryAfter ? (
-          <p style={{ fontSize: '13px', color: '#7A5C38' }}>retry in {error.retryAfter}s</p>
+          <p style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>retry in {error.retryAfter}s</p>
         ) : (
           <button
             onClick={onRetry}
-            style={{ fontSize: '13px', color: '#7A5C38', background: 'none', border: 'none', cursor: 'pointer', padding: 0, transition: 'color 0.15s' }}
-            onMouseEnter={e => (e.currentTarget.style.color = '#2A1A0E')}
-            onMouseLeave={e => (e.currentTarget.style.color = '#7A5C38')}
+            style={{ fontSize: '13px', color: 'var(--text-secondary)', background: 'none', border: 'none', cursor: 'pointer', padding: 0, transition: 'color 0.15s' }}
+            onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-primary)')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
           >
             try again →
           </button>
