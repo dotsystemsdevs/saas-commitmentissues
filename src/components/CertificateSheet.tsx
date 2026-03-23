@@ -48,6 +48,7 @@ const CertificateSheet = forwardRef<HTMLDivElement, Props>(
           background: '#FAF6EF',
           border: '3px solid #1A0F06',
           boxShadow: '0 4px 32px rgba(42,26,14,0.15)',
+          // A4 ratio: 480 × 1.4142 = 679px — matches exactly
           width: '480px',
           height: '679px',
           flexShrink: 0,
