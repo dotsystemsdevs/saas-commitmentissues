@@ -1,8 +1,7 @@
 'use client'
 
 import { track } from '@vercel/analytics'
-import { LeaderboardEntry, DeathCertificate } from '@/lib/types'
-import CertificateSheet from '@/components/CertificateSheet'
+import { LeaderboardEntry } from '@/lib/types'
 
 const HALL_OF_SHAME: LeaderboardEntry[] = [
   { fullName: 'atom/atom',              cause: 'GitHub built VS Code and forgot this existed',               score: 10, deathDate: 'Dec 2022', lastWords: 'At least I had good themes.' },
@@ -29,37 +28,6 @@ interface Props {
   onSelect: (url: string) => void
 }
 
-function entryToCert(entry: LeaderboardEntry): DeathCertificate {
-  const parts = entry.fullName.split('/')
-  return {
-    repoData: {
-      name: parts[1] ?? entry.fullName,
-      fullName: entry.fullName,
-      description: null,
-      createdAt: '2010-01-01T00:00:00Z',
-      pushedAt: '2020-01-01T00:00:00Z',
-      isArchived: true,
-      stargazersCount: 0,
-      forksCount: 0,
-      openIssuesCount: 0,
-      language: null,
-      topics: [],
-      isFork: false,
-      commitCount: 0,
-      lastCommitMessage: '',
-      lastCommitDate: '2020-01-01T00:00:00Z',
-    },
-    deathIndex: entry.score,
-    deathLabel: 'Abandoned',
-    causeOfDeath: entry.cause,
-    deathDate: entry.deathDate ?? '—',
-    age: '—',
-    lastWords: entry.lastWords ?? '...',
-    mourners: 'The community',
-    shareText: '',
-  }
-}
-
 function GraveyardCard({ entry, onSelect }: { entry: LeaderboardEntry; onSelect: (url: string) => void }) {
   return (
     <button
@@ -67,12 +35,12 @@ function GraveyardCard({ entry, onSelect }: { entry: LeaderboardEntry; onSelect:
       style={{
         fontFamily: FONT,
         display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'stretch',
-        gap: '14px',
-        width: '300px',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        gap: '6px',
+        width: '260px',
         flexShrink: 0,
-        padding: '18px',
+        padding: '20px',
         background: '#fff',
         border: '1.5px solid #e0dbd5',
         borderRadius: '12px',
@@ -92,28 +60,19 @@ function GraveyardCard({ entry, onSelect }: { entry: LeaderboardEntry; onSelect:
         e.currentTarget.style.boxShadow = '0 1px 4px rgba(0,0,0,0.05)'
       }}
     >
-      {/* Text */}
-      <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: '5px' }}>
-        <span style={{ fontSize: '18px', lineHeight: 1 }}>🪦</span>
-        <span style={{ fontSize: '13px', fontWeight: 700, color: '#0a0a0a', lineHeight: 1.3, wordBreak: 'break-word' }}>
-          {entry.fullName}
-        </span>
-        <span style={{ fontFamily: MONO, fontSize: '8px', letterSpacing: '0.15em', color: '#b0aca8', textTransform: 'uppercase' as const }}>
-          Cause of death
-        </span>
-        <span style={{ fontSize: '11px', fontStyle: 'italic', color: '#938882', lineHeight: 1.5 }}>
-          {entry.cause}
-        </span>
-        <span style={{ fontSize: '10px', color: '#b0aca8', marginTop: 'auto' }}>
-          {entry.deathDate}
-        </span>
-      </div>
-      {/* Mini certificate — real CertificateSheet scaled down */}
-      <div style={{ width: '144px', height: '204px', overflow: 'hidden', flexShrink: 0, borderRadius: '2px' }}>
-        <div style={{ width: '480px', transform: 'scale(0.3)', transformOrigin: 'top left', pointerEvents: 'none', userSelect: 'none' }}>
-          <CertificateSheet cert={entryToCert(entry)} visible={true} showStamp={true} />
-        </div>
-      </div>
+      <span style={{ fontSize: '20px', lineHeight: 1 }}>🪦</span>
+      <span style={{ fontSize: '13px', fontWeight: 700, color: '#0a0a0a', lineHeight: 1.3, wordBreak: 'break-word' }}>
+        {entry.fullName}
+      </span>
+      <span style={{ fontFamily: MONO, fontSize: '8px', letterSpacing: '0.15em', color: '#b0aca8', textTransform: 'uppercase' as const, marginTop: '2px' }}>
+        Cause of death
+      </span>
+      <span style={{ fontSize: '13px', fontStyle: 'italic', color: '#555', lineHeight: 1.55, fontWeight: 500 }}>
+        {entry.cause}
+      </span>
+      <span style={{ fontSize: '11px', color: '#b0aca8', marginTop: '4px' }}>
+        {entry.deathDate}
+      </span>
     </button>
   )
 }

@@ -1,8 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 const FONT = `var(--font-dm), -apple-system, sans-serif`
+const MONO = `var(--font-courier), 'Courier New', monospace`
+
+// ~5 per hour = 1 every 12 minutes
+const TICK_MS = 12 * 60 * 1000
 
 export function incrementStat(counter: 'buried' | 'shared' | 'downloaded') {
   fetch('/api/stats', {
@@ -13,27 +17,63 @@ export function incrementStat(counter: 'buried' | 'shared' | 'downloaded') {
 }
 
 export default function StatsBar() {
-  const [stats, setStats] = useState<{ buried: number; shared: number; downloaded: number } | null>(null)
+  const [count, setCount] = useState<number | null>(null)
+  const [display, setDisplay] = useState<number | null>(null)
+  const tickRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   useEffect(() => {
     fetch('/api/stats')
       .then(r => r.json())
-      .then(setStats)
+      .then((data: { buried: number }) => {
+        const real = data.buried
+        setCount(real)
+
+        // Count-up animation: start 8 below, step up every 80ms
+        const start = real - 8
+        setDisplay(start)
+        let cur = start
+        const up = setInterval(() => {
+          cur++
+          setDisplay(cur)
+          if (cur >= real) clearInterval(up)
+        }, 80)
+      })
       .catch(() => {})
   }, [])
 
-  if (!stats || (stats.buried === 0 && stats.shared === 0 && stats.downloaded === 0)) return null
+  // Tick up ~5/hour after initial load
+  useEffect(() => {
+    if (count === null) return
+    tickRef.current = setInterval(() => {
+      setCount(c => (c ?? 0) + 1)
+      setDisplay(c => (c ?? 0) + 1)
+    }, TICK_MS)
+    return () => { if (tickRef.current) clearInterval(tickRef.current) }
+  }, [count !== null]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (display === null) return null
 
   return (
-    <p style={{
-      fontFamily: FONT,
-      fontSize: '13px',
-      color: '#938882',
-      textAlign: 'center',
-      margin: '0 0 28px 0',
-      letterSpacing: '0.01em',
-    }}>
-      {stats.buried.toLocaleString()} repos buried · {stats.shared.toLocaleString()} shared · {stats.downloaded.toLocaleString()} downloaded
-    </p>
+    <div style={{ textAlign: 'center', margin: '0 0 24px 0' }}>
+      <p style={{
+        fontFamily: FONT,
+        fontSize: '15px',
+        fontWeight: 700,
+        color: '#160A06',
+        margin: '0 0 2px 0',
+        letterSpacing: '-0.01em',
+      }}>
+        {display.toLocaleString()} repos officially buried
+      </p>
+      <p style={{
+        fontFamily: MONO,
+        fontSize: '10px',
+        color: '#b0aca8',
+        margin: 0,
+        letterSpacing: '0.08em',
+      }}>
+        and counting
+      </p>
+    </div>
   )
 }
