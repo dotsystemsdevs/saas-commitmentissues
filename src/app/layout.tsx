@@ -3,6 +3,7 @@ import { Courier_Prime, UnifrakturMaguntia, Inter } from 'next/font/google'
 import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import TopBar from '@/components/TopBar'
 import './globals.css'
 
 const courierPrime = Courier_Prime({
@@ -71,7 +72,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body className={`${courierPrime.variable} ${unifraktur.variable} ${inter.variable} antialiased`}>
+        <TopBar />
+        <div style={{ paddingTop: '52px' }}>
         {children}
+        </div>
         <Analytics />
         <SpeedInsights />
         <Script
