@@ -6,10 +6,7 @@ import Link from 'next/link'
 const SERIF = `var(--font-dm), -apple-system, sans-serif`
 const SANS  = `var(--font-dm), -apple-system, sans-serif`
 
-const NAV_LINKS = [
-  { href: '/faq',     label: 'FAQ'     },
-  { href: '/pricing', label: 'Pricing' },
-]
+const NAV_LINKS: { href: string; label: string }[] = []
 
 export default function TopBar() {
   const [open, setOpen] = useState(false)
@@ -32,11 +29,12 @@ export default function TopBar() {
       }}>
 
         {/* Logo */}
-        <Link href="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '6px', textDecoration: 'none' }}>
+        <Link href="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+          <span style={{ fontSize: '18px', lineHeight: 1 }}>🪦</span>
           <span style={{ fontFamily: SERIF, fontSize: '15px', fontWeight: 600, color: '#f5f0e8', letterSpacing: '-0.01em' }}>
             commitmentissues
           </span>
-          <span style={{ fontFamily: SANS, fontSize: '10px', color: '#a89070', letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: '2px' }}>
+          <span style={{ fontFamily: SANS, fontSize: '10px', color: '#a89070', letterSpacing: '0.12em', textTransform: 'uppercase', marginLeft: '2px', marginTop: '2px' }}>
             .dev
           </span>
         </Link>
