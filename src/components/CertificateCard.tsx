@@ -239,32 +239,28 @@ export default function CertificateCard({ cert, onReset }: Props) {
           💀 This is painfully accurate. Send it to a dev →
         </button>
 
-        {/* Download — premium */}
-        <button
-          onClick={handleDownload}
-          className="cert-buy-btn"
+        {/* Coffee */}
+        <a
+          href="https://buymeacoffee.com/commitmentissues"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => track('coffee_clicked')}
           style={{
+            display: 'block',
             width: '100%',
             fontFamily: UI,
-            background: '#FAF6EF',
-            color: '#160A06',
-            border: '2px solid #160A06',
-            borderRadius: '10px',
-            padding: '14px 24px',
-            cursor: 'pointer',
+            fontSize: '13px',
+            color: '#938882',
             textAlign: 'center',
-            transition: 'background 0.15s, transform 0.1s',
-            WebkitTapHighlightColor: 'transparent',
-            touchAction: 'manipulation',
+            textDecoration: 'none',
+            padding: '10px 0 2px',
+            transition: 'color 0.15s',
           }}
-          onMouseEnter={e => { e.currentTarget.style.background = '#f0e8d8'; e.currentTarget.style.transform = 'translateY(-1px)' }}
-          onMouseLeave={e => { e.currentTarget.style.background = '#FAF6EF'; e.currentTarget.style.transform = 'translateY(0)' }}
-          onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.97)' }}
-          onMouseUp={e => { e.currentTarget.style.transform = 'translateY(-1px)' }}
+          onMouseEnter={e => (e.currentTarget.style.color = '#160A06')}
+          onMouseLeave={e => (e.currentTarget.style.color = '#938882')}
         >
-          <div style={{ fontSize: '14px', fontWeight: 700, lineHeight: 1 }}>Print it. Frame it. Never open the repo again.</div>
-          <div style={{ fontSize: '11px', color: '#8B6B4A', marginTop: '5px', lineHeight: 1 }}>$4.99 · no watermark · 300 DPI · Watermark stays unless you upgrade.</div>
-        </button>
+          This runs on vibes and cheap hosting ☕
+        </a>
 
         {/* Bury another */}
         <button

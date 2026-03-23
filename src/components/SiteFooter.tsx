@@ -2,7 +2,6 @@ const FONT = `var(--font-dm), -apple-system, sans-serif`
 
 const LINKS = [
   { href: '/faq',     label: 'FAQ'     },
-  { href: '/pricing', label: 'Pricing' },
   { href: '/terms',   label: 'Terms'   },
   { href: '/privacy', label: 'Privacy' },
 ] as const
