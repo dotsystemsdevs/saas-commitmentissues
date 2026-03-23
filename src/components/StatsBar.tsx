@@ -58,21 +58,22 @@ export default function StatsBar() {
   return (
     <div style={{ textAlign: 'center', margin: '0 0 24px 0' }}>
       <p style={{
-        fontFamily: FONT,
-        fontSize: '15px',
+        fontFamily: MONO,
+        fontSize: 'clamp(22px, 6vw, 28px)',
         fontWeight: 700,
         color: '#160A06',
-        margin: '0 0 2px 0',
-        letterSpacing: '-0.01em',
+        margin: '0 0 4px 0',
+        letterSpacing: '-0.02em',
       }}>
-        {display.toLocaleString()} repos officially buried
+        {display.toLocaleString()} repos buried
       </p>
       <p style={{
         fontFamily: MONO,
-        fontSize: '10px',
+        fontSize: '11px',
         color: '#b0aca8',
         margin: 0,
-        letterSpacing: '0.08em',
+        letterSpacing: '0.1em',
+        textTransform: 'uppercase',
       }}>
         and counting
       </p>
