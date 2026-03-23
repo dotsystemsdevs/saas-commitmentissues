@@ -132,6 +132,9 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
 
       {/* TRY ONE OF THESE chips */}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', marginTop: '2px' }}>
+        <span style={{ fontFamily: MONO, fontSize: '10px', letterSpacing: '0.18em', color: '#b0aca8', textTransform: 'uppercase' }}>
+          try one of these
+        </span>
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', justifyContent: 'center' }}>
           {EXAMPLES.map(({ owner, repo, url, color }) => (
             <button

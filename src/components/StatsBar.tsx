@@ -58,23 +58,14 @@ export default function StatsBar() {
     <div style={{ textAlign: 'center', margin: '0 0 24px 0' }}>
       <p style={{
         fontFamily: MONO,
-        fontSize: 'clamp(22px, 6vw, 28px)',
+        fontSize: 'clamp(16px, 4.5vw, 20px)',
         fontWeight: 700,
         color: '#160A06',
-        margin: '0 0 4px 0',
-        letterSpacing: '-0.02em',
-      }}>
-        {display.toLocaleString()} repos buried
-      </p>
-      <p style={{
-        fontFamily: MONO,
-        fontSize: '11px',
-        color: '#b0aca8',
         margin: 0,
-        letterSpacing: '0.1em',
+        letterSpacing: '0.06em',
         textTransform: 'uppercase',
       }}>
-        and counting
+        +{display.toLocaleString()} repos buried
       </p>
     </div>
   )
