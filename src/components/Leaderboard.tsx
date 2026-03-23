@@ -36,7 +36,7 @@ export default function Leaderboard({ onSelect }: Props) {
       <div style={{
         display: 'flex',
         gap: '12px',
-        animation: 'marquee 40s linear infinite',
+        animation: 'marquee 80s linear infinite',
         width: 'max-content',
       }}>
         {doubled.map((entry, i) => (
