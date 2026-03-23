@@ -37,7 +37,7 @@ export default function Page() {
         <>
           <PageHero
             subtitle="Your repo is dead. Bury it properly."
-            microcopy="Paste any GitHub repo → get its official cause of death + last words · No login · No storage"
+            microcopy={null}
           />
 
           <div style={{ width: '100%', marginBottom: 0 }}>
