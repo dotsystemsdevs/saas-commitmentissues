@@ -11,41 +11,40 @@ export default function PricingPage() {
       subtitle="Death is free. The paperwork costs $4.99."
       microcopy={null}
     >
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      <div style={{
+        border: '2px solid #160A06',
+        borderRadius: '12px',
+        overflow: 'hidden',
+        background: '#fff',
+      }}>
 
-        {/* Free */}
-        <div style={{
-          border: '1.5px solid #e0dbd5',
-          borderRadius: '10px',
-          padding: 'clamp(20px, 5vw, 28px)',
-          background: '#fff',
-        }}>
-          <p style={{ fontFamily: MONO, fontSize: '11px', letterSpacing: '0.15em', color: '#b0aca8', margin: '0 0 10px 0' }}>
-            no charge · always
-          </p>
-          <p style={{ fontFamily: UI, fontSize: '28px', fontWeight: 700, color: '#160A06', margin: '0 0 10px 0', lineHeight: 1 }}>
-            $0
-          </p>
-          <p style={{ fontFamily: UI, fontSize: '14px', color: '#6b6560', lineHeight: 1.7, margin: 0 }}>
-            Generate the certificate. See the cause of death, last words, death index. Share with watermark.
-          </p>
+        {/* Free tier */}
+        <div style={{ padding: 'clamp(20px, 5vw, 28px)', borderBottom: '1px solid #e8e2d8' }}>
+          <p style={{ fontFamily: MONO, fontSize: '11px', letterSpacing: '0.15em', color: '#b0aca8', margin: '0 0 12px 0' }}>included · always free</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            {['View certificate + cause of death', 'Last words + death index', 'Share with watermark'].map(item => (
+              <p key={item} style={{ fontFamily: UI, fontSize: '14px', color: '#6b6560', margin: 0, display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
+                <span style={{ color: '#b0aca8', flexShrink: 0 }}>✓</span> {item}
+              </p>
+            ))}
+          </div>
         </div>
 
-        {/* Premium */}
-        <div style={{
-          border: '2px solid #160A06',
-          borderRadius: '10px',
-          padding: 'clamp(20px, 5vw, 28px)',
-          background: '#FAF6EF',
-        }}>
-          <p style={{ fontFamily: MONO, fontSize: '11px', letterSpacing: '0.15em', color: '#8B6B4A', margin: '0 0 10px 0' }}>
-            one-time · incl. VAT
-          </p>
-          <p style={{ fontFamily: UI, fontSize: '28px', fontWeight: 700, color: '#160A06', margin: '0 0 10px 0', lineHeight: 1 }}>
-            $4.99
-          </p>
-          <p style={{ fontFamily: UI, fontSize: '14px', color: '#6b6560', lineHeight: 1.7, margin: '0 0 24px 0' }}>
-            Print-ready PNG at 300 DPI. No watermark. Clean enough to frame.
+        {/* Upgrade */}
+        <div style={{ padding: 'clamp(20px, 5vw, 28px)', background: '#FAF6EF' }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px', marginBottom: '12px' }}>
+            <p style={{ fontFamily: UI, fontSize: '32px', fontWeight: 700, color: '#160A06', margin: 0, lineHeight: 1 }}>$4.99</p>
+            <span style={{ fontFamily: MONO, fontSize: '11px', color: '#8B6B4A', letterSpacing: '0.08em' }}>one-time</span>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginBottom: '20px' }}>
+            {['No watermark', '300 DPI — print-ready', 'Frame it like it deserves'].map(item => (
+              <p key={item} style={{ fontFamily: UI, fontSize: '14px', color: '#6b6560', margin: 0, display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
+                <span style={{ color: '#8B6B4A', flexShrink: 0 }}>✓</span> {item}
+              </p>
+            ))}
+          </div>
+          <p style={{ fontFamily: UI, fontSize: '13px', fontStyle: 'italic', color: '#8B6B4A', margin: '0 0 20px 0', lineHeight: 1.5 }}>
+            A proper burial deserves proper paperwork.
           </p>
           <Link
             href="/"
@@ -64,7 +63,7 @@ export default function PricingPage() {
               touchAction: 'manipulation',
             }}
           >
-            get the certificate →
+            Download clean certificate →
           </Link>
         </div>
 
