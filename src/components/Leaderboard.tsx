@@ -86,15 +86,17 @@ export default function Leaderboard({ onSelect }: Props) {
               borderLeft: '3px solid transparent',
               cursor: 'pointer',
               textAlign: 'left',
-              transition: 'background 0.12s, border-left-color 0.12s',
+              transition: 'background 0.15s ease, border-left-color 0.15s ease, transform 0.12s ease',
             }}
             onMouseEnter={e => {
               e.currentTarget.style.background = '#f0f0f0'
               e.currentTarget.style.borderLeftColor = '#0a0a0a'
+              e.currentTarget.style.transform = 'translateX(2px)'
             }}
             onMouseLeave={e => {
               e.currentTarget.style.background = 'transparent'
               e.currentTarget.style.borderLeftColor = 'transparent'
+              e.currentTarget.style.transform = 'translateX(0)'
             }}
           >
             <span className="lb-icon" style={{ fontSize: '17px', lineHeight: '1.4', marginTop: '1px' }}>🪦</span>

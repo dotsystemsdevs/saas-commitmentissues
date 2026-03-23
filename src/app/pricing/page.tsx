@@ -27,7 +27,7 @@ export default function PricingPage() {
       <div style={{ display: 'flex', gap: '16px', alignItems: 'stretch', flexWrap: 'wrap', marginBottom: '28px' }}>
 
         {/* Free */}
-        <div style={{
+        <div className="subpage-pricing-tier--free" style={{
           flex: '1 1 220px',
           border: '1.5px solid #e0e0e0',
           borderRadius: '12px',
@@ -35,6 +35,7 @@ export default function PricingPage() {
           display: 'flex',
           flexDirection: 'column',
           background: '#fff',
+          transition: 'transform 0.18s ease, box-shadow 0.18s ease',
         }}>
           <p style={{ fontFamily: UI, fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#938882', margin: '0 0 16px 0', fontWeight: 600 }}>
             Free
@@ -74,7 +75,7 @@ export default function PricingPage() {
         </div>
 
         {/* Premium */}
-        <div style={{
+        <div className="subpage-pricing-tier--premium" style={{
           flex: '1 1 220px',
           border: '2px solid #0a0a0a',
           borderRadius: '12px',
@@ -83,6 +84,7 @@ export default function PricingPage() {
           flexDirection: 'column',
           background: '#fff',
           position: 'relative',
+          transition: 'transform 0.18s ease, box-shadow 0.18s ease',
         }}>
           <div style={{
             position: 'absolute',

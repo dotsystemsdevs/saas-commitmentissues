@@ -44,8 +44,16 @@ export default function SearchForm({ url, setUrl, onSubmit, onExample, loading }
             minWidth: 0,
             transition: 'border-color 0.15s',
           }}
-          onFocus={e => { e.currentTarget.style.borderColor = '#888' }}
-          onBlur={e => { e.currentTarget.style.borderColor = '#e0e0e0' }}
+          onFocus={e => {
+            e.currentTarget.style.borderColor = '#888'
+            e.currentTarget.style.boxShadow = '0 0 0 3px rgba(22,10,6,0.08)'
+            e.currentTarget.style.transform = 'scale(1.01)'
+          }}
+          onBlur={e => {
+            e.currentTarget.style.borderColor = '#e0e0e0'
+            e.currentTarget.style.boxShadow = 'none'
+            e.currentTarget.style.transform = 'scale(1)'
+          }}
         />
         <button
           type="submit"
@@ -73,11 +81,21 @@ export default function SearchForm({ url, setUrl, onSubmit, onExample, loading }
             if (!loading) {
               e.currentTarget.style.background = CTA_RED_HOVER
               e.currentTarget.style.transform = 'translateY(-1px)'
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.25)'
             }
           }}
           onMouseLeave={e => {
             e.currentTarget.style.background = CTA_RED
             e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.boxShadow = 'none'
+          }}
+          onMouseDown={e => {
+            e.currentTarget.style.transform = 'scale(0.97)'
+            e.currentTarget.style.boxShadow = 'none'
+          }}
+          onMouseUp={e => {
+            e.currentTarget.style.transform = 'translateY(-1px)'
+            e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.25)'
           }}
         >
           {loading ? '…' : '→'}
@@ -100,8 +118,15 @@ export default function SearchForm({ url, setUrl, onSubmit, onExample, loading }
           transition: 'color 0.15s',
           WebkitTapHighlightColor: 'transparent',
         }}
-        onMouseEnter={e => { e.currentTarget.style.color = '#555' }}
-        onMouseLeave={e => { e.currentTarget.style.color = '#938882' }}
+        onMouseEnter={e => {
+          e.currentTarget.style.color = '#555'
+          e.currentTarget.style.textDecoration = 'underline'
+          e.currentTarget.style.textUnderlineOffset = '3px'
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.color = '#938882'
+          e.currentTarget.style.textDecoration = 'none'
+        }}
       >
         Try a known repo →
       </button>
