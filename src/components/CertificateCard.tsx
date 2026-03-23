@@ -185,7 +185,6 @@ export default function CertificateCard({ cert, onReset }: Props) {
         }
         microcopy={null}
         onBrandClick={onReset}
-        hideEmoji={true}
       />
 
       {/* ── Certificate — fixed 480×679, CSS var scales on mobile ── */}
