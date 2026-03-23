@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 type Props = {
   subtitle: ReactNode
-  /** Override the gothic h1 — defaults to "Certificate of Death" */
+  /** Override the h1 text — defaults to "Certificate of Death" */
   title?: string
   /** Second gray line under subtitle (same slot on every page). */
   microcopy?: ReactNode | null
@@ -11,6 +11,8 @@ type Props = {
   brandHref?: string
   /** Wrap 🪦 + title in `<button>` (e.g. certificate reset) */
   onBrandClick?: () => void
+  /** Hide the tombstone emoji (subpages) */
+  hideEmoji?: boolean
 }
 
 export default function PageHero({
@@ -19,13 +21,21 @@ export default function PageHero({
   microcopy,
   brandHref,
   onBrandClick,
+  hideEmoji = false,
 }: Props) {
+  // Gothic font only for the product title "Certificate of Death"
+  const isGothic = title === 'Certificate of Death'
+
   const titleBlock = (
     <>
-      <div className="page-hero-emoji" aria-hidden>
-        🪦
-      </div>
-      <h1 className="certificate-of-death-title page-hero-title">{title}</h1>
+      {!hideEmoji && (
+        <div className="page-hero-emoji" aria-hidden>
+          🪦
+        </div>
+      )}
+      <h1 className={`page-hero-title${isGothic ? ' certificate-of-death-title' : ' page-hero-title--sans'}`}>
+        {title}
+      </h1>
     </>
   )
 

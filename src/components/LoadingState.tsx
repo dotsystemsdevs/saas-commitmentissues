@@ -3,11 +3,11 @@
 import { useState, useEffect } from 'react'
 
 const MESSAGES = [
-  '⚰️  performing autopsy...',
-  '🧠  analyzing commit history...',
-  '📋  reviewing open issues...',
-  '🪦  determining cause of death...',
-  '✍️  filling out the paperwork...',
+  'Consulting the reaper...',
+  'Checking for a pulse...',
+  'None found. Proceeding...',
+  'Filling out the paperwork...',
+  'Stamping the cause of death...',
 ]
 
 const WIDTHS = ['72%', '88%', '60%', '80%', '68%']
@@ -17,7 +17,7 @@ export default function LoadingState() {
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
-    const id = setInterval(() => setIndex(i => (i + 1) % MESSAGES.length), 900)
+    const id = setInterval(() => setIndex(i => (i + 1) % MESSAGES.length), 800)
     return () => clearInterval(id)
   }, [])
 

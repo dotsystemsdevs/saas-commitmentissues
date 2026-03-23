@@ -62,7 +62,7 @@ export default function Page() {
               The Great GitHub Graveyard
             </p>
             <p style={{ fontFamily: FONT, fontSize: '13px', color: '#938882', margin: 0 }}>
-              Repos that didn&apos;t make it.
+              Click any repo to instantly generate its certificate.
             </p>
           </div>
           <Leaderboard onSelect={handleSelect} />

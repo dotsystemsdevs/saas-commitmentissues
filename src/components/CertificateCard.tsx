@@ -15,6 +15,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
   const cardRef    = useRef<HTMLDivElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const stampRef   = useRef<HTMLDivElement>(null)
+  const topRef     = useRef<HTMLDivElement>(null)
   const [visible,   setVisible]   = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [copyLabel, setCopyLabel] = useState('Copy link')
@@ -24,12 +25,19 @@ export default function CertificateCard({ cert, onReset }: Props) {
     return () => clearTimeout(t)
   }, [])
 
-  // ONE source of truth — watermark=true adds "commitmentissues.dev" footer to the canvas
+  // Auto-scroll so certificate top is visible after load
+  useEffect(() => {
+    if (visible && topRef.current) {
+      topRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [visible])
+
+  // watermark=false → paid clean export (stamp hidden, pixelRatio 5.167 = 2480px, true 300 DPI on A4)
+  // watermark=true  → free share export (pixelRatio 2 = 960px, stamp visible)
   async function exportBlob(pixelRatio: number, watermark = false): Promise<Blob | null> {
     if (!cardRef.current) return null
     const wrapper = wrapperRef.current
     if (wrapper) wrapper.style.zoom = '1'
-    // Paid download: hide stamp so it doesn't appear in the clean version
     if (!watermark && stampRef.current) stampRef.current.style.visibility = 'hidden'
     const blob = await toBlob(cardRef.current, {
       cacheBust: true,
@@ -58,7 +66,6 @@ export default function CertificateCard({ cert, onReset }: Props) {
   }
 
   async function handleShare() {
-    // Only attempt native share if the API is available
     if (navigator.canShare) {
       const blob = await exportBlob(2, true)
       if (blob) {
@@ -74,7 +81,6 @@ export default function CertificateCard({ cert, onReset }: Props) {
     setShowModal(true)
   }
 
-  // Download = paid product — saves cert locally, then Stripe checkout
   async function handleDownload() {
     try {
       localStorage.setItem('pending_cert', JSON.stringify(cert))
@@ -108,11 +114,24 @@ export default function CertificateCard({ cert, onReset }: Props) {
     fetch('/api/stats', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ counter: 'shared' }) }).catch(() => {})
   }
 
+  async function handleDownloadWatermarked() {
+    const blob = await exportBlob(2, true)
+    if (!blob) return
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `${cert.repoData.name}-death-certificate.png`
+    a.click()
+    URL.revokeObjectURL(url)
+    fetch('/api/stats', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ counter: 'shared' }) }).catch(() => {})
+    setShowModal(false)
+  }
+
   const { repoData: r } = cert
   const UI = `var(--font-dm), -apple-system, sans-serif`
 
   return (
-    <div style={{ width: '100%', maxWidth: '480px', margin: '0 auto' }}>
+    <div ref={topRef} style={{ width: '100%', maxWidth: '480px', margin: '0 auto' }}>
 
       {/* ── Share modal ── */}
       {showModal && (
@@ -129,13 +148,14 @@ export default function CertificateCard({ cert, onReset }: Props) {
               <p style={{ fontFamily: UI, fontSize: '1.05rem', fontWeight: 600, color: '#160A06', margin: 0, lineHeight: 1.25 }}>{r.name} is officially dead</p>
             </div>
             {([
-              { key: 'copy', label: copyLabel, sub: 'commitmentissues.dev', fn: handleCopyLink },
-              { key: 'tweet', label: 'Post on X', sub: 'Opens X with pre-filled text', fn: handleTweet },
+              { key: 'copy',     label: copyLabel,                     sub: 'commitmentissues.dev',           fn: handleCopyLink },
+              { key: 'tweet',    label: 'Post on X',                   sub: 'Opens X with pre-filled text',   fn: handleTweet },
+              { key: 'download', label: 'Download image (watermarked)', sub: 'Free PNG · 960px · includes site URL', fn: handleDownloadWatermarked },
             ] as { key: string; label: string; sub: string; fn: () => void }[]).map(({ key, label, sub, fn }) => (
               <button
                 key={key}
                 onClick={fn}
-                style={{ display: 'block', width: '100%', padding: '16px 24px', background: 'none', border: 'none', borderBottom: '1px solid #f0f0f0', cursor: 'pointer', textAlign: 'left', transition: 'background 0.12s' }}
+                style={{ display: 'block', width: '100%', padding: '16px 24px', background: 'none', border: 'none', borderBottom: '1px solid #f0f0f0', cursor: 'pointer', textAlign: 'left', transition: 'background 0.12s', WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation' }}
                 onMouseEnter={e => (e.currentTarget.style.background = '#fafafa')}
                 onMouseLeave={e => (e.currentTarget.style.background = 'none')}
               >
@@ -145,7 +165,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
             ))}
             <button
               onClick={() => setShowModal(false)}
-              style={{ display: 'block', width: '100%', padding: '14px 24px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: UI, fontSize: '13px', color: '#938882', textAlign: 'center' }}
+              style={{ display: 'block', width: '100%', padding: '14px 24px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: UI, fontSize: '13px', color: '#938882', textAlign: 'center', WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation' }}
             >
               Close
             </button>
@@ -153,6 +173,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
         </div>
       )}
 
+      {/* ── Title ── */}
       <PageHero
         subtitle={
           <>
@@ -163,59 +184,8 @@ export default function CertificateCard({ cert, onReset }: Props) {
         onBrandClick={onReset}
       />
 
-      {/* ── Actions ── */}
-      <div className="cert-actions" style={{ display: 'flex', flexDirection: 'column', gap: '0', marginBottom: '16px' }}>
-
-        {/* Download — premium card */}
-        <button
-          onClick={handleDownload}
-          style={{
-            width: '100%', fontFamily: UI, background: '#160A06', color: '#fff', border: 'none',
-            borderRadius: '14px', padding: '20px 22px', cursor: 'pointer',
-            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            transition: 'opacity 0.15s, transform 0.1s',
-            marginBottom: '10px',
-          }}
-          onMouseEnter={e => { e.currentTarget.style.opacity = '0.85'; e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.25)' }}
-          onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
-          onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.98)'; e.currentTarget.style.boxShadow = 'none' }}
-          onMouseUp={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.25)' }}
-        >
-          <div style={{ textAlign: 'left' }}>
-            <div style={{ fontSize: '15px', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: '5px' }}>
-              Print it. Frame it. Send it to the author.
-            </div>
-            <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.45)', fontWeight: 400, letterSpacing: '0.03em' }}>
-              A4 · 300 dpi · no watermark
-            </div>
-          </div>
-          <div style={{ flexShrink: 0, marginLeft: '20px', textAlign: 'right' }}>
-            <div style={{ fontSize: '20px', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1 }}>$4.99</div>
-            <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.4)', marginTop: '3px', letterSpacing: '0.04em' }}>one-time</div>
-          </div>
-        </button>
-
-        {/* Divider */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-          <div style={{ flex: 1, height: '1px', background: '#e4e0db' }} />
-          <span style={{ fontFamily: UI, fontSize: '11px', color: '#b8b2ac', letterSpacing: '0.04em', textTransform: 'uppercase' }}>or</span>
-          <div style={{ flex: 1, height: '1px', background: '#e4e0db' }} />
-        </div>
-
-        {/* Share — clean text */}
-        <button
-          onClick={handleShare}
-          style={{ width: '100%', fontFamily: UI, fontSize: '14px', fontWeight: 600, background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0', textAlign: 'center', color: '#6b6560', letterSpacing: '-0.01em', transition: 'color 0.15s' }}
-          onMouseEnter={e => { e.currentTarget.style.color = '#160A06' }}
-          onMouseLeave={e => { e.currentTarget.style.color = '#6b6560' }}
-        >
-          share for free →
-        </button>
-
-      </div>
-
       {/* ── Certificate — fixed 480×679, CSS var scales on mobile ── */}
-      <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
+      <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'flex-start', marginBottom: '24px' }}>
         <div
           ref={wrapperRef}
           style={{
@@ -233,6 +203,115 @@ export default function CertificateCard({ cert, onReset }: Props) {
             stampRef={stampRef}
           />
         </div>
+      </div>
+
+      {/* ── Actions ── */}
+      <div className="cert-actions" style={{ display: 'flex', flexDirection: 'column', gap: '0', marginBottom: '16px' }}>
+
+        {/* Share — PRIMARY: full width, black, 18px */}
+        <button
+          onClick={handleShare}
+          className="cert-share-btn"
+          style={{
+            width: '100%',
+            fontFamily: UI,
+            fontSize: '18px',
+            fontWeight: 700,
+            background: '#0a0a0a',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '10px',
+            padding: '18px 24px',
+            cursor: 'pointer',
+            textAlign: 'center',
+            transition: 'opacity 0.15s, transform 0.1s',
+            WebkitTapHighlightColor: 'transparent',
+            touchAction: 'manipulation',
+            marginBottom: '16px',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.opacity = '0.88'; e.currentTarget.style.transform = 'translateY(-1px)' }}
+          onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)' }}
+          onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.97)' }}
+          onMouseUp={e => { e.currentTarget.style.transform = 'translateY(-1px)' }}
+        >
+          Share the obituary →
+        </button>
+
+        {/* Download — SECONDARY: outlined, price as subtext below */}
+        <button
+          onClick={handleDownload}
+          className="cert-buy-btn"
+          style={{
+            width: '100%',
+            fontFamily: UI,
+            fontSize: '14px',
+            fontWeight: 600,
+            background: 'transparent',
+            color: '#0a0a0a',
+            border: '1.5px solid #c8c8c8',
+            borderRadius: '10px',
+            padding: '14px 24px',
+            cursor: 'pointer',
+            textAlign: 'center',
+            transition: 'border-color 0.15s, background 0.15s, transform 0.1s',
+            WebkitTapHighlightColor: 'transparent',
+            touchAction: 'manipulation',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.borderColor = '#888'; e.currentTarget.style.background = 'rgba(0,0,0,0.02)'; e.currentTarget.style.transform = 'translateY(-1px)' }}
+          onMouseLeave={e => { e.currentTarget.style.borderColor = '#c8c8c8'; e.currentTarget.style.background = 'transparent'; e.currentTarget.style.transform = 'translateY(0)' }}
+          onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.97)' }}
+          onMouseUp={e => { e.currentTarget.style.transform = 'translateY(-1px)' }}
+        >
+          Download in high resolution
+        </button>
+
+        {/* Price subtext — discovered, not announced */}
+        <p style={{
+          fontFamily: UI,
+          fontSize: '11px',
+          color: '#b0aca8',
+          textAlign: 'center',
+          margin: '6px 0 0 0',
+        }}>
+          $4.99 · no watermark · print-ready
+        </p>
+
+        {/* Pixel pitch — honest pitch for technical users */}
+        <p style={{
+          fontFamily: UI,
+          fontSize: '11px',
+          color: '#b0aca8',
+          textAlign: 'center',
+          fontStyle: 'italic',
+          margin: '4px 0 0 0',
+        }}>
+          The free version is 960px. The paid version is 2480px — the difference is visible when printed.
+        </p>
+
+        {/* Issue another link */}
+        <button
+          type="button"
+          onClick={onReset}
+          style={{
+            fontFamily: UI,
+            fontSize: '13px',
+            color: '#938882',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            padding: '12px 0 4px',
+            textAlign: 'center',
+            width: '100%',
+            transition: 'color 0.15s',
+            WebkitTapHighlightColor: 'transparent',
+            touchAction: 'manipulation',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.color = '#160A06'; e.currentTarget.style.textDecoration = 'underline'; e.currentTarget.style.textUnderlineOffset = '3px' }}
+          onMouseLeave={e => { e.currentTarget.style.color = '#938882'; e.currentTarget.style.textDecoration = 'none' }}
+        >
+          issue another →
+        </button>
+
       </div>
 
     </div>

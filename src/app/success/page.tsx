@@ -35,7 +35,7 @@ export default function SuccessPage() {
     try {
       const blob = await toBlob(cardRef.current, {
         cacheBust: true,
-        pixelRatio: 5,        // 480×5 = 2400px wide — ~300dpi on A4
+        pixelRatio: 5.167,    // 480 × 5.167 = 2480px — exact 300 DPI on A4
         backgroundColor: '#FAF6EF',
         width: 480,
         height: 679,
@@ -44,7 +44,7 @@ export default function SuccessPage() {
         const url = URL.createObjectURL(blob)
         const a = document.createElement('a')
         a.href = url
-        a.download = `${cert.repoData.name}-death-certificate.png`
+        a.download = `${cert.repoData.name}-certificate-300dpi.png`
         a.click()
         URL.revokeObjectURL(url)
         localStorage.removeItem('pending_cert')

@@ -17,7 +17,7 @@ export default function TermsPage() {
   return (
     <SubpageShell
       title="Terms"
-      subtitle="The fine print for the fine dead. Terms and refund policy."
+      subtitle="The fine print for the final rest. We aren't lawyers, we're undertakers."
       microcopy="Last updated March 2026"
     >
       {SECTIONS.map(({ title, body, email }, i) => (
@@ -41,8 +41,8 @@ export default function TermsPage() {
           </p>
         </div>
       ))}
-      <div className="subpage-bottom-links">
-        <Link href="/" className="subpage-bottom-primary">
+      <div style={{ paddingTop: '32px', paddingBottom: '8px', textAlign: 'center' }}>
+        <Link href="/" className="subpage-faq-cta">
           issue a certificate →
         </Link>
       </div>

@@ -3,19 +3,6 @@ import SubpageShell from '@/components/SubpageShell'
 
 const UI = `var(--font-dm), -apple-system, sans-serif`
 
-const FREE_FEATURES = [
-  'On-screen death certificate',
-  'Shareable image (2x resolution)',
-  'Instant result — no login',
-]
-
-const PREMIUM_FEATURES = [
-  'Everything in Free',
-  'High-res PNG — print or frame it',
-  'No watermark',
-  'Download to your device',
-]
-
 export default function PricingPage() {
   return (
     <SubpageShell
@@ -35,24 +22,18 @@ export default function PricingPage() {
           display: 'flex',
           flexDirection: 'column',
           background: '#fff',
-          transition: 'transform 0.18s ease, box-shadow 0.18s ease',
+          transition: 'transform 0.2s ease, box-shadow 0.2s ease',
         }}>
           <p style={{ fontFamily: UI, fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#938882', margin: '0 0 16px 0', fontWeight: 600 }}>
             Free
           </p>
-          <p style={{ fontFamily: UI, fontSize: 'clamp(2rem, 8vw, 2.6rem)', fontWeight: 700, color: '#160A06', lineHeight: 1, margin: '0 0 4px 0' }}>
+          <p style={{ fontFamily: UI, fontSize: 'clamp(2rem, 8vw, 2.4rem)', fontWeight: 600, color: '#160A06', lineHeight: 1, margin: '0 0 24px 0' }}>
             $0
           </p>
-          <p style={{ fontFamily: UI, fontSize: '13px', color: '#b0aca8', margin: '0 0 24px 0' }}>forever</p>
 
-          <ul style={{ fontFamily: UI, fontSize: '14px', color: '#555', lineHeight: 1, listStyle: 'none', padding: 0, margin: '0 0 28px 0', display: 'flex', flexDirection: 'column', gap: '13px', flex: 1 }}>
-            {FREE_FEATURES.map(f => (
-              <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                <span style={{ color: '#c8c8c8', fontWeight: 700, lineHeight: '1.4', flexShrink: 0 }}>•</span>
-                <span style={{ lineHeight: '1.4' }}>{f}</span>
-              </li>
-            ))}
-          </ul>
+          <p style={{ fontFamily: UI, fontSize: '14px', color: '#555', lineHeight: 1.7, margin: '0 0 28px 0', flex: 1 }}>
+            See your repo&apos;s cause of death. Share the image with a watermark.
+          </p>
 
           <Link
             href="/"
@@ -68,9 +49,11 @@ export default function PricingPage() {
               textAlign: 'center',
               display: 'block',
               transition: 'background 0.15s',
+              WebkitTapHighlightColor: 'transparent',
+              touchAction: 'manipulation',
             }}
           >
-            issue a certificate →
+            try it free →
           </Link>
         </div>
 
@@ -84,7 +67,7 @@ export default function PricingPage() {
           flexDirection: 'column',
           background: '#fff',
           position: 'relative',
-          transition: 'transform 0.18s ease, box-shadow 0.18s ease',
+          transition: 'transform 0.2s ease, box-shadow 0.2s ease',
         }}>
           <div style={{
             position: 'absolute',
@@ -106,23 +89,16 @@ export default function PricingPage() {
           <p style={{ fontFamily: UI, fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#0a0a0a', margin: '8px 0 16px 0', fontWeight: 600 }}>
             Premium
           </p>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', marginBottom: '4px' }}>
-            <p style={{ fontFamily: UI, fontSize: 'clamp(2rem, 8vw, 2.6rem)', fontWeight: 700, color: '#160A06', lineHeight: 1, margin: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '24px' }}>
+            <p style={{ fontFamily: UI, fontSize: 'clamp(1.6rem, 6vw, 2rem)', fontWeight: 500, color: '#160A06', lineHeight: 1, margin: 0 }}>
               $4.99
             </p>
-            <span style={{ fontFamily: UI, fontSize: '13px', color: '#938882' }}>per certificate</span>
+            <span style={{ fontFamily: UI, fontSize: '12px', color: '#b0aca8' }}>one-time · incl. VAT</span>
           </div>
-          <p style={{ fontFamily: UI, fontSize: '13px', color: '#b0aca8', margin: '0 0 4px 0' }}>one-time · no subscription</p>
-          <p style={{ fontFamily: UI, fontSize: '12px', color: '#b0aca8', margin: '0 0 24px 0' }}>Prices exclude VAT. VAT may be added at checkout where applicable.</p>
 
-          <ul style={{ fontFamily: UI, fontSize: '14px', color: '#555', lineHeight: 1, listStyle: 'none', padding: 0, margin: '0 0 28px 0', display: 'flex', flexDirection: 'column', gap: '13px', flex: 1 }}>
-            {PREMIUM_FEATURES.map(f => (
-              <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                <span style={{ color: '#0a0a0a', fontWeight: 700, lineHeight: '1.4', flexShrink: 0 }}>•</span>
-                <span style={{ lineHeight: '1.4' }}>{f}</span>
-              </li>
-            ))}
-          </ul>
+          <p style={{ fontFamily: UI, fontSize: '14px', color: '#555', lineHeight: 1.7, margin: '0 0 28px 0', flex: 1 }}>
+            Download a clean, print-ready PNG at 300 DPI. No watermark. Worth printing.
+          </p>
 
           <Link
             href="/"
@@ -137,22 +113,19 @@ export default function PricingPage() {
               padding: '14px 16px',
               textAlign: 'center',
               display: 'block',
+              WebkitTapHighlightColor: 'transparent',
+              touchAction: 'manipulation',
             }}
           >
-            issue a certificate →
+            get the certificate →
           </Link>
         </div>
 
       </div>
 
-      <div style={{ textAlign: 'center', marginTop: '8px' }}>
-        <Link href="/" className="pricing-cta-btn">
-          issue a certificate →
-        </Link>
-        <p style={{ fontFamily: UI, fontSize: '13px', color: '#b0aca8', marginTop: '16px', marginBottom: 0 }}>
-          Questions? <Link href="/faq" style={{ color: '#938882', textDecoration: 'underline', textUnderlineOffset: '3px' }}>See FAQ →</Link>
-        </p>
-      </div>
+      <p style={{ fontFamily: UI, fontSize: '13px', color: '#b0aca8', marginTop: '8px', marginBottom: 0, textAlign: 'center' }}>
+        Questions? <Link href="/faq" style={{ color: '#938882', textDecoration: 'underline', textUnderlineOffset: '3px' }}>See FAQ →</Link>
+      </p>
     </SubpageShell>
   )
 }

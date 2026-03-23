@@ -22,13 +22,13 @@ export default function SearchForm({ url, setUrl, onSubmit, onExample, loading }
 
   return (
     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', width: '100%', boxShadow: '0 2px 16px rgba(0,0,0,0.10)', borderRadius: '8px' }}>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', width: '100%', boxShadow: '0 2px 12px rgba(0,0,0,0.1)', borderRadius: '8px' }}>
         <input
           autoFocus
           type="text"
           value={url}
           onChange={e => setUrl(e.target.value)}
-          placeholder="Paste your repo here"
+          placeholder="https://github.com/owner/repo"
           style={{
             fontFamily: FONT,
             fontSize: '16px',
@@ -61,8 +61,10 @@ export default function SearchForm({ url, setUrl, onSubmit, onExample, loading }
           aria-label="Issue death certificate"
           style={{
             fontFamily: FONT,
-            fontSize: '22px',
-            width: '64px',
+            fontSize: '13px',
+            fontWeight: 800,
+            letterSpacing: '0.06em',
+            width: '88px',
             height: '54px',
             flexShrink: 0,
             background: CTA_RED,
@@ -76,6 +78,7 @@ export default function SearchForm({ url, setUrl, onSubmit, onExample, loading }
             transition: 'background 0.15s, transform 0.1s',
             userSelect: 'none',
             WebkitTapHighlightColor: 'transparent',
+            touchAction: 'manipulation',
           }}
           onMouseEnter={e => {
             if (!loading) {
@@ -98,9 +101,19 @@ export default function SearchForm({ url, setUrl, onSubmit, onExample, loading }
             e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.25)'
           }}
         >
-          {loading ? '…' : '→'}
+          {loading ? '…' : 'BURY IT'}
         </button>
       </form>
+
+      <p style={{
+        fontFamily: FONT,
+        fontSize: '12px',
+        color: '#b0aca8',
+        textAlign: 'center',
+        margin: '-8px 0 0 0',
+      }}>
+        Public repos only · No login · No storage
+      </p>
 
       <button
         type="button"
@@ -117,6 +130,7 @@ export default function SearchForm({ url, setUrl, onSubmit, onExample, loading }
           width: '100%',
           transition: 'color 0.15s',
           WebkitTapHighlightColor: 'transparent',
+          touchAction: 'manipulation',
         }}
         onMouseEnter={e => {
           e.currentTarget.style.color = '#555'

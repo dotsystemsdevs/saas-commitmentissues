@@ -89,8 +89,8 @@ export default function Leaderboard({ onSelect }: Props) {
               transition: 'background 0.15s ease, border-left-color 0.15s ease, transform 0.12s ease',
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.background = '#f0f0f0'
-              e.currentTarget.style.borderLeftColor = '#0a0a0a'
+              e.currentTarget.style.background = '#f0ece6'
+              e.currentTarget.style.borderLeftColor = '#8b0000'
               e.currentTarget.style.transform = 'translateX(2px)'
             }}
             onMouseLeave={e => {
@@ -99,7 +99,7 @@ export default function Leaderboard({ onSelect }: Props) {
               e.currentTarget.style.transform = 'translateX(0)'
             }}
           >
-            <span className="lb-icon" style={{ fontSize: '17px', lineHeight: '1.4', marginTop: '1px' }}>🪦</span>
+            <span className="lb-icon" style={{ fontSize: '20px', lineHeight: '1.4', marginTop: '1px', filter: 'brightness(0.7)' }}>🪦</span>
 
             <span className="lb-name" style={{
               fontFamily: FONT,

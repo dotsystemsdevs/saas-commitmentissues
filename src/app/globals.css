@@ -4,9 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Product title — Unifraktur Maguntia everywhere this phrase appears */
+/* Product title — Unifraktur Maguntia ONLY for "Certificate of Death" */
 .certificate-of-death-title {
   font-family: var(--font-gothic), serif;
+}
+
+/* Subpage titles — modern sans-serif */
+.page-hero-title--sans {
+  font-family: var(--font-dm), -apple-system, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 /* ── Page shell: home, subpages, certificate — same horizontal rhythm ── */
@@ -122,6 +129,11 @@
   flex: 1;
 }
 
+/* Subpages don't need flex:1 — keep footer close to content */
+.page-shell-body--subpage {
+  flex: 0 0 auto;
+}
+
 /* FAQ accordion */
 .subpage-details details {
   border-bottom: 1px solid #e0e0e0;
@@ -209,7 +221,11 @@ button, a, [role="button"] {
   transition: color 0.15s ease, background 0.15s ease, opacity 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
 }
 
-button { cursor: pointer; }
+button {
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
 
 /* ── Back link hover: arrow slides left ── */
 .subpage-back-link:hover::before {
@@ -226,6 +242,18 @@ button { cursor: pointer; }
 @keyframes modal-fadein {
   from { opacity: 0; transform: translateY(8px) scale(0.98); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── Stamp: rubber-stamp impact animation ── */
+@keyframes stamp-in {
+  0%   { transform: rotate(-12deg) scale(3);    opacity: 0; }
+  60%  { transform: rotate(-12deg) scale(0.95); opacity: 1; }
+  80%  { transform: rotate(-12deg) scale(1.05); opacity: 1; }
+  100% { transform: rotate(-12deg) scale(1);    opacity: 1; }
+}
+
+.stamp-animate {
+  animation: stamp-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.6s both;
 }
 
 /* ── Pricing cards hover lift ── */
@@ -421,6 +449,13 @@ a.subpage-inline-mail {
   display: inline-flex;
   align-items: center;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.site-footer-nav a:hover {
+  color: #160A06;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .site-footer-nav a:active {
@@ -520,6 +555,7 @@ a.subpage-inline-mail {
 
   /* Certificate action buttons: outside zoom wrapper, full width */
   .cert-actions { flex-direction: column !important; width: 100% !important; }
+  .cert-buy-btn, .cert-share-btn { width: 100% !important; }
 
   /* Hero: more breathing room on mobile */
   .page-hero { padding-bottom: 20px; }

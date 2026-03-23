@@ -16,7 +16,7 @@ export default function PrivacyPage() {
   return (
     <SubpageShell
       title="Privacy"
-      subtitle="We know nothing. We store nothing. We are ghosts."
+      subtitle="We don't want your data. We only want your abandoned repos. No accounts, no tracking, no ghosts in the machine."
       microcopy="Last updated March 2026"
     >
       {SECTIONS.map(({ title, body, email }, i) => (
@@ -40,8 +40,8 @@ export default function PrivacyPage() {
           </p>
         </div>
       ))}
-      <div className="subpage-bottom-links">
-        <Link href="/" className="subpage-bottom-primary">
+      <div style={{ paddingTop: '32px', paddingBottom: '8px', textAlign: 'center' }}>
+        <Link href="/" className="subpage-faq-cta">
           issue a certificate →
         </Link>
       </div>

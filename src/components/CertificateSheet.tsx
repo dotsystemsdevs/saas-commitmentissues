@@ -43,7 +43,7 @@ const CertificateSheet = forwardRef<HTMLDivElement, Props>(
         style={{
           position: 'relative',
           opacity: visible ? 1 : 0,
-          transform: visible ? 'translateY(0)' : 'translateY(12px)',
+          transform: visible ? 'translateY(0)' : 'translateY(16px)',
           transition: 'opacity 0.4s ease, transform 0.4s ease',
           background: '#FAF6EF',
           border: '3px solid #1A0F06',
@@ -140,13 +140,20 @@ const CertificateSheet = forwardRef<HTMLDivElement, Props>(
             </p>
           </div>
 
+          {/* CERTIFICATE FOOTER */}
+          <div style={{ marginTop: 'auto', textAlign: 'center', paddingTop: '2%' }}>
+            <p style={{ fontFamily: MONO, fontSize: '6.5px', fontStyle: 'italic', color: '#C4A882', margin: 0, letterSpacing: '0.03em' }}>
+              No commits were harmed in the making of this document.
+            </p>
+          </div>
+
         </div>
 
         {/* Stamp — inside card so it's captured in share exports */}
         {showStamp && (
           <div ref={stampRef} style={{ position: 'absolute', bottom: '40px', right: '30px', pointerEvents: 'none', userSelect: 'none' }}>
-            <div style={{ transform: 'rotate(-12deg)', border: '3px solid rgba(139,26,26,0.75)', borderRadius: '4px', padding: '8px 20px', background: 'rgba(139,26,26,0.04)' }}>
-              <span style={{ fontFamily: UI, fontSize: '1.1rem', fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(139,26,26,0.72)', display: 'block', textAlign: 'center', lineHeight: 1 }}>CERTIFIED DEAD</span>
+            <div className="stamp-animate" style={{ border: '3px solid rgba(139,26,26,0.75)', borderRadius: '4px', padding: '8px 20px', background: 'rgba(139,26,26,0.04)' }}>
+              <span style={{ fontFamily: UI, fontSize: '1.1rem', fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(139,26,26,0.72)', display: 'block', textAlign: 'center', lineHeight: 1 }}>REST IN PRODUCTION</span>
               <p style={{ fontFamily: MONO, fontSize: '9px', letterSpacing: '0.4em', textAlign: 'center', color: 'rgba(139,26,26,0.45)', textTransform: 'uppercase', margin: '6px 0 0 0' }}>COMMITMENTISSUES.DEV</p>
             </div>
           </div>
