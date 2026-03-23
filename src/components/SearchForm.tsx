@@ -121,7 +121,7 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
           onMouseEnter={e => { if (!loading) e.currentTarget.style.background = CTA_RED_HOVER }}
           onMouseLeave={e => { e.currentTarget.style.background = CTA_RED }}
         >
-          {loading ? <span className="btn-spinner" /> : 'Issue death certificate →'}
+          {loading ? <span className="btn-spinner" /> : 'Declare it dead →'}
         </button>
       </div>
 

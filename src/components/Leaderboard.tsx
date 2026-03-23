@@ -22,7 +22,6 @@ const HALL_OF_SHAME: LeaderboardEntry[] = [
 ]
 
 const FONT = `var(--font-dm), -apple-system, sans-serif`
-const MONO = `var(--font-courier), 'Courier New', monospace`
 
 interface Props {
   onSelect: (url: string) => void
@@ -64,10 +63,7 @@ function GraveyardCard({ entry, onSelect }: { entry: LeaderboardEntry; onSelect:
       <span style={{ fontSize: '13px', fontWeight: 700, color: '#0a0a0a', lineHeight: 1.3, wordBreak: 'break-word' }}>
         {entry.fullName}
       </span>
-      <span style={{ fontFamily: MONO, fontSize: '8px', letterSpacing: '0.15em', color: '#b0aca8', textTransform: 'uppercase' as const, marginTop: '2px' }}>
-        Cause of death
-      </span>
-      <span style={{ fontSize: '13px', fontStyle: 'italic', color: '#555', lineHeight: 1.55, fontWeight: 500 }}>
+      <span style={{ fontSize: '13px', fontStyle: 'italic', color: '#555', lineHeight: 1.55, fontWeight: 500, marginTop: '2px' }}>
         {entry.cause}
       </span>
       <span style={{ fontSize: '11px', color: '#b0aca8', marginTop: '4px' }}>
