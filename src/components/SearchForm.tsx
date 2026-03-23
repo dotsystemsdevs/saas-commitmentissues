@@ -42,26 +42,21 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
   return (
     <form onSubmit={handleSubmit} style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '16px' }}>
 
-      {/* Input + button joined */}
+      {/* Input + button — stacked, connected as one block */}
       <div style={{
-        display: 'flex',
-        borderRadius: '8px',
-        boxShadow: focused ? '0 0 0 3px rgba(22,10,6,0.08)' : '0 2px 12px rgba(0,0,0,0.1)',
-        transition: 'box-shadow 0.15s',
+        border: `2px solid ${focused ? '#888' : '#e0e0e0'}`,
+        borderRadius: '10px',
         overflow: 'hidden',
+        boxShadow: focused ? '0 0 0 3px rgba(22,10,6,0.08)' : '0 2px 12px rgba(0,0,0,0.1)',
+        transition: 'border-color 0.15s, box-shadow 0.15s',
       }}>
         {/* Input */}
         <div style={{
-          flex: 1,
-          height: '60px',
+          height: '56px',
           display: 'flex',
           alignItems: 'center',
           background: '#fff',
-          border: `2px solid ${focused ? '#888' : '#e0e0e0'}`,
-          borderRight: 'none',
-          borderRadius: '8px 0 0 8px',
-          transition: 'border-color 0.15s',
-          overflow: 'hidden',
+          borderBottom: `1.5px solid #e0e0e0`,
         }}>
           <span style={{
             fontFamily: FONT,
@@ -89,7 +84,7 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
               fontSize: '16px',
               flex: 1,
               height: '100%',
-              padding: '0 12px 0 0',
+              padding: '0 16px 0 0',
               background: 'transparent',
               border: 'none',
               outline: 'none',
@@ -109,13 +104,11 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
             fontSize: '14px',
             fontWeight: 800,
             letterSpacing: '0.05em',
-            padding: '0 22px',
-            height: '60px',
-            flexShrink: 0,
+            width: '100%',
+            height: '52px',
             background: CTA_RED,
             color: '#fff',
             border: 'none',
-            borderRadius: '0 8px 8px 0',
             cursor: loading ? 'wait' : 'pointer',
             display: 'flex',
             alignItems: 'center',
@@ -124,7 +117,6 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
             userSelect: 'none',
             WebkitTapHighlightColor: 'transparent',
             touchAction: 'manipulation',
-            whiteSpace: 'nowrap',
           }}
           onMouseEnter={e => { if (!loading) e.currentTarget.style.background = CTA_RED_HOVER }}
           onMouseLeave={e => { e.currentTarget.style.background = CTA_RED }}
