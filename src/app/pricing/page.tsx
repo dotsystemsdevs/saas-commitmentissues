@@ -61,12 +61,12 @@ export default function PricingPage() {
         {/* Premium */}
         <div className="subpage-pricing-tier--premium" style={{
           flex: '1 1 220px',
-          border: '2px solid #8b0000',
+          border: '2px solid #0a0a0a',
           borderRadius: '12px',
           padding: 'clamp(20px, 5vw, 28px)',
           display: 'flex',
           flexDirection: 'column',
-          background: '#FAF3E8',
+          background: '#fff',
           position: 'relative',
           transition: 'transform 0.2s ease, box-shadow 0.2s ease',
         }}>
@@ -74,7 +74,7 @@ export default function PricingPage() {
             position: 'absolute',
             top: '-1px',
             left: '20px',
-            background: '#8b0000',
+            background: '#0a0a0a',
             color: '#fff',
             fontFamily: UI,
             fontSize: '9px',
@@ -87,7 +87,7 @@ export default function PricingPage() {
             Recommended
           </div>
 
-          <p style={{ fontFamily: UI, fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#8b0000', margin: '8px 0 16px 0', fontWeight: 600 }}>
+          <p style={{ fontFamily: UI, fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#938882', margin: '8px 0 16px 0', fontWeight: 600 }}>
             Premium
           </p>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '24px' }}>
@@ -97,7 +97,7 @@ export default function PricingPage() {
             <span style={{ fontFamily: UI, fontSize: '12px', color: '#938882' }}>one-time · incl. VAT</span>
           </div>
 
-          <p style={{ fontFamily: UI, fontSize: '14px', color: '#4a3a30', lineHeight: 1.7, margin: '0 0 28px 0', flex: 1 }}>
+          <p style={{ fontFamily: UI, fontSize: '14px', color: '#6b6560', lineHeight: 1.7, margin: '0 0 28px 0', flex: 1 }}>
             Download a clean, print-ready PNG at 300 DPI. No watermark. Worth printing.
           </p>
 
@@ -109,7 +109,7 @@ export default function PricingPage() {
               fontWeight: 600,
               color: '#fff',
               textDecoration: 'none',
-              background: '#8b0000',
+              background: '#0a0a0a',
               borderRadius: '8px',
               padding: '14px 16px',
               textAlign: 'center',
