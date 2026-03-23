@@ -25,13 +25,13 @@ export default function TermsPage() {
           key={title}
           style={{
             padding: '18px 0',
-            borderBottom: i < SECTIONS.length - 1 ? '1px solid var(--border)' : 'none',
+            borderBottom: i < SECTIONS.length - 1 ? '1px solid #e0e0e0' : 'none',
           }}
         >
-          <p style={{ fontFamily: UI, fontSize: 'clamp(15px, 4vw, 16px)', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '8px' }}>
+          <p style={{ fontFamily: UI, fontSize: 'clamp(15px, 4vw, 16px)', fontWeight: 700, color: '#160A06', marginBottom: '8px' }}>
             {title}
           </p>
-          <p style={{ fontFamily: UI, fontSize: 'clamp(14px, 3.8vw, 15px)', color: 'var(--text-secondary)', lineHeight: 1.75, margin: 0 }}>
+          <p style={{ fontFamily: UI, fontSize: 'clamp(14px, 3.8vw, 15px)', color: '#555', lineHeight: 1.75, margin: 0 }}>
             {body}
             {email ? (
               <a href={`mailto:${email}`} className="subpage-inline-mail">

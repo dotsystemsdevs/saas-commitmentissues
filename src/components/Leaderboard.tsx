@@ -23,9 +23,9 @@ const HALL_OF_SHAME: LeaderboardEntry[] = [
 
 
 const FONT = `var(--font-dm), -apple-system, sans-serif`
-const C_WARM_GR = 'var(--text-secondary)'
-const C_LIGHT   = 'var(--border-strong)'
-const C_DARK    = 'var(--text-primary)'
+const C_WARM_GR = '#555555'
+const C_LIGHT   = '#c8c8c8'
+const C_DARK    = '#222222'
 const C_DARKEST = '#111111'
 
 
@@ -50,7 +50,7 @@ export default function Leaderboard({ onSelect }: Props) {
           flexWrap: 'wrap',
           gap: '10px',
           padding: '9px 16px',
-          background: 'var(--lb-header-bg)',
+          background: '#ebebeb',
           borderBottom: `1.5px solid ${C_LIGHT}`,
         }}>
           <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#111', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
@@ -89,7 +89,7 @@ export default function Leaderboard({ onSelect }: Props) {
               transition: 'background 0.15s ease, border-left-color 0.15s ease, transform 0.12s ease',
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.background = 'var(--lb-row-hover)'
+              e.currentTarget.style.background = '#f0f0f0'
               e.currentTarget.style.borderLeftColor = '#0a0a0a'
               e.currentTarget.style.transform = 'translateX(2px)'
             }}
