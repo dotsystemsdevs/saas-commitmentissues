@@ -38,11 +38,6 @@ export default function Page() {
             <SearchForm url={url} setUrl={setUrl} onSubmit={() => analyze(url)} onSelect={handleSelect} loading={loading} />
           </div>
 
-          {idle && (
-            <div style={{ marginTop: '20px' }}>
-              <StatsBar />
-            </div>
-          )}
         </>
       )}
 
