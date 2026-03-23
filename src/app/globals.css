@@ -238,37 +238,6 @@ button {
   transition: transform 0.15s ease;
 }
 
-/* ── Home layout: hero column + cert preview column on desktop ── */
-.home-layout {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.home-main {
-  width: 100%;
-}
-
-.home-cert-preview {
-  display: none;
-}
-
-@media (min-width: 600px) {
-  .home-layout {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 28px;
-  }
-  .home-main {
-    flex: 1;
-    min-width: 0;
-  }
-  .home-cert-preview {
-    display: block;
-    flex-shrink: 0;
-    padding-top: 12px;
-  }
-}
 
 /* ── Graveyard ── */
 @keyframes marquee {

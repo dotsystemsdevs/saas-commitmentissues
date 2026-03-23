@@ -1,7 +1,8 @@
 'use client'
 
 import { track } from '@vercel/analytics'
-import { LeaderboardEntry } from '@/lib/types'
+import { LeaderboardEntry, DeathCertificate } from '@/lib/types'
+import CertificateSheet from '@/components/CertificateSheet'
 
 const HALL_OF_SHAME: LeaderboardEntry[] = [
   { fullName: 'atom/atom',              cause: 'GitHub built VS Code and forgot this existed',               score: 10, deathDate: 'Dec 2022', lastWords: 'At least I had good themes.' },
@@ -23,45 +24,40 @@ const HALL_OF_SHAME: LeaderboardEntry[] = [
 
 const FONT = `var(--font-dm), -apple-system, sans-serif`
 const MONO = `var(--font-courier), 'Courier New', monospace`
-const GOTHIC = `var(--font-gothic), serif`
 
 interface Props {
   onSelect: (url: string) => void
 }
 
-function MiniCert({ entry }: { entry: LeaderboardEntry }) {
-  const repoName = entry.fullName.split('/')[1]
-  return (
-    <div style={{
-      width: '86px',
-      height: '122px',
-      background: '#FAF6EF',
-      border: '1.5px solid #1A0F06',
-      flexShrink: 0,
-      display: 'flex',
-      flexDirection: 'column',
-      padding: '6px 5px 5px',
-      position: 'relative',
-      overflow: 'hidden',
-      borderRadius: '2px',
-    }}>
-      <div style={{ textAlign: 'center', borderBottom: '1px solid #1A0F06', paddingBottom: '3px', marginBottom: '4px' }}>
-        <p style={{ fontFamily: MONO, fontSize: '3.5px', letterSpacing: '0.3em', color: '#8B6B4A', margin: '0 0 2px 0', textTransform: 'uppercase' as const }}>commitmentissues.dev</p>
-        <p style={{ fontFamily: GOTHIC, fontSize: '7.5px', color: '#1A0F06', margin: 0, lineHeight: 1.1 }}>Certificate of Death</p>
-      </div>
-      <p style={{ fontFamily: MONO, fontSize: '5px', letterSpacing: '0.3em', color: '#8B6B4A', textAlign: 'center', margin: '0 0 3px 0', textTransform: 'uppercase' as const }}>this certifies the death of</p>
-      <p style={{ fontFamily: FONT, fontSize: '7px', fontWeight: 700, color: '#1A0F06', textAlign: 'center', margin: '0 0 5px 0', lineHeight: 1.2, wordBreak: 'break-word' as const }}>
-        {repoName}
-      </p>
-      <p style={{ fontFamily: FONT, fontSize: '5.5px', fontStyle: 'italic', color: '#8B0000', lineHeight: 1.5, textAlign: 'center', margin: 0, flex: 1, overflow: 'hidden' }}>
-        {entry.cause}
-      </p>
-      {/* Stamp */}
-      <div style={{ position: 'absolute', bottom: '10px', right: '3px', transform: 'rotate(-12deg)', border: '1px solid rgba(139,26,26,0.65)', padding: '1px 3px', background: 'rgba(139,26,26,0.03)' }}>
-        <span style={{ fontFamily: FONT, fontSize: '3.5px', fontWeight: 800, letterSpacing: '0.1em', color: 'rgba(139,26,26,0.65)', textTransform: 'uppercase' as const, display: 'block', whiteSpace: 'nowrap' as const }}>REST IN PRODUCTION</span>
-      </div>
-    </div>
-  )
+function entryToCert(entry: LeaderboardEntry): DeathCertificate {
+  const parts = entry.fullName.split('/')
+  return {
+    repoData: {
+      name: parts[1] ?? entry.fullName,
+      fullName: entry.fullName,
+      description: null,
+      createdAt: '2010-01-01T00:00:00Z',
+      pushedAt: '2020-01-01T00:00:00Z',
+      isArchived: true,
+      stargazersCount: 0,
+      forksCount: 0,
+      openIssuesCount: 0,
+      language: null,
+      topics: [],
+      isFork: false,
+      commitCount: 0,
+      lastCommitMessage: '',
+      lastCommitDate: '2020-01-01T00:00:00Z',
+    },
+    deathIndex: entry.score,
+    deathLabel: 'Abandoned',
+    causeOfDeath: entry.cause,
+    deathDate: entry.deathDate ?? '—',
+    age: '—',
+    lastWords: entry.lastWords ?? '...',
+    mourners: 'The community',
+    shareText: '',
+  }
 }
 
 function GraveyardCard({ entry, onSelect }: { entry: LeaderboardEntry; onSelect: (url: string) => void }) {
@@ -112,8 +108,12 @@ function GraveyardCard({ entry, onSelect }: { entry: LeaderboardEntry; onSelect:
           {entry.deathDate}
         </span>
       </div>
-      {/* Mini certificate */}
-      <MiniCert entry={entry} />
+      {/* Mini certificate — real CertificateSheet scaled down */}
+      <div style={{ width: '144px', height: '204px', overflow: 'hidden', flexShrink: 0, borderRadius: '2px' }}>
+        <div style={{ width: '480px', transform: 'scale(0.3)', transformOrigin: 'top left', pointerEvents: 'none', userSelect: 'none' }}>
+          <CertificateSheet cert={entryToCert(entry)} visible={true} showStamp={true} />
+        </div>
+      </div>
     </button>
   )
 }
