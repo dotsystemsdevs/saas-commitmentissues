@@ -26,6 +26,8 @@ const ForkIcon = () => (
   </svg>
 )
 
+const LABEL = { fontFamily: MONO, fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase' as const, color: '#8B6B4A' }
+
 const CertificateSheet = forwardRef<HTMLDivElement, Props>(
   function CertificateSheet({ cert, visible = true, showStamp = true, stampRef }, ref) {
     const { repoData: r } = cert
@@ -48,7 +50,6 @@ const CertificateSheet = forwardRef<HTMLDivElement, Props>(
           background: '#FAF6EF',
           border: '3px solid #1A0F06',
           boxShadow: '0 4px 32px rgba(42,26,14,0.15)',
-          // A4 ratio: 480 × 1.4142 = 679px — matches exactly
           width: '480px',
           height: '679px',
           flexShrink: 0,
@@ -64,23 +65,23 @@ const CertificateSheet = forwardRef<HTMLDivElement, Props>(
 
           {/* HEADER */}
           <div style={{ textAlign: 'center', paddingBottom: '3%', borderBottom: '2px solid #1A0F06' }}>
-            <p style={{ fontFamily: MONO, fontSize: '7px', letterSpacing: '0.6em', color: '#8B6B4A', textTransform: 'uppercase', margin: '0 0 2% 0' }}>
-              commitmentissues.dev
+            <p style={{ ...LABEL, fontSize: '7px', letterSpacing: '0.5em', margin: '0 0 2% 0' }}>
+              issued by commitmentissues.dev
             </p>
             <h2 className="certificate-of-death-title" style={{ fontSize: '2.2rem', color: '#1A0F06', lineHeight: 1.05, margin: '0 0 2% 0', whiteSpace: 'nowrap' }}>
               Certificate of Death
             </h2>
-            <p style={{ fontFamily: MONO, fontSize: '7px', letterSpacing: '0.25em', color: '#8B6B4A', margin: 0, fontStyle: 'italic' }}>
+            <p style={{ fontFamily: MONO, fontSize: '8px', letterSpacing: '0.2em', color: '#8B6B4A', margin: 0, fontStyle: 'italic' }}>
               official record of abandonment
             </p>
           </div>
 
           {/* REPO */}
           <div style={{ textAlign: 'center', padding: '3% 0', borderBottom: '1px solid #C4A882' }}>
-            <p style={{ fontFamily: MONO, fontSize: '7px', letterSpacing: '0.4em', color: '#8B6B4A', textTransform: 'uppercase', margin: '0 0 2% 0' }}>
+            <p style={{ ...LABEL, margin: '0 0 2% 0' }}>
               this is to certify the death of
             </p>
-            <p style={{ fontFamily: MONO, fontSize: '8px', color: '#8B6B4A', margin: '0 0 1% 0' }}>
+            <p style={{ fontFamily: MONO, fontSize: '9px', color: '#8B6B4A', margin: '0 0 1% 0' }}>
               {r.fullName.split('/')[0]} /
             </p>
             <h3 style={{ fontFamily: UI, fontWeight: 700, fontSize: '2.05rem', color: '#1A0F06', lineHeight: 1.08, margin: 0, letterSpacing: '-0.02em' }}>
@@ -95,7 +96,7 @@ const CertificateSheet = forwardRef<HTMLDivElement, Props>(
 
           {/* CAUSE */}
           <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '3% 0', borderBottom: '1px solid #C4A882' }}>
-            <p style={{ fontFamily: MONO, fontSize: '7px', letterSpacing: '0.55em', color: '#8B6B4A', textTransform: 'uppercase', margin: '0 0 3% 0' }}>
+            <p style={{ ...LABEL, margin: '0 0 3% 0' }}>
               cause of death
             </p>
             <p style={{ fontFamily: UI, fontStyle: 'italic', fontWeight: 500, fontSize: '1.25rem', color: '#8B0000', lineHeight: 1.45, maxWidth: '24ch', margin: 0 }}>
@@ -122,7 +123,7 @@ const CertificateSheet = forwardRef<HTMLDivElement, Props>(
               { label: 'Age at death',  value: cert.age },
             ].map(({ label, value }, i) => (
               <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '1% 0', borderBottom: i === 0 ? '1px solid #EDE5D8' : 'none' }}>
-                <span style={{ fontFamily: MONO, fontSize: '9px', color: '#8B6B4A', letterSpacing: '0.05em' }}>{label}</span>
+                <span style={{ fontFamily: MONO, fontSize: '9px', color: '#8B6B4A', letterSpacing: '0.06em' }}>{label}</span>
                 <span style={{ fontFamily: MONO, fontSize: '10px', color: '#1A0F06', fontWeight: 600 }}>{value}</span>
               </div>
             ))}
@@ -137,7 +138,7 @@ const CertificateSheet = forwardRef<HTMLDivElement, Props>(
                     {icon}
                     <span style={{ fontFamily: MONO, fontWeight: 700, fontSize: '0.9rem', color: '#1A0F06', lineHeight: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{value}</span>
                   </div>
-                  <p style={{ fontFamily: MONO, fontSize: '6px', color: '#8B6B4A', letterSpacing: '0.4em', textTransform: 'uppercase', margin: '4px 0 0 0' }}>{label}</p>
+                  <p style={{ fontFamily: MONO, fontSize: '7px', color: '#8B6B4A', letterSpacing: '0.3em', textTransform: 'uppercase', margin: '4px 0 0 0' }}>{label}</p>
                 </div>
                 {i < arr.length - 1 && <div style={{ width: '1px', background: '#C4A882', flexShrink: 0 }} />}
               </div>
@@ -146,7 +147,7 @@ const CertificateSheet = forwardRef<HTMLDivElement, Props>(
 
           {/* LAST WORDS */}
           <div style={{ padding: '2.5% 0', textAlign: 'center' }}>
-            <p style={{ fontFamily: MONO, fontSize: '7px', letterSpacing: '0.5em', textTransform: 'uppercase', color: '#8B6B4A', margin: '0 0 2% 0' }}>Last words</p>
+            <p style={{ ...LABEL, margin: '0 0 2% 0' }}>Last words</p>
             <p style={{ fontFamily: UI, fontStyle: 'italic', fontSize: '0.88rem', color: '#1A0F06', lineHeight: 1.6, margin: 0 }}>
               &ldquo;{cert.lastWords}&rdquo;
             </p>
@@ -154,13 +155,12 @@ const CertificateSheet = forwardRef<HTMLDivElement, Props>(
 
           {/* CERTIFICATE FOOTER */}
           <div style={{ marginTop: 'auto', textAlign: 'center', paddingTop: '2%' }}>
-            <p style={{ fontFamily: MONO, fontSize: '6.5px', fontStyle: 'italic', color: '#C4A882', margin: 0, letterSpacing: '0.03em' }}>
-              No commits were harmed in the making of this document.
+            <p style={{ fontFamily: MONO, fontSize: '7px', color: '#C4A882', margin: 0, letterSpacing: '0.18em', textTransform: 'uppercase' }}>
+              Issued by commitmentissues.dev
             </p>
           </div>
 
         </div>
-
 
       </div>
     )
