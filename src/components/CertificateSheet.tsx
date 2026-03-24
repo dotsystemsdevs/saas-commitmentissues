@@ -151,11 +151,25 @@ const CertificateSheet = forwardRef<HTMLDivElement, Props>(
 
         {/* Stamp — inside card so it's captured in share exports */}
         {showStamp && (
-          <div ref={stampRef} style={{ position: 'absolute', bottom: '40px', right: '30px', pointerEvents: 'none', userSelect: 'none' }}>
-            <div className="stamp-animate" style={{ border: '3px solid rgba(139,26,26,0.75)', borderRadius: '4px', padding: '8px 20px', background: 'rgba(139,26,26,0.04)' }}>
-              <span style={{ fontFamily: UI, fontSize: '1.1rem', fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(139,26,26,0.72)', display: 'block', textAlign: 'center', lineHeight: 1 }}>REST IN PRODUCTION</span>
-              <p style={{ fontFamily: MONO, fontSize: '9px', letterSpacing: '0.4em', textAlign: 'center', color: 'rgba(139,26,26,0.45)', textTransform: 'uppercase', margin: '6px 0 0 0' }}>COMMITMENTISSUES.DEV</p>
-            </div>
+          <div ref={stampRef} style={{ position: 'absolute', bottom: '32px', right: '22px', pointerEvents: 'none', userSelect: 'none' }}>
+            <svg className="stamp-animate" width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <path id="ripTop" d="M 7,60 A 53,53 0 0,1 113,60" />
+              </defs>
+              {/* Outer ring */}
+              <circle cx="60" cy="60" r="57" stroke="rgba(139,26,26,0.70)" strokeWidth="2.5" />
+              {/* Inner ring */}
+              <circle cx="60" cy="60" r="49" stroke="rgba(139,26,26,0.45)" strokeWidth="1" />
+              {/* "REST IN PRODUCTION" along top arc */}
+              <text fontFamily="'Courier New', monospace" fontSize="8.5" fill="rgba(139,26,26,0.75)" fontWeight="700" letterSpacing="2">
+                <textPath href="#ripTop" startOffset="50%" textAnchor="middle">REST IN PRODUCTION</textPath>
+              </text>
+              {/* Cross */}
+              <text x="60" y="72" textAnchor="middle" fontSize="20" fill="rgba(139,26,26,0.50)">✝</text>
+              {/* Bottom text */}
+              <text x="60" y="91" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="5.5" fill="rgba(139,26,26,0.42)" letterSpacing="1.5">ISSUED BY</text>
+              <text x="60" y="101" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="5.5" fill="rgba(139,26,26,0.42)" letterSpacing="1">COMMITMENTISSUES.DEV</text>
+            </svg>
           </div>
         )}
 
