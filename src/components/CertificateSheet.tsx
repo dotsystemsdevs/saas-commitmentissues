@@ -67,7 +67,7 @@ const CertificateSheet = forwardRef<HTMLDivElement, Props>(
             <p style={{ fontFamily: MONO, fontSize: '7px', letterSpacing: '0.6em', color: '#8B6B4A', textTransform: 'uppercase', margin: '0 0 2% 0' }}>
               commitmentissues.dev
             </p>
-            <h2 className="certificate-of-death-title" style={{ fontSize: '2.5rem', color: '#1A0F06', lineHeight: 1.05, margin: '0 0 2% 0' }}>
+            <h2 className="certificate-of-death-title" style={{ fontSize: '2.2rem', color: '#1A0F06', lineHeight: 1.05, margin: '0 0 2% 0', whiteSpace: 'nowrap' }}>
               Certificate of Death
             </h2>
             <p style={{ fontFamily: MONO, fontSize: '7px', letterSpacing: '0.25em', color: '#8B6B4A', margin: 0, fontStyle: 'italic' }}>
@@ -94,13 +94,29 @@ const CertificateSheet = forwardRef<HTMLDivElement, Props>(
           </div>
 
           {/* CAUSE */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '3% 0', borderBottom: '1px solid #C4A882' }}>
+          <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '3% 0', borderBottom: '1px solid #C4A882' }}>
             <p style={{ fontFamily: MONO, fontSize: '7px', letterSpacing: '0.55em', color: '#8B6B4A', textTransform: 'uppercase', margin: '0 0 3% 0' }}>
               cause of death
             </p>
             <p style={{ fontFamily: UI, fontStyle: 'italic', fontWeight: 500, fontSize: '1.25rem', color: '#8B0000', lineHeight: 1.45, maxWidth: '24ch', margin: 0 }}>
               {cert.causeOfDeath}
             </p>
+            {showStamp && (
+              <div ref={stampRef} style={{ position: 'absolute', bottom: '6px', right: '8px', pointerEvents: 'none', userSelect: 'none' }}>
+                <svg className="stamp-animate" width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <path id="ripArc" d="M 4,45 A 41,41 0 0,1 86,45" />
+                  </defs>
+                  <circle cx="45" cy="45" r="42" stroke="rgba(139,26,26,0.68)" strokeWidth="2" />
+                  <circle cx="45" cy="45" r="35" stroke="rgba(139,26,26,0.35)" strokeWidth="1" strokeDasharray="2 3" />
+                  <text fontFamily="'Courier New', monospace" fontSize="7.5" fill="rgba(139,26,26,0.72)" fontWeight="700" letterSpacing="1.8">
+                    <textPath href="#ripArc" startOffset="50%" textAnchor="middle">REST IN PRODUCTION</textPath>
+                  </text>
+                  <text x="45" y="56" textAnchor="middle" fontSize="16" fill="rgba(139,26,26,0.45)">✝</text>
+                  <text x="45" y="72" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="5" fill="rgba(139,26,26,0.38)" letterSpacing="0.8">COMMITMENTISSUES.DEV</text>
+                </svg>
+              </div>
+            )}
           </div>
 
           {/* DATE + AGE */}
@@ -149,29 +165,6 @@ const CertificateSheet = forwardRef<HTMLDivElement, Props>(
 
         </div>
 
-        {/* Stamp — inside card so it's captured in share exports */}
-        {showStamp && (
-          <div ref={stampRef} style={{ position: 'absolute', bottom: '32px', right: '22px', pointerEvents: 'none', userSelect: 'none' }}>
-            <svg className="stamp-animate" width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <path id="ripTop" d="M 7,60 A 53,53 0 0,1 113,60" />
-              </defs>
-              {/* Outer ring */}
-              <circle cx="60" cy="60" r="57" stroke="rgba(139,26,26,0.70)" strokeWidth="2.5" />
-              {/* Inner ring */}
-              <circle cx="60" cy="60" r="49" stroke="rgba(139,26,26,0.45)" strokeWidth="1" />
-              {/* "REST IN PRODUCTION" along top arc */}
-              <text fontFamily="'Courier New', monospace" fontSize="8.5" fill="rgba(139,26,26,0.75)" fontWeight="700" letterSpacing="2">
-                <textPath href="#ripTop" startOffset="50%" textAnchor="middle">REST IN PRODUCTION</textPath>
-              </text>
-              {/* Cross */}
-              <text x="60" y="72" textAnchor="middle" fontSize="20" fill="rgba(139,26,26,0.50)">✝</text>
-              {/* Bottom text */}
-              <text x="60" y="91" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="5.5" fill="rgba(139,26,26,0.42)" letterSpacing="1.5">ISSUED BY</text>
-              <text x="60" y="101" textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="5.5" fill="rgba(139,26,26,0.42)" letterSpacing="1">COMMITMENTISSUES.DEV</text>
-            </svg>
-          </div>
-        )}
 
       </div>
     )
