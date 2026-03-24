@@ -71,26 +71,10 @@
 }
 
 .page-hero-emoji {
+  font-size: clamp(52px, 12vw, 72px);
   line-height: 1;
   margin-bottom: 12px;
   animation: hero-float 3.2s ease-in-out infinite;
-  display: flex;
-  justify-content: center;
-}
-
-.tombstone-icon {
-  color: #1A0F06;
-  display: block;
-}
-
-.page-hero-emoji .tombstone-icon {
-  width: clamp(52px, 12vw, 72px);
-  height: clamp(52px, 12vw, 72px);
-}
-
-.tombstone-icon--fade-bottom {
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
 }
 
 .page-hero-title {
@@ -429,6 +413,8 @@ a.subpage-inline-mail {
   margin-top: 12px;
   margin-bottom: 0;
   pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
 }
 
 .site-footer-nav {

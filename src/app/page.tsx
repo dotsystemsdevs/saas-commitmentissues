@@ -70,7 +70,16 @@ export default function Page() {
       {/* Hero + Search — hidden once certificate is shown */}
       {!certificate && (
         <>
-          <div style={{ marginTop: '12px' }}>
+          <div style={{ width: '100%', marginTop: '4px' }}>
+            <div className="homepage-cert-preview">
+              <CertificateSheet cert={CERT_PREVIEW} visible={true} showStamp={false} />
+            </div>
+            <p style={{ fontFamily: MONO, fontSize: '11px', color: '#938882', textAlign: 'center', margin: '6px 0 0 0', letterSpacing: '0.06em' }}>
+              Example death certificate
+            </p>
+          </div>
+
+          <div style={{ marginTop: '8px' }}>
             <PageHero
               subtitle="Paste a repo. See what killed it."
               microcopy={null}
@@ -79,15 +88,6 @@ export default function Page() {
 
           <div style={{ width: '100%', marginTop: '12px' }}>
             <SearchForm url={url} setUrl={setUrl} onSubmit={analyze} onSelect={handleSelect} loading={loading} />
-          </div>
-
-          <div style={{ width: '100%', marginTop: '12px' }}>
-            <div className="homepage-cert-preview">
-              <CertificateSheet cert={CERT_PREVIEW} visible={true} showStamp={false} />
-            </div>
-            <p style={{ fontFamily: MONO, fontSize: '11px', color: '#938882', textAlign: 'center', margin: '10px 0 0 0', letterSpacing: '0.06em' }}>
-              Example death certificate
-            </p>
           </div>
 
           {statsLoading && (
