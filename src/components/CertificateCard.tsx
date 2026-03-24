@@ -86,9 +86,9 @@ export default function CertificateCard({ cert, onReset }: Props) {
       if (!blob) return
 
       const file = new File([blob], `${cert.repoData.name}-certificate-of-death.png`, { type: 'image/png' })
-      const canNativeShareFiles = Boolean(
-        navigator.share && (!navigator.canShare || navigator.canShare({ files: [file] }))
-      )
+      const hasNativeShare = typeof navigator !== 'undefined' && 'share' in navigator
+      const hasCanShare = typeof navigator !== 'undefined' && 'canShare' in navigator
+      const canNativeShareFiles = hasNativeShare && (!hasCanShare || navigator.canShare({ files: [file] }))
 
       if (canNativeShareFiles) {
         try {
