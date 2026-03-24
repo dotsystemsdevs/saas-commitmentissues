@@ -21,7 +21,7 @@ const SECTIONS = [
   },
   {
     title: 'Cause of death (for the server)',
-    body: "This site runs on a cheap server and a questionable amount of free time. No VC money, no team, no plan. If it made you laugh, a coffee keeps the lights on.",
+    body: "This site runs on a cheap server and a questionable amount of free time. If it made you laugh, a coffee keeps the lights on.",
     coffee: true,
   },
   {
@@ -64,12 +64,12 @@ export default function AboutPage() {
               {email ? (
                 <a href={`mailto:${email}`} className="subpage-inline-mail">{email}</a>
               ) : null}
-              {coffee ? (
-                <a href="https://buymeacoffee.com/commitmentissues" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: '12px', fontFamily: `var(--font-courier), monospace`, fontSize: '12px', color: '#938882', textDecoration: 'none', letterSpacing: '0.04em' }}>
-                  ☕ keep it running →
-                </a>
-              ) : null}
             </p>
+            {coffee ? (
+              <a href="https://buymeacoffee.com/commitmentissues" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: '12px', marginLeft: '14px', fontFamily: `var(--font-courier), monospace`, fontSize: '12px', color: '#938882', textDecoration: 'none', letterSpacing: '0.04em' }}>
+                ☕ keep it running →
+              </a>
+            ) : null}
           </div>
         ))}
       </div>
