@@ -562,6 +562,69 @@ a.subpage-inline-mail {
   animation: alive-pulse 0.85s ease-out;
 }
 
+@keyframes section-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Subtle page-load motion for a more premium feel */
+.page-hero {
+  animation: section-fade-up 300ms ease-out both;
+}
+
+.input-block {
+  animation: section-fade-up 360ms ease-out both;
+}
+
+.chips-section {
+  animation: section-fade-up 420ms ease-out both;
+}
+
+.certificate-top-actions {
+  animation: section-fade-up 280ms ease-out both;
+}
+
+.certificate-card-shell {
+  animation: section-fade-up 380ms ease-out both;
+}
+
+.site-footer {
+  animation: section-fade-up 520ms ease-out both;
+}
+
+.about-cards > div,
+.faq-row {
+  animation: section-fade-up 300ms ease-out both;
+}
+
+.about-cards > div:nth-child(2),
+.faq-row:nth-child(2) { animation-delay: 40ms; }
+.about-cards > div:nth-child(3),
+.faq-row:nth-child(3) { animation-delay: 80ms; }
+.about-cards > div:nth-child(4),
+.faq-row:nth-child(4) { animation-delay: 120ms; }
+.about-cards > div:nth-child(5),
+.faq-row:nth-child(5) { animation-delay: 160ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .page-hero,
+  .input-block,
+  .chips-section,
+  .certificate-top-actions,
+  .certificate-card-shell,
+  .site-footer,
+  .about-cards > div,
+  .faq-row {
+    animation: none !important;
+  }
+}
+
 
 @layer base {
   html { scroll-behavior: smooth; }
