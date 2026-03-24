@@ -477,17 +477,6 @@ a.subpage-inline-mail {
 }
 
 /* ── Mobile ── */
-/* Hero + demo cert layout */
-.hero-with-demo {
-  display: flex;
-  align-items: flex-start;
-  gap: 24px;
-  width: 100%;
-}
-
-/* Desktop: show side by side, hide mobile-only block */
-.demo-cert-desktop { display: block; }
-.demo-cert-mobile  { display: none; }
 
 @media (max-width: 640px) {
   /* Page padding */
@@ -510,10 +499,7 @@ a.subpage-inline-mail {
   footer a { font-size: 13px !important; padding: 4px 0; }
   .site-footer-nav a { font-size: 14px !important; padding: 12px 14px !important; }
 
-  /* Demo cert: mobile shows above form, desktop preview hidden */
-  .hero-with-demo { flex-direction: column; }
-  .demo-cert-desktop { display: none !important; }
-  .demo-cert-mobile  { display: flex !important; }
+
 }
 
 @media print {
