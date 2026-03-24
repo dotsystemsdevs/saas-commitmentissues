@@ -516,6 +516,52 @@ a.subpage-inline-mail {
   opacity: 0.9;
 }
 
+@keyframes alive-pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(10,10,10,0.24); }
+  65% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(10,10,10,0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(10,10,10,0); }
+}
+
+.input-submit-button:hover,
+.certificate-action-a4:hover,
+.certificate-action-share:hover,
+.certificate-action-back-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+
+.input-submit-button:active,
+.certificate-action-a4:active,
+.certificate-action-share:active,
+.certificate-action-back-link:active,
+.site-footer-nav a:active,
+.site-footer-source-link:active {
+  transform: scale(0.97);
+}
+
+.site-footer-source-link:hover,
+.site-footer-nav a:hover {
+  transform: translateY(-1px);
+}
+
+.site-footer-copy-btn {
+  border: 0;
+  background: transparent;
+  padding: 4px 10px;
+  margin: 0 auto;
+  cursor: pointer;
+  border-radius: 999px;
+}
+
+.site-footer-copy-btn:hover {
+  color: #1f1f1f;
+  background: rgba(10,10,10,0.05);
+}
+
+.site-footer-copy--alive {
+  animation: alive-pulse 0.85s ease-out;
+}
+
 
 @layer base {
   html { scroll-behavior: smooth; }

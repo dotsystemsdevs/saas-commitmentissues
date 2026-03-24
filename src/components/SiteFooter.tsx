@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 const FONT = `var(--font-dm), -apple-system, sans-serif`
 const MONO = `var(--font-courier), 'Courier New', monospace`
 
@@ -18,6 +20,13 @@ interface SiteFooterProps {
 }
 
 export default function SiteFooter({ compact = false }: SiteFooterProps) {
+  const [aliveFlash, setAliveFlash] = useState(false)
+
+  function handleRestClick() {
+    setAliveFlash(true)
+    window.setTimeout(() => setAliveFlash(false), 850)
+  }
+
   return (
     <footer className={`site-footer${compact ? ' site-footer--compact' : ''}`}>
       <nav className="site-footer-nav" aria-label="Footer">
@@ -50,7 +59,14 @@ export default function SiteFooter({ compact = false }: SiteFooterProps) {
         <GitHubIcon />
         Open source on GitHub
       </a>
-      <p className="site-footer-copy" style={{ fontFamily: FONT }}>REST IN PRODUCTION.</p>
+      <button
+        type="button"
+        className={`site-footer-copy site-footer-copy-btn${aliveFlash ? ' site-footer-copy--alive' : ''}`}
+        onClick={handleRestClick}
+        style={{ fontFamily: FONT }}
+      >
+        {aliveFlash ? 'STILL SHIPPING.' : 'REST IN PRODUCTION.'}
+      </button>
     </footer>
   )
 }
