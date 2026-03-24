@@ -128,7 +128,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
       <PageHero
         subtitle={
           <>
-            The death of <strong style={{ color: '#160A06' }}>{r.fullName}</strong> has been officially recorded.
+            <strong style={{ color: '#160A06' }}>{r.fullName}</strong> is officially dead. Here&apos;s the proof.
           </>
         }
         microcopy={null}
@@ -170,7 +170,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
             onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.97)' }}
             onMouseUp={e => { e.currentTarget.style.transform = 'translateY(-1px)' }}
           >
-            Share →
+            Post this death →
           </button>
 
           {/* Download */}

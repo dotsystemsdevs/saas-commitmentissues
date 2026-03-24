@@ -17,9 +17,9 @@ const MONO = `var(--font-courier), 'Courier New', monospace`
 const BASE_COUNT = 1449
 const CERT_PREVIEW: DeathCertificate = {
   repoData: {
-    name: 'your-repo',
-    fullName: 'yourname/your-repo',
-    description: 'Your repository description appears here.',
+    name: 'bower',
+    fullName: 'bower/bower',
+    description: 'A package manager for the web.',
     createdAt: '2012-09-04T00:00:00Z',
     pushedAt: '2021-09-01T00:00:00Z',
     isArchived: true,
@@ -35,12 +35,12 @@ const CERT_PREVIEW: DeathCertificate = {
   },
   deathIndex: 92,
   deathLabel: 'Very Dead',
-  causeOfDeath: 'Started strong. Never finished.',
-  deathDate: 'Sep 2021',
-  age: '9 years',
-  lastWords: 'It worked on my machine.',
-  mourners: '35,200 stars, 7,500 forks',
-  shareText: 'RIP yourname/your-repo',
+  causeOfDeath: 'npm and Yarn took over, then the maintainers published the eulogy themselves.',
+  deathDate: 'Jan 2017',
+  age: '4 years',
+  lastWords: 'bower_components was my legacy.',
+  mourners: '15,800 stars, 2,000 forks',
+  shareText: 'RIP bower/bower',
 }
 
 export default function Page() {
@@ -78,7 +78,7 @@ export default function Page() {
 
           <div style={{ marginTop: '0px' }}>
             <PageHero
-              subtitle="Paste a repo. See what killed it."
+              subtitle="Paste a repo. We'll write the obituary it deserves."
               microcopy={null}
               hideEmoji={true}
             />
@@ -94,8 +94,8 @@ export default function Page() {
             </p>
           )}
           {!statsLoading && buried !== null && buried >= 100 && (
-            <p style={{ fontFamily: MONO, fontSize: '11px', color: '#b0aca8', textAlign: 'center', margin: '14px 0 0 0', letterSpacing: '0.06em' }}>
-              {buried.toLocaleString()} repos buried and counting
+            <p style={{ fontFamily: FONT, fontSize: '14px', fontWeight: 600, color: '#6b6560', opacity: 0.9, textAlign: 'center', margin: '14px 0 0 0', letterSpacing: '0.02em' }}>
+              {buried.toLocaleString()} repos buried
             </p>
           )}
 
