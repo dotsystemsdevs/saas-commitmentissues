@@ -20,6 +20,26 @@ export default function SiteFooter() {
         ))}
       </nav>
       <a
+        href="https://buymeacoffee.com/commitmentissues"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '6px',
+          fontFamily: MONO,
+          fontSize: '11px',
+          color: '#b0aca8',
+          textDecoration: 'none',
+          letterSpacing: '0.04em',
+          padding: '4px 0',
+          width: '100%',
+        }}
+      >
+        ☕ keep the server alive
+      </a>
+      <a
         href="https://github.com/dotsystemsdevs/saas-commitmentissues"
         target="_blank"
         rel="noopener noreferrer"
