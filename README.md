@@ -1,29 +1,47 @@
 # ☠️ commitmentissues.dev
 
-<p align="center">
-  <strong>Official death certificates for abandoned GitHub repos.</strong><br/>
-  Drop a URL. Find out how dead it is.
-</p>
+Official death certificates for abandoned GitHub repos.
 
-<p align="center">
-  <a href="https://commitmentissues.dev"><img src="https://img.shields.io/badge/live-commitmentissues.dev-black?style=flat-square" /></a>
-  <img src="https://img.shields.io/github/license/dotsystemsdevs/saas-commitmentissues?style=flat-square" />
-  <img src="https://img.shields.io/badge/built%20with-Next.js%2014-black?style=flat-square&logo=next.js" />
-  <img src="https://img.shields.io/badge/deployed%20on-Vercel-black?style=flat-square&logo=vercel" />
-</p>
+**Live demo:** [https://commitmentissues.dev](https://commitmentissues.dev)
 
-## What it does
+Drop a GitHub URL. Get a shareable certificate in seconds.
 
-Paste a GitHub repo URL. The app fetches commit history, archive status, and issue count from the public GitHub API — then generates a downloadable **Certificate of Death** complete with cause of death, last words, and time of death.
+![MIT License](https://img.shields.io/github/license/dotsystemsdevs/saas-commitmentissues?style=flat-square)
+![Vercel Deploy](https://img.shields.io/badge/deployed%20on-Vercel-black?style=flat-square&logo=vercel)
 
-No account required. No data stored.
+## Screenshots
+
+Add product screenshots and one short export GIF here before launch:
+
+- `docs/screenshots/home.png`
+- `docs/screenshots/certificate.png`
+- `docs/screenshots/leaderboard.png`
+- `docs/screenshots/export.gif`
+
+## How it works
+
+1. Paste a GitHub repository URL.
+2. Fetch public repo metadata from the GitHub API.
+3. Calculate a death score and cause-of-death.
+4. Generate and export a Certificate of Death.
 
 ## Features
 
-- A4 death certificate with cause of death, last words, age, and repo stats
-- Download as PNG — share-ready or print-quality
-- Share on X with pre-filled text
-- Hall of Shame leaderboard of 30 famously dead repos
+- A4-style death certificate with cause, last words, age, and stats
+- PNG export for sharing and print
+- Share-to-X flow with prefilled text
+- Hall of Shame leaderboard of famously abandoned repos
+
+## Privacy
+
+- No login required
+- Only public GitHub data is used
+- No analyzed repository data is stored server-side
+- Anonymous usage counters only (Vercel KV)
+
+## Leaderboard data
+
+The Hall of Shame list is currently curated for recognizable dead repos and fast first-load UX.
 
 ## Stack
 
@@ -46,35 +64,48 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-**Optional:** add a `GITHUB_TOKEN` to `.env.local` to raise the rate limit from 60 → 5,000 req/hr.
+Optional: add a `GITHUB_TOKEN` in `.env.local` to raise GitHub API limits.
 
 ```env
 GITHUB_TOKEN=ghp_yourtoken
 ```
 
+## Testing
+
+```bash
+npm test
+```
+
 ## Project structure
 
-```
+```text
 src/
 ├── app/
-│   ├── page.tsx              ← main UI (search + certificate)
-│   ├── about/                ← about / FAQ / privacy info
-│   ├── terms/                ← terms of service
-│   ├── privacy/              ← privacy policy
+│   ├── page.tsx
+│   ├── about/
+│   ├── terms/
+│   ├── privacy/
 │   └── api/
-│       ├── repo/             ← GitHub API proxy + death scoring
-│       ├── stats/            ← usage counters
-│       └── recent/           ← recently analyzed repos
+│       ├── repo/
+│       ├── stats/
+│       └── recent/
 ├── components/
-│   ├── CertificateCard.tsx   ← certificate UI + export + share
-│   ├── CertificateSheet.tsx  ← printable A4 certificate (480×679px)
-│   ├── Leaderboard.tsx       ← Hall of Shame marquee
-│   ├── SearchForm.tsx        ← URL input + example chips
-│   └── LoadingState.tsx      ← loading animation
+│   ├── CertificateCard.tsx
+│   ├── CertificateSheet.tsx
+│   ├── Leaderboard.tsx
+│   ├── SearchForm.tsx
+│   └── LoadingState.tsx
 └── lib/
-    ├── scoring.ts            ← death index logic, no side effects
-    ├── rateLimit.ts          ← per-IP rate limiting
-    └── types.ts              ← TypeScript interfaces
+    ├── scoring.ts
+    ├── rateLimit.ts
+    ├── recentStore.ts
+    └── types.ts
 ```
+
+Scoring logic is isolated in `src/lib/scoring.ts` so it is easy to test and iterate.
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 Built by [Dot Systems](https://github.com/dotsystemsdevs)

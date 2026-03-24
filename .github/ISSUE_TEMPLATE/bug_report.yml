@@ -1,0 +1,34 @@
+name: Bug report
+description: Report something broken in the roast flow.
+title: "bug: "
+labels:
+  - bug
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Clear and short description of the bug.
+      placeholder: Exported image has wrong dimensions on mobile.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open app
+        2. Analyze repo
+        3. Click export
+    validations:
+      required: true
+  - type: input
+    id: expected
+    attributes:
+      label: Expected behavior
+      placeholder: Export should match on-screen certificate exactly.
+  - type: input
+    id: environment
+    attributes:
+      label: Browser / device
+      placeholder: Chrome 134 on Android 14

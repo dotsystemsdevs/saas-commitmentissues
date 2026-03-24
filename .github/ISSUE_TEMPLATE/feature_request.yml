@@ -1,0 +1,28 @@
+name: Feature request
+description: Suggest a focused improvement.
+title: "feat: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: What user pain does this solve?
+      placeholder: Share text feels generic and not funny enough.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      placeholder: Add contextual share copy variants based on death cause.
+    validations:
+      required: true
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This keeps the product lightweight (no auth/database complexity)
+          required: true
