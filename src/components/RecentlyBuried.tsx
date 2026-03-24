@@ -35,8 +35,8 @@ export default function RecentlyBuried({ onSelect }: Props) {
     return `${days}d ago`
   }
 
-  // Match Famous Casualties px/s: 36 cards × 310px in 80s = 139.5 px/s
-  const duration = Math.round((entries.length * 310) / 55.8)
+  // Keep a calmer marquee pace.
+  const duration = Math.round((entries.length * 310) / 30)
 
   function Card({ entry }: { entry: typeof entries[number] }) {
     return (
@@ -82,7 +82,7 @@ export default function RecentlyBuried({ onSelect }: Props) {
         <span style={{ fontSize: '14px', fontStyle: 'italic', color: '#4d4d4d', lineHeight: 1.6, fontWeight: 500, marginTop: '2px' }}>
           {entry.cause}
         </span>
-        <span style={{ fontSize: '12px', color: '#787878', marginTop: 'auto' }}>
+        <span style={{ fontSize: '12px', color: '#787878', marginTop: '4px' }}>
           {entry.analyzedAt ? timeAgo(entry.analyzedAt) : ''}
         </span>
       </button>
@@ -90,12 +90,7 @@ export default function RecentlyBuried({ onSelect }: Props) {
   }
 
   return (
-    <div style={{ width: '100%', marginTop: '28px' }}>
-      <div style={{ marginBottom: '14px', textAlign: 'center' }}>
-        <p style={{ fontFamily: FONT, fontSize: '13px', fontWeight: 700, color: '#727272', margin: 0, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-          Recently Buried
-        </p>
-      </div>
+    <div style={{ width: '100%' }}>
       <div
         style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)', overflow: 'hidden', padding: '4px 20px 8px' }}
         onMouseEnter={e => { (e.currentTarget.querySelector('.recent-track') as HTMLElement).style.animationPlayState = 'paused' }}

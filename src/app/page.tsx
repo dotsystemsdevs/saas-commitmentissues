@@ -104,11 +104,16 @@ export default function Page() {
         <div style={{ width: '100%', marginTop: '34px', paddingBottom: 0 }}>
           <div style={{ marginBottom: '14px', textAlign: 'center' }}>
             <p style={{ fontFamily: FONT, fontSize: '13px', fontWeight: 700, color: '#727272', margin: 0, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+              Recently Buried
+            </p>
+          </div>
+          <RecentlyBuried onSelect={handleSelect} />
+          <div style={{ marginTop: '28px', marginBottom: '14px', textAlign: 'center' }}>
+            <p style={{ fontFamily: FONT, fontSize: '13px', fontWeight: 700, color: '#727272', margin: 0, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               Famous Casualties
             </p>
           </div>
           <Leaderboard onSelect={handleSelect} />
-          <RecentlyBuried onSelect={handleSelect} />
         </div>
       )}
 
