@@ -17,6 +17,7 @@ const MONO = `var(--font-courier), 'Courier New', monospace`
 export default function Page() {
   const { url, setUrl, certificate, error, loading, analyze, reset } = useRepoAnalysis()
   const [buried, setBuried] = useState<number | null>(null)
+  const [displayedBuried, setDisplayedBuried] = useState<number | null>(null)
   const [statsLoading, setStatsLoading] = useState(true)
   const restoredRef = useRef(false)
 
@@ -27,6 +28,20 @@ export default function Page() {
       .catch(() => {})
       .finally(() => setStatsLoading(false))
   }, [])
+
+  useEffect(() => {
+    if (buried === null) return
+    const start = Math.max(0, buried - 20)
+    setDisplayedBuried(start)
+    let current = start
+    const tick = () => {
+      current += 1
+      setDisplayedBuried(current)
+      if (current < buried) setTimeout(tick, 55)
+    }
+    if (start < buried) setTimeout(tick, 120)
+    else setDisplayedBuried(buried)
+  }, [buried])
 
   useEffect(() => {
     if (restoredRef.current) return
@@ -69,9 +84,9 @@ export default function Page() {
               counting graves...
             </p>
           )}
-          {!statsLoading && buried !== null && buried >= 1 && (
+          {!statsLoading && displayedBuried !== null && displayedBuried >= 1 && (
             <p style={{ fontFamily: FONT, fontSize: '14px', fontWeight: 600, color: '#4f4f4f', opacity: 0.92, textAlign: 'center', margin: '8px 0 0 0', letterSpacing: '0.02em' }}>
-              {buried.toLocaleString()} repos buried
+              {displayedBuried.toLocaleString()} repos buried
             </p>
           )}
 
