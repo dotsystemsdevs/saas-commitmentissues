@@ -65,7 +65,7 @@ export default function SiteFooter({ compact = false }: SiteFooterProps) {
         onClick={handleRestClick}
         style={{ fontFamily: FONT }}
       >
-        {aliveFlash ? 'STILL SHIPPING.' : 'REST IN PRODUCTION.'}
+        {aliveFlash ? 'STILL SHIPPING' : 'REST IN PRODUCTION'}
       </button>
     </footer>
   )
