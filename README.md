@@ -2,7 +2,7 @@
 
 <p align="center">
   <strong>Official death certificates for abandoned GitHub repos.</strong><br/>
-  Paste a URL. Find out how dead it is.
+  Drop a URL. Find out how dead it is.
 </p>
 
 <p align="center">
@@ -16,16 +16,16 @@
 
 ## What it does
 
-You paste a GitHub repo URL. We run it through our **death index scoring algorithm** and generate an official, downloadable death certificate : complete with cause of death, last words, and a score from 0 to 10.
+Paste a GitHub repo URL. A **death index scoring algorithm** analyzes commit history, archive status, and issue count — then generates a downloadable death certificate complete with cause of death, last words, and a score from 0–10.
 
 ```
-https://github.com/facebook/react
-              ↓
+https://github.com/atom/atom
+            ↓
   Fetches repo metadata + latest commit
-  via GitHub public API (no key needed)
-              ↓
+  via GitHub public API
+            ↓
   Calculates death index (0–10)
-              ↓
+            ↓
   ☠️ Certificate of Death
 ```
 
@@ -43,22 +43,18 @@ https://github.com/facebook/react
 
 **Maximum: 10.** 0 = alive. 10 = fossil.
 
-**Cause of death** is rule-based : the highest-scoring match wins:
-
-| Condition | Cause of Death |
-|-----------|---------------|
-| `archived = true` | "Officially declared dead by author" |
-| Last commit: "fix typo" or "update readme" | "Died whispering: one last fix" |
-| Only 1–3 commits total | "Died after 3 commits and a burst of motivation" |
-| 200+ stars but inactive | "Started strong. Never finished." |
-| No description | "No README. No hope." |
-| Default | "Side project syndrome" |
+**Cause of death** is rule-based — the highest-scoring match wins. See [`src/lib/scoring.ts`](src/lib/scoring.ts) for the full ruleset.
 
 ---
 
 ## Features
 
-Death certificate with cause, last words, age, mourners, language; CERTIFIED DEAD stamp animation; download as PNG; share on X; leaderboard with Hall of Shame + Recently Buried; premium features via Stripe.
+- Death certificate with cause of death, last words, age, mourners, and language
+- Circular "REST IN PRODUCTION" stamp with animation
+- Download as PNG (share-ready or A4 print)
+- Share on X with pre-filled text
+- Hall of Shame leaderboard + recently buried repos
+- No account required. No data stored.
 
 ---
 
@@ -67,11 +63,10 @@ Death certificate with cause, last words, age, mourners, language; CERTIFIED DEA
 | | |
 |---|---|
 | Framework | Next.js 14 (App Router) |
-| Styling | Tailwind CSS |
-| Fonts | Geist Sans + Geist Mono |
-| Payments | Stripe |
+| Fonts | UnifrakturMaguntia · Courier Prime · Inter |
 | Deploy | Vercel |
-| Data | GitHub Public API (no key required) |
+| Storage | Vercel KV (usage counters only) |
+| Data | GitHub Public API |
 
 ---
 
@@ -84,7 +79,13 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). Optional: add `GITHUB_TOKEN` to `.env.local` to raise rate limit from 60 → 5,000 req/hr.
+Open [http://localhost:3000](http://localhost:3000).
+
+**Optional:** add a `GITHUB_TOKEN` to `.env.local` to raise the rate limit from 60 → 5,000 req/hr.
+
+```env
+GITHUB_TOKEN=ghp_yourtoken
+```
 
 ---
 
@@ -93,22 +94,26 @@ Open [http://localhost:3000](http://localhost:3000). Optional: add `GITHUB_TOKEN
 ```
 src/
 ├── app/
-│   ├── page.tsx                 ← search + certificate UI
-│   ├── certificate/             ← certificate view
-│   ├── pricing/                 ← plans
-│   ├── faq/                     ← FAQ
+│   ├── page.tsx              ← main UI (search + certificate)
+│   ├── about/                ← about / FAQ / privacy info
+│   ├── terms/                ← terms of service
+│   ├── privacy/              ← privacy policy
 │   └── api/
-│       ├── repo/                ← GitHub API proxy (CORS)
-│       ├── generate-cert/       ← certificate logic
-│       ├── stats/               ← usage stats
-│       └── checkout/            ← Stripe
+│       ├── repo/             ← GitHub API proxy + death scoring
+│       ├── stats/            ← usage counters (buried/shared/downloaded)
+│       └── recent/           ← recently analyzed repos
 ├── components/
-│   ├── CertificateCard.tsx      ← certificate UI + animation + download
-│   ├── Leaderboard.tsx          ← Hall of Shame + Recently Buried
-│   └── SearchForm.tsx           ← URL input
+│   ├── CertificateCard.tsx   ← certificate UI + export + share
+│   ├── CertificateSheet.tsx  ← printable A4 certificate (480×679px)
+│   ├── Leaderboard.tsx       ← Hall of Shame marquee
+│   ├── SearchForm.tsx        ← URL input + example chips
+│   ├── LoadingState.tsx      ← loading animation
+│   └── PageHero.tsx          ← page header component
 └── lib/
-    ├── scoring.ts               ← all death logic, no side effects
-    └── types.ts                 ← TypeScript interfaces
+    ├── scoring.ts            ← death index logic, no side effects
+    ├── rateLimit.ts          ← per-IP rate limiting
+    ├── recentStore.ts        ← in-memory recent repos store
+    └── types.ts              ← TypeScript interfaces
 ```
 
 ---
