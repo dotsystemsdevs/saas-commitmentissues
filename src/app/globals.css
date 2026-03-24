@@ -24,7 +24,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: calc(env(safe-area-inset-top) + 24px) 24px 0;
+  padding: calc(env(safe-area-inset-top) + 34px) 24px 0;
   padding-left: max(16px, env(safe-area-inset-left));
   padding-right: max(16px, env(safe-area-inset-right));
   padding-bottom: env(safe-area-inset-bottom, 0);
@@ -36,12 +36,14 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 /* Hero: identical geometry on every page (🪦, title, 2 text lines) */
 .page-hero {
   width: 100%;
   text-align: center;
+  padding-top: 8px;
   padding-bottom: 20px;
 }
 
@@ -213,9 +215,14 @@
   font-size: 13px;
   color: #938882;
   text-decoration: none;
-  display: inline-block;
-  padding-top: 12px;
-  padding-bottom: 4px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
   transition: color 0.15s;
 }
 .subpage-back-link:hover {
@@ -505,7 +512,7 @@ a.subpage-inline-mail {
 @media (max-width: 640px) {
   /* Page padding */
   main { padding-left: 16px !important; padding-right: 16px !important; }
-  .page-shell-main { padding-top: calc(env(safe-area-inset-top) + 20px); }
+  .page-shell-main { padding-top: calc(env(safe-area-inset-top) + 28px); }
 
   /* Certificate: handled by CSS var --cert-scale */
   .certificate-scroll-zone {
