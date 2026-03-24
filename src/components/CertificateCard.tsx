@@ -187,20 +187,6 @@ export default function CertificateCard({ cert, onReset }: Props) {
 
       {/* ── Actions ── */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '16px' }}>
-        <p
-          style={{
-            margin: '0 0 2px 0',
-            textAlign: 'center',
-            fontFamily: UI,
-            fontSize: '13px',
-            color: '#8f8680',
-            fontWeight: 500,
-            letterSpacing: '0.02em',
-          }}
-        >
-          Send this to a maintainer.
-        </p>
-
         {/* Share + Download row */}
         <div style={{ display: 'flex', gap: '8px' }}>
 
@@ -213,7 +199,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
             onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.97)' }}
             onMouseUp={e => { e.currentTarget.style.transform = 'translateY(-1px)' }}
           >
-            {isGeneratingShare ? 'Generating...' : 'Send to maintainer →'}
+            {isGeneratingShare ? 'Generating...' : 'Share death certificate →'}
           </button>
 
           {/* Download */}
@@ -236,30 +222,23 @@ export default function CertificateCard({ cert, onReset }: Props) {
           onClick={() => { track('issue_another_clicked'); onReset() }}
           style={{
             fontFamily: UI,
-            fontSize: '16px',
-            fontWeight: 600,
-            color: '#160A06',
-            background: '#fff',
-            border: '1px solid #d0cac4',
-            borderRadius: '10px',
+            fontSize: '14px',
+            fontWeight: 500,
+            color: '#7b726c',
+            background: 'none',
+            border: 'none',
             cursor: 'pointer',
-            padding: '13px 16px',
+            padding: '4px 0 0',
             textAlign: 'center',
             width: '100%',
-            transition: 'border-color 0.15s, box-shadow 0.15s, transform 0.12s',
-            textDecoration: 'underline',
-            textUnderlineOffset: '3px',
+            transition: 'color 0.15s',
             WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation',
           }}
           onMouseEnter={e => {
-            e.currentTarget.style.borderColor = '#888'
-            e.currentTarget.style.boxShadow = '0 6px 14px rgba(0,0,0,0.08)'
-            e.currentTarget.style.transform = 'translateY(-1px)'
+            e.currentTarget.style.color = '#160A06'
           }}
           onMouseLeave={e => {
-            e.currentTarget.style.borderColor = '#d0cac4'
-            e.currentTarget.style.boxShadow = 'none'
-            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.color = '#7b726c'
           }}
         >
           Kill another repo →
