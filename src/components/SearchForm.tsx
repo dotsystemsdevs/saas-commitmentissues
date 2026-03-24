@@ -3,6 +3,7 @@
 import { FormEvent, useState } from 'react'
 import { track } from '@vercel/analytics'
 import { CTA_RED, CTA_RED_HOVER } from '@/lib/cta'
+import ClickSpark from '@/components/ClickSpark'
 
 const FONT = `var(--font-dm), -apple-system, sans-serif`
 const MONO = `var(--font-courier), 'Courier New', monospace`
@@ -13,6 +14,7 @@ const EXAMPLES = [
   { owner: 'bower',  repo: 'bower',    url: 'https://github.com/bower/bower',    color: '#7a5c8a' },
   { owner: 'adobe',  repo: 'brackets', url: 'https://github.com/adobe/brackets', color: '#4a7a6a' },
 ]
+const TILTS = [-1.5, 1, -1]
 
 interface Props {
   url: string
@@ -95,6 +97,7 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
         </div>
 
         {/* Button */}
+        <ClickSpark color="#fff">
         <button
           type="submit"
           disabled={loading}
@@ -123,6 +126,7 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
         >
           {loading ? <span className="btn-spinner" /> : 'Declare it dead →'}
         </button>
+        </ClickSpark>
       </div>
 
       {/* TRY ONE OF THESE chips */}
@@ -131,7 +135,7 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
           try one of these
         </span>
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', justifyContent: 'center' }}>
-          {EXAMPLES.map(({ owner, repo, url, color }) => (
+          {EXAMPLES.map(({ owner, repo, url, color }, i) => (
             <button
               key={owner + repo}
               type="button"
@@ -144,19 +148,20 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
                 borderRadius: '5px',
                 padding: '6px 12px',
                 cursor: 'pointer',
-                transition: 'border-color 0.12s, background 0.12s, transform 0.12s',
+                transition: 'border-color 0.12s, background 0.12s, transform 0.15s',
                 WebkitTapHighlightColor: 'transparent',
                 touchAction: 'manipulation',
+                transform: `rotate(${TILTS[i]}deg)`,
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.borderColor = '#888'
                 e.currentTarget.style.background = '#faf7f3'
-                e.currentTarget.style.transform = 'translateY(-1px)'
+                e.currentTarget.style.transform = 'translateY(-2px) rotate(0deg)'
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.borderColor = '#d8d4d0'
                 e.currentTarget.style.background = '#fff'
-                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.transform = `rotate(${TILTS[i]}deg)`
               }}
             >
               <span style={{ color }}>{owner}</span>

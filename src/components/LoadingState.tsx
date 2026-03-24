@@ -3,40 +3,65 @@
 import { useState, useEffect } from 'react'
 
 const MESSAGES = [
-  'Consulting the reaper...',
   'Checking for a pulse...',
-  'None found. Proceeding...',
+  'None found. Proceeding.',
+  'Consulting the reaper...',
   'Filling out the paperwork...',
-  'Stamping the cause of death...',
+  'Cause of death: confirmed.',
+  'Stamping the certificate...',
 ]
 
-const WIDTHS = ['72%', '88%', '60%', '80%', '68%']
-const GH_FONT = `var(--font-dm), -apple-system, sans-serif`
+const FONT = `var(--font-dm), -apple-system, sans-serif`
+const MONO = `var(--font-courier), 'Courier New', monospace`
 
 export default function LoadingState() {
   const [index, setIndex] = useState(0)
+  const [visible, setVisible] = useState(true)
 
   useEffect(() => {
-    const id = setInterval(() => setIndex(i => (i + 1) % MESSAGES.length), 800)
+    const id = setInterval(() => {
+      setVisible(false)
+      setTimeout(() => {
+        setIndex(i => (i + 1) % MESSAGES.length)
+        setVisible(true)
+      }, 200)
+    }, 1800)
     return () => clearInterval(id)
   }, [])
 
   return (
-    <div className="w-full max-w-2xl mx-auto mt-10 space-y-4">
-      <p className="text-sm min-h-[1.5rem]" style={{ fontFamily: GH_FONT, color: '#7A5C38' }}>
+    <div style={{ width: '100%', textAlign: 'center', marginTop: '48px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+      <div style={{ fontSize: '56px', lineHeight: 1, animation: 'loading-float 1.8s ease-in-out infinite' }}>
+        🪦
+      </div>
+      <p style={{
+        fontFamily: FONT,
+        fontSize: '15px',
+        fontWeight: 600,
+        color: '#160A06',
+        margin: 0,
+        minHeight: '1.5em',
+        opacity: visible ? 1 : 0,
+        transition: 'opacity 0.2s ease',
+      }}>
         {MESSAGES[index]}
       </p>
-      <div style={{ background: '#FDFCF9', border: '1px solid rgba(42,26,14,0.15)', borderRadius: '6px' }}>
-        <div className="p-6 space-y-3">
-          {WIDTHS.map((w, i) => (
-            <div
-              key={i}
-              className="h-2 animate-pulse"
-              style={{ width: w, background: 'rgba(42,26,14,0.1)', animationDelay: `${i * 120}ms`, borderRadius: '2px' }}
-            />
-          ))}
-        </div>
-      </div>
+      <p style={{
+        fontFamily: MONO,
+        fontSize: '10px',
+        color: '#b0aca8',
+        letterSpacing: '0.12em',
+        textTransform: 'uppercase',
+        margin: 0,
+      }}>
+        writing the obituary
+      </p>
+      <style>{`
+        @keyframes loading-float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-6px); }
+        }
+      `}</style>
     </div>
   )
 }
