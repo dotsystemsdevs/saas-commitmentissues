@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { useRepoAnalysis } from '@/hooks/useRepoAnalysis'
 import SearchForm from '@/components/SearchForm'
 import LoadingState from '@/components/LoadingState'
@@ -10,9 +11,19 @@ import SiteFooter from '@/components/SiteFooter'
 import PageHero from '@/components/PageHero'
 
 const FONT = `var(--font-dm), -apple-system, sans-serif`
+const MONO = `var(--font-courier), 'Courier New', monospace`
+const BASE_COUNT = 1449
 
 export default function Page() {
   const { url, setUrl, certificate, error, loading, analyze, reset } = useRepoAnalysis()
+  const [buried, setBuried] = useState<number | null>(null)
+
+  useEffect(() => {
+    fetch('/api/stats')
+      .then(r => r.json())
+      .then((d: { buried: number }) => setBuried(BASE_COUNT + (d.buried ?? 0)))
+      .catch(() => {})
+  }, [])
 
   function handleSelect(selectedUrl: string) {
     setUrl(selectedUrl)
@@ -30,7 +41,7 @@ export default function Page() {
         <>
           <div style={{ marginTop: '32px' }}>
             <PageHero
-              subtitle="Drop a GitHub URL. We'll write the obituary it deserves."
+              subtitle="Paste a GitHub URL. We'll write the obituary it deserves."
               microcopy={null}
             />
           </div>
@@ -38,6 +49,12 @@ export default function Page() {
           <div style={{ width: '100%', marginTop: '12px' }}>
             <SearchForm url={url} setUrl={setUrl} onSubmit={() => analyze(url)} onSelect={handleSelect} loading={loading} />
           </div>
+
+          {buried !== null && (
+            <p style={{ fontFamily: MONO, fontSize: '11px', color: '#b0aca8', textAlign: 'center', margin: '14px 0 0 0', letterSpacing: '0.06em' }}>
+              {buried.toLocaleString()} repos buried and counting
+            </p>
+          )}
 
         </>
       )}

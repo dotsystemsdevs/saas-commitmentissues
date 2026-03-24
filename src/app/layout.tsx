@@ -71,34 +71,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body className={`${courierPrime.variable} ${unifraktur.variable} ${inter.variable} antialiased`}>
-        <a
-          href="https://buymeacoffee.com/commitmentissues"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="coffee-btn"
-          style={{
-            position: 'fixed',
-            top: '16px',
-            right: '16px',
-            zIndex: 50,
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '6px',
-            fontFamily: 'var(--font-courier), monospace',
-            fontSize: '11px',
-            fontWeight: 700,
-            letterSpacing: '0.04em',
-            color: '#938882',
-            textDecoration: 'none',
-            background: '#f5f5f5',
-            border: '1.5px solid #e0dbd5',
-            borderRadius: '6px',
-            padding: '6px 10px',
-            WebkitTapHighlightColor: 'transparent',
-          }}
-        >
-          ☕ keep it running
-        </a>
         {children}
         <Analytics />
         <SpeedInsights />

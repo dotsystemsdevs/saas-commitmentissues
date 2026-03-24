@@ -42,7 +42,7 @@ export default function SiteFooter() {
         onMouseLeave={e => (e.currentTarget.style.color = '#b0aca8')}
       >
         <GitHubIcon />
-        my not-so-dead repo
+        view source on GitHub
       </a>
       <p className="site-footer-copy" style={{ fontFamily: FONT }}>REST in production.</p>
     </footer>

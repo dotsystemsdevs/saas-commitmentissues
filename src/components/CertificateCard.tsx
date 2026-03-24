@@ -185,6 +185,26 @@ export default function CertificateCard({ cert, onReset }: Props) {
           Bury another →
         </button>
 
+        <a
+          href="https://buymeacoffee.com/commitmentissues"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'block',
+            fontFamily: UI,
+            fontSize: '12px',
+            color: '#c8c4c0',
+            textDecoration: 'none',
+            textAlign: 'center',
+            paddingBottom: '4px',
+            transition: 'color 0.15s',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.color = '#938882' }}
+          onMouseLeave={e => { e.currentTarget.style.color = '#c8c4c0' }}
+        >
+          ☕ keep it running
+        </a>
+
       </div>
 
     </div>
