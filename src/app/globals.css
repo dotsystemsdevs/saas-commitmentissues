@@ -541,9 +541,9 @@ a.subpage-inline-mail {
 /* ── Certificate scale — proportional scaling on small screens ── */
 :root { --cert-scale: 1; }
 
-@media (max-width: 520px) {
-  /* Reserve side gutters so scaled cert never clips off-screen */
-  :root { --cert-scale: min(1, calc((100vw - 28px) / 480)); }
+@media (max-width: 640px) {
+  /* Keep full 480px certificate visible inside page gutters on phones */
+  :root { --cert-scale: min(1, calc((100vw - 52px) / 480)); }
 }
 
 /* ── Mobile ── */
