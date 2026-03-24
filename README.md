@@ -82,6 +82,12 @@ GITHUB_TOKEN=ghp_yourtoken
 npm test
 ```
 
+## Contributing
+
+- Read `.github/CONTRIBUTING.md` before opening a PR
+- Use the issue templates and PR template
+- CI runs lint, tests, and build on `master` PRs
+
 ## Project structure
 
 ```text
