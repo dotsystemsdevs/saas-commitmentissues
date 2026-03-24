@@ -122,6 +122,8 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
           }}
           onMouseEnter={e => { if (!loading) e.currentTarget.style.background = CTA_RED_HOVER }}
           onMouseLeave={e => { e.currentTarget.style.background = CTA_RED }}
+          onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.97)' }}
+          onMouseUp={e => { e.currentTarget.style.transform = 'translateY(0)' }}
         >
           {loading ? <span className="btn-spinner" /> : 'Declare it dead →'}
         </button>

@@ -75,6 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://buymeacoffee.com/commitmentissues"
           target="_blank"
           rel="noopener noreferrer"
+          className="coffee-btn"
           style={{
             position: 'fixed',
             top: '16px',

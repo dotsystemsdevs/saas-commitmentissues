@@ -1,3 +1,5 @@
+'use client'
+
 const FONT = `var(--font-dm), -apple-system, sans-serif`
 const MONO = `var(--font-courier), 'Courier New', monospace`
 
@@ -36,6 +38,8 @@ export default function SiteFooter() {
           padding: '4px 0',
           width: '100%',
         }}
+        onMouseEnter={e => (e.currentTarget.style.color = '#160A06')}
+        onMouseLeave={e => (e.currentTarget.style.color = '#b0aca8')}
       >
         <GitHubIcon />
         my not-so-dead repo

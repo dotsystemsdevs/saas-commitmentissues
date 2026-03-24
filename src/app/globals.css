@@ -65,10 +65,16 @@
   border-radius: 4px;
 }
 
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
 .page-hero-emoji {
   font-size: clamp(52px, 12vw, 72px);
   line-height: 1;
   margin-bottom: 12px;
+  animation: hero-float 3.2s ease-in-out infinite;
 }
 
 .page-hero-title {
@@ -331,6 +337,19 @@ button {
 }
 
 
+.coffee-btn {
+  transition: color 0.15s, background 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.12s;
+}
+.coffee-btn:hover {
+  color: #160A06 !important;
+  border-color: #888 !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+  transform: translateY(-1px);
+}
+.coffee-btn:active {
+  transform: scale(0.96);
+}
+
 .subpage-faq-cta {
   display: inline-flex;
   align-items: center;
@@ -349,8 +368,12 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
+.subpage-faq-cta:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
 .subpage-faq-cta:active {
-  filter: brightness(0.92);
+  transform: scale(0.97);
 }
 
 
@@ -392,10 +415,27 @@ a.subpage-inline-mail {
   touch-action: manipulation;
 }
 
+.site-footer-nav a {
+  position: relative;
+}
+.site-footer-nav a::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  height: 1px;
+  background: #160A06;
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+  transform-origin: left;
+}
+.site-footer-nav a:hover::after {
+  transform: scaleX(1);
+}
 .site-footer-nav a:hover {
   color: #160A06;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  text-decoration: none !important;
 }
 
 .site-footer-nav a:active {
