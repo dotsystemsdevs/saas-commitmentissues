@@ -296,6 +296,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
           />
         </div>
       </div>
+      <p className="cert-mobile-hint">Preview scaled for mobile. Download for full-size version.</p>
 
       {/* Hidden fixed export source */}
       <div

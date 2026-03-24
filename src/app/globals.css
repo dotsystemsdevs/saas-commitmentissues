@@ -601,7 +601,7 @@ a.subpage-inline-mail {
 
 @media (max-width: 640px) {
   /* Scale only the fixed canvas visually; layout stays pixel-locked. */
-  :root { --cert-ui-scale: clamp(0.26, calc((100vw - 72px) / 794), 0.40); }
+  :root { --cert-ui-scale: clamp(0.28, calc((100vw - 108px) / 794), 0.36); }
 }
 
 /* ── Mobile ── */
@@ -615,7 +615,7 @@ a.subpage-inline-mail {
   .certificate-scroll-zone {
     width: 100%;
     margin-left: 0;
-    padding: 0 8px;
+    padding: 8px 20px 0;
     box-sizing: border-box;
     overflow-x: hidden;
   }
@@ -623,6 +623,16 @@ a.subpage-inline-mail {
   .certificate-card-shell {
     max-width: 100% !important;
     margin: 0 auto !important;
+  }
+
+  .cert-mobile-hint {
+    display: block;
+    margin: 0 0 14px;
+    text-align: center;
+    font-family: var(--font-dm), -apple-system, sans-serif;
+    font-size: 11px;
+    color: #7a7a7a;
+    letter-spacing: 0.02em;
   }
 
   /* Hero: keep CTA above the fold on small screens */
@@ -681,6 +691,10 @@ a.subpage-inline-mail {
   .site-footer-source-link { font-size: 12px !important; }
 
 
+}
+
+.cert-mobile-hint {
+  display: none;
 }
 
 @media print {
