@@ -5,11 +5,11 @@ const UI = `var(--font-dm), -apple-system, sans-serif`
 const SECTIONS = [
   {
     title: 'What is this?',
-    body: "A parody tool. Paste a GitHub URL and get an official-looking death certificate for your abandoned repo. Certificates are not legally valid documents. Do not use at a real funeral.",
+    body: "A parody tool for dead repos. Paste a GitHub URL and get an official-looking death certificate for your abandoned side project.",
   },
   {
     title: 'Is the data real?',
-    body: "Yes — we use GitHub's public API: commits, stars, issues, archive status. Causes of death are algorithmic. A scoring model based on inactivity, open issues, and archive status picks the best match.",
+    body: "Yes. We use GitHub's public API (commits, stars, issues, archive status). Cause of death is generated from those signals.",
   },
   {
     title: 'Private repos?',
@@ -17,16 +17,16 @@ const SECTIONS = [
   },
   {
     title: 'What we collect',
-    body: "Nothing. No accounts, no emails, no stored URLs. No cookies, no tracking. The repo URL you type never leaves your browser until you hit submit — and we don't store it after.",
+    body: "No accounts, no emails, no tracking cookies. We only process the URL you submit to generate the certificate, then move on.",
   },
   {
-    title: 'Cause of death (for the server)',
+    title: 'Support the Undertaker ☕',
     body: "This site runs on a cheap server and a questionable amount of free time. If it made you laugh, a coffee keeps the lights on.",
     coffee: true,
   },
   {
     title: 'Contact',
-    body: '',
+    body: 'Questions, bugs, or legal threats:',
     email: 'dot.systems@proton.me',
   },
 ]
@@ -35,30 +35,30 @@ export default function AboutPage() {
   return (
     <SubpageShell
       title="About"
-      subtitle="Everything you need to know. It fits on one page."
+      subtitle="Everything you need to know before the funeral."
       microcopy="Last updated March 2026"
     >
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {SECTIONS.map(({ title, body, email, coffee }, i) => (
           <div
             key={title}
-            className="faq-row"
             style={{
-              padding: '22px 0',
-              borderBottom: i < SECTIONS.length - 1 ? '1px solid #e8e4de' : 'none',
+              padding: '18px 16px',
+              border: '1px solid #e8e4de',
+              borderRadius: '14px',
+              background: '#fff',
+              boxShadow: i === 0 ? '0 1px 8px rgba(0,0,0,0.03)' : 'none',
             }}
           >
-            <p style={{ fontFamily: UI, fontSize: 'clamp(15px, 4vw, 16px)', fontWeight: 700, color: '#160A06', margin: '0 0 10px 0' }}>
+            <p style={{ fontFamily: UI, fontSize: 'clamp(16px, 4.2vw, 17px)', fontWeight: 700, color: '#160A06', margin: '0 0 10px 0' }}>
               {title}
             </p>
             <p style={{
               fontFamily: UI,
-              fontSize: 'clamp(14px, 3.8vw, 15px)',
+              fontSize: 'clamp(15px, 4vw, 16px)',
               color: '#6b6560',
-              lineHeight: 1.75,
+              lineHeight: 1.7,
               margin: 0,
-              borderLeft: '2px solid #EDE5D8',
-              paddingLeft: '14px',
             }}>
               {body}
               {email ? (
@@ -66,8 +66,8 @@ export default function AboutPage() {
               ) : null}
             </p>
             {coffee ? (
-              <a href="https://buymeacoffee.com/commitmentissues" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: '12px', marginLeft: '14px', fontFamily: `var(--font-courier), monospace`, fontSize: '12px', color: '#938882', textDecoration: 'none', letterSpacing: '0.04em' }}>
-                ☕ keep it running →
+              <a href="https://buymeacoffee.com/commitmentissues" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: '12px', fontFamily: `var(--font-courier), monospace`, fontSize: '12px', color: '#7b736d', textDecoration: 'none', letterSpacing: '0.04em' }}>
+                Keep the server alive →
               </a>
             ) : null}
           </div>
