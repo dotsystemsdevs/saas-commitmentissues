@@ -230,16 +230,34 @@ export default function CertificateCard({ cert, onReset }: Props) {
           type="button"
           onClick={() => { track('issue_another_clicked'); onReset() }}
           style={{
-            fontFamily: UI, fontSize: '13px', color: '#b0aca8',
-            background: 'none', border: 'none',
-            cursor: 'pointer', padding: '10px 0 4px',
-            textAlign: 'center', width: '100%', transition: 'color 0.15s',
+            fontFamily: UI,
+            fontSize: '16px',
+            fontWeight: 600,
+            color: '#160A06',
+            background: '#fff',
+            border: '1px solid #d0cac4',
+            borderRadius: '10px',
+            cursor: 'pointer',
+            padding: '12px 16px',
+            textAlign: 'center',
+            width: '100%',
+            transition: 'border-color 0.15s, box-shadow 0.15s, transform 0.12s',
+            textDecoration: 'underline',
+            textUnderlineOffset: '3px',
             WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation',
           }}
-          onMouseEnter={e => { e.currentTarget.style.color = '#160A06' }}
-          onMouseLeave={e => { e.currentTarget.style.color = '#b0aca8' }}
+          onMouseEnter={e => {
+            e.currentTarget.style.borderColor = '#888'
+            e.currentTarget.style.boxShadow = '0 6px 14px rgba(0,0,0,0.08)'
+            e.currentTarget.style.transform = 'translateY(-1px)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.borderColor = '#d0cac4'
+            e.currentTarget.style.boxShadow = 'none'
+            e.currentTarget.style.transform = 'translateY(0)'
+          }}
         >
-          Bury another →
+          Kill another repo →
         </button>
 
       </div>

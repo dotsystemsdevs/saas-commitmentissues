@@ -114,7 +114,7 @@ export default function Page() {
         <div style={{ width: '100%', marginTop: '40px', paddingBottom: 0 }}>
           <div style={{ marginBottom: '14px', textAlign: 'center' }}>
             <p style={{ fontFamily: FONT, fontSize: '13px', fontWeight: 600, color: '#b0aca8', margin: 0, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-              Famous Deaths
+              Recently Buried
             </p>
           </div>
           <Leaderboard onSelect={handleSelect} />

@@ -51,7 +51,7 @@ function GraveyardCard({ entry, onSelect }: { entry: LeaderboardEntry; onSelect:
         flexDirection: 'column',
         alignItems: 'flex-start',
         gap: '6px',
-        width: '260px',
+        width: '280px',
         flexShrink: 0,
         padding: '20px',
         background: '#fff',
@@ -90,13 +90,13 @@ function GraveyardCard({ entry, onSelect }: { entry: LeaderboardEntry; onSelect:
 export default function Leaderboard({ onSelect }: Props) {
   return (
     <div
-      style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)', overflow: 'hidden', padding: '4px 0 8px' }}
+      style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)', overflow: 'hidden', padding: '4px 20px 8px', scrollPaddingInline: '20px' }}
       onMouseEnter={e => { (e.currentTarget.querySelector('.marquee-track') as HTMLElement).style.animationPlayState = 'paused' }}
       onMouseLeave={e => { (e.currentTarget.querySelector('.marquee-track') as HTMLElement).style.animationPlayState = 'running' }}
     >
       <div className="marquee-track" style={{
         display: 'flex',
-        gap: '12px',
+        gap: '14px',
         animation: 'marquee 120s linear infinite',
         width: 'max-content',
       }}>
