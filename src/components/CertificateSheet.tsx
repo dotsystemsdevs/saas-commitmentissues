@@ -108,9 +108,6 @@ const CertificateSheet = forwardRef<HTMLDivElement, Props>(
                   <span style={{ fontFamily: MONO, fontSize: '11px', fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(139,26,26,0.72)', display: 'block', textAlign: 'center', lineHeight: 1.25 }}>
                     REST IN<br />PRODUCTION
                   </span>
-                  <p style={{ fontFamily: MONO, fontSize: '6px', letterSpacing: '0.3em', textAlign: 'center', color: 'rgba(139,26,26,0.42)', textTransform: 'uppercase', margin: '5px 0 0 0' }}>
-                    commitmentissues.dev
-                  </p>
                 </div>
               </div>
             )}
