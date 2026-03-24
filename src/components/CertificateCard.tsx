@@ -4,7 +4,6 @@ import { useRef, useState, useEffect } from 'react'
 import { track } from '@vercel/analytics'
 import { toBlob } from 'html-to-image'
 import { DeathCertificate } from '@/lib/types'
-import PageHero from '@/components/PageHero'
 import CertificateSheet from '@/components/CertificateSheet'
 
 interface Props {
@@ -152,17 +151,113 @@ export default function CertificateCard({ cert, onReset }: Props) {
 
   return (
     <div style={{ width: '100%', maxWidth: '480px', margin: '0 auto' }}>
+      {/* ── Top actions: back left, repo/share right ── */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '12px',
+          paddingBottom: '12px',
+          marginBottom: '14px',
+          borderBottom: '1px solid #d8d4d0',
+        }}
+      >
+        <button
+          type="button"
+          onClick={() => { track('issue_another_clicked'); onReset() }}
+          aria-label="Back"
+          style={{
+            width: '44px',
+            height: '44px',
+            border: '2px solid #0a0a0a',
+            background: '#fff',
+            color: '#0a0a0a',
+            borderRadius: '0px',
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '22px',
+            lineHeight: 1,
+          }}
+        >
+          ←
+        </button>
 
-      {/* ── Title ── */}
-      <PageHero
-        subtitle={
-          <>
-            <strong style={{ color: '#160A06' }}>{r.fullName}</strong> is officially dead. Here&apos;s the proof.
-          </>
-        }
-        microcopy={null}
-        onBrandClick={onReset}
-      />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <a
+            href={`https://github.com/${r.fullName}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              border: '2px solid #0a0a0a',
+              background: '#fff',
+              color: '#0a0a0a',
+              minHeight: '44px',
+              padding: '0 12px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              textDecoration: 'none',
+              fontFamily: UI,
+              fontSize: '15px',
+              fontWeight: 600,
+            }}
+          >
+            {r.name}
+            <span aria-hidden style={{ fontSize: '14px', lineHeight: 1 }}>↗</span>
+          </a>
+
+          <button
+            type="button"
+            onClick={() => handleDownload(3, 'certificate')}
+            aria-label="Download A4"
+            style={{
+              border: '2px solid #0a0a0a',
+              background: '#fff',
+              color: '#0a0a0a',
+              minHeight: '44px',
+              padding: '0 10px',
+              fontFamily: UI,
+              fontSize: '12px',
+              fontWeight: 700,
+              letterSpacing: '0.04em',
+            }}
+          >
+            A4
+          </button>
+
+          <button
+            type="button"
+            onClick={handleShare}
+            aria-label="Share death certificate"
+            disabled={isGeneratingShare}
+            style={{
+              width: '44px',
+              height: '44px',
+              border: '2px solid #0a0a0a',
+              background: '#fff',
+              color: '#0a0a0a',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}
+          >
+            {isGeneratingShare ? (
+              <span className="btn-spinner" />
+            ) : (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.7" y1="10.7" x2="15.3" y2="6.3"></line>
+                <line x1="8.7" y1="13.3" x2="15.3" y2="17.7"></line>
+              </svg>
+            )}
+          </button>
+        </div>
+      </div>
 
       {/* ── Certificate — fixed 480×679, CSS var scales on mobile ── */}
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'flex-start', marginBottom: '14px' }}>
@@ -183,67 +278,6 @@ export default function CertificateCard({ cert, onReset }: Props) {
             stampRef={stampRef}
           />
         </div>
-      </div>
-
-      {/* ── Actions ── */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '16px' }}>
-        {/* Share + Download row */}
-        <div style={{ display: 'flex', gap: '8px' }}>
-
-          {/* Share */}
-          <button type="button" onClick={handleShare}
-            style={{ flex: 1, fontFamily: UI, fontSize: '14px', fontWeight: 700, background: '#0a0a0a', color: '#fff', border: '1.5px solid #000', borderRadius: '10px', minHeight: '50px', padding: '14px 10px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', transition: 'opacity 0.15s, transform 0.1s', WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation' }}
-            disabled={isGeneratingShare}
-            onMouseEnter={e => { e.currentTarget.style.opacity = '0.9'; e.currentTarget.style.transform = 'translateY(-1px)' }}
-            onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)' }}
-            onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.97)' }}
-            onMouseUp={e => { e.currentTarget.style.transform = 'translateY(-1px)' }}
-          >
-            {isGeneratingShare ? 'Generating...' : 'Share death certificate →'}
-          </button>
-
-          {/* Download */}
-          <button type="button" onClick={() => handleDownload(3, 'certificate')}
-            style={{ flex: 1, fontFamily: UI, fontSize: '14px', fontWeight: 700, background: '#fff', color: '#160A06', border: '1.5px solid #000', borderRadius: '10px', minHeight: '50px', padding: '14px 10px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', transition: 'background 0.15s, border-color 0.15s, transform 0.1s', WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation' }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = '#888'; e.currentTarget.style.transform = 'translateY(-1px)' }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = '#000'; e.currentTarget.style.transform = 'translateY(0)' }}
-            onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.97)' }}
-            onMouseUp={e => { e.currentTarget.style.transform = 'translateY(-1px)' }}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#160A06" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Download A4
-          </button>
-
-        </div>
-
-        {/* Bury another */}
-        <button
-          type="button"
-          onClick={() => { track('issue_another_clicked'); onReset() }}
-          style={{
-            fontFamily: UI,
-            fontSize: '14px',
-            fontWeight: 500,
-            color: '#7b726c',
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            padding: '4px 0 0',
-            textAlign: 'center',
-            width: '100%',
-            transition: 'color 0.15s',
-            WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation',
-          }}
-          onMouseEnter={e => {
-            e.currentTarget.style.color = '#160A06'
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.color = '#7b726c'
-          }}
-        >
-          Kill another repo →
-        </button>
-
       </div>
 
       {showDesktopShareMenu && (
