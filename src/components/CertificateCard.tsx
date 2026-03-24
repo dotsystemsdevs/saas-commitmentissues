@@ -203,14 +203,14 @@ export default function CertificateCard({ cert, onReset }: Props) {
           type="button"
           onClick={() => { track('issue_another_clicked'); onReset() }}
           style={{
-            fontFamily: UI, fontSize: '13px', color: '#938882',
-            background: '#fff', border: '1.5px solid #e0dbd5', borderRadius: '10px',
-            cursor: 'pointer', padding: '14px 24px', minHeight: '48px',
-            textAlign: 'center', width: '100%', transition: 'color 0.15s, border-color 0.15s',
+            fontFamily: UI, fontSize: '13px', color: '#b0aca8',
+            background: 'none', border: 'none',
+            cursor: 'pointer', padding: '10px 0 4px',
+            textAlign: 'center', width: '100%', transition: 'color 0.15s',
             WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation',
           }}
-          onMouseEnter={e => { e.currentTarget.style.color = '#160A06'; e.currentTarget.style.borderColor = '#888' }}
-          onMouseLeave={e => { e.currentTarget.style.color = '#938882'; e.currentTarget.style.borderColor = '#e0dbd5' }}
+          onMouseEnter={e => { e.currentTarget.style.color = '#160A06' }}
+          onMouseLeave={e => { e.currentTarget.style.color = '#b0aca8' }}
         >
           Bury another →
         </button>
