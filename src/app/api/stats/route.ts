@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-async function getKv() {
+async function getRedis() {
+  if (!process.env.KV_REST_API_URL || !process.env.KV_REST_API_TOKEN) return null
   try {
-    const { kv } = await import('@vercel/kv')
-    return kv
+    const { Redis } = await import('@upstash/redis')
+    return new Redis({ url: process.env.KV_REST_API_URL, token: process.env.KV_REST_API_TOKEN })
   } catch {
     return null
   }
@@ -11,12 +12,12 @@ async function getKv() {
 
 export async function GET() {
   try {
-    const kv = await getKv()
-    if (!kv) return NextResponse.json({ buried: 0, shared: 0, downloaded: 0 })
+    const redis = await getRedis()
+    if (!redis) return NextResponse.json({ buried: 0, shared: 0, downloaded: 0 })
     const [buried, shared, downloaded] = await Promise.all([
-      kv.get<number>('stats:buried'),
-      kv.get<number>('stats:shared'),
-      kv.get<number>('stats:downloaded'),
+      redis.get<number>('stats:buried'),
+      redis.get<number>('stats:shared'),
+      redis.get<number>('stats:downloaded'),
     ])
     return NextResponse.json({
       buried:     buried     ?? 0,
@@ -34,9 +35,9 @@ export async function POST(req: NextRequest) {
     if (!['buried', 'shared', 'downloaded'].includes(counter)) {
       return NextResponse.json({ error: 'invalid counter' }, { status: 400 })
     }
-    const kv = await getKv()
-    if (!kv) return NextResponse.json({ ok: true })
-    await kv.incr(`stats:${counter}`)
+    const redis = await getRedis()
+    if (!redis) return NextResponse.json({ ok: true })
+    await redis.incr(`stats:${counter}`)
     return NextResponse.json({ ok: true })
   } catch {
     return NextResponse.json({ ok: true })

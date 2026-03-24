@@ -10,6 +10,7 @@
     "test": "tsx --test src/lib/scoring.test.ts"
   },
   "dependencies": {
+    "@upstash/redis": "^1.37.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/kv": "^3.0.0",
     "@vercel/speed-insights": "^2.0.0",
