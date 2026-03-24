@@ -218,7 +218,10 @@ export default function CertificateCard({ cert, onReset }: Props) {
           onClick={() => { track('issue_another_clicked'); onReset() }}
           aria-label="Back"
         >
-          ←
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <path d="M15 18l-6-6 6-6"></path>
+            <path d="M9 12h12"></path>
+          </svg>
         </button>
 
         <div className="certificate-actions-right" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
