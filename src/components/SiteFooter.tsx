@@ -36,7 +36,7 @@ export default function SiteFooter({ compact = false }: SiteFooterProps) {
           gap: '6px',
           fontFamily: MONO,
           fontSize: '12px',
-          color: '#938882',
+          color: '#7f7670',
           textDecoration: 'none',
           letterSpacing: '0.04em',
           padding: '4px 0',

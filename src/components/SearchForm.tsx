@@ -159,7 +159,7 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
 
       {/* TRY ONE OF THESE chips */}
       <div className="chips-container chips-section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', marginTop: '8px', marginBottom: '8px' }}>
-        <span style={{ fontFamily: MONO, fontSize: '10px', letterSpacing: '0.18em', color: '#b0aca8', textTransform: 'uppercase' }}>
+        <span style={{ fontFamily: MONO, fontSize: '10px', letterSpacing: '0.18em', color: '#968d86', textTransform: 'uppercase' }}>
           start with a known corpse:
         </span>
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', justifyContent: 'center' }}>
@@ -177,9 +177,10 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
                 fontFamily: MONO,
                 fontSize: '12px',
                 background: '#fff',
-                border: '1.5px solid #d8d4d0',
-                borderRadius: '5px',
-                padding: '6px 12px',
+                border: '1px solid #0a0a0a',
+                borderRadius: '7px',
+                padding: '10px 14px',
+                minHeight: '44px',
                 cursor: 'pointer',
                 transition: 'border-color 0.12s, background 0.12s, transform 0.15s',
                 WebkitTapHighlightColor: 'transparent',
@@ -192,7 +193,7 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
                 e.currentTarget.style.transform = 'translateY(-2px) rotate(0deg)'
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.borderColor = '#d8d4d0'
+                e.currentTarget.style.borderColor = '#0a0a0a'
                 e.currentTarget.style.background = '#fff'
                 e.currentTarget.style.transform = `rotate(${TILTS[i]}deg)`
               }}

@@ -90,7 +90,7 @@
   font-family: var(--font-dm), system-ui, sans-serif;
   font-size: clamp(14px, 3.5vw, 16px);
   font-weight: 400;
-  color: #938882;
+  color: #7f7771;
   line-height: 1.4;
   margin: 0 auto;
   max-width: 480px;
@@ -399,7 +399,7 @@ a.subpage-inline-mail {
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .site-footer--compact {
@@ -436,8 +436,8 @@ a.subpage-inline-mail {
 }
 
 .site-footer-nav a {
-  font-size: 13px;
-  color: #938882;
+  font-size: 14px;
+  color: #6f6761;
   text-decoration: none;
   padding: 10px 8px;
   min-height: 44px;
@@ -476,7 +476,7 @@ a.subpage-inline-mail {
 
 .site-footer-copy {
   font-size: 12px;
-  color: #968d86;
+  color: #807771;
   letter-spacing: 0.04em;
   margin: 0;
 }
@@ -534,6 +534,7 @@ a.subpage-inline-mail {
   .page-hero-emoji { margin-bottom: 8px; }
   .page-hero-title { font-size: clamp(2.2rem, 12vw, 2.8rem); margin-bottom: 10px; }
   .page-hero-sub { font-size: 15px; }
+  .page-shell-main { min-height: 100svh; }
 
   .input-button-wrapper {
     flex-direction: column;

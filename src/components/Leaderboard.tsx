@@ -51,7 +51,8 @@ function GraveyardCard({ entry, onSelect }: { entry: LeaderboardEntry; onSelect:
         flexDirection: 'column',
         alignItems: 'flex-start',
         gap: '6px',
-        width: '280px',
+        width: '296px',
+        minHeight: '184px',
         flexShrink: 0,
         padding: '20px',
         background: '#fff',
@@ -72,12 +73,18 @@ function GraveyardCard({ entry, onSelect }: { entry: LeaderboardEntry; onSelect:
         e.currentTarget.style.transform = 'translateY(0)'
         e.currentTarget.style.boxShadow = '0 1px 4px rgba(0,0,0,0.05)'
       }}
+      onMouseDown={e => {
+        e.currentTarget.style.transform = 'scale(0.99)'
+      }}
+      onMouseUp={e => {
+        e.currentTarget.style.transform = 'translateY(-1px)'
+      }}
     >
       <span style={{ fontSize: '20px', lineHeight: 1 }}>🪦</span>
       <span style={{ fontSize: '13px', fontWeight: 700, color: '#0a0a0a', lineHeight: 1.3, wordBreak: 'break-word' }}>
         {entry.fullName}
       </span>
-      <span style={{ fontSize: '13px', fontStyle: 'italic', color: '#555', lineHeight: 1.55, fontWeight: 500, marginTop: '2px' }}>
+      <span style={{ fontSize: '14px', fontStyle: 'italic', color: '#4f4a46', lineHeight: 1.6, fontWeight: 500, marginTop: '2px' }}>
         {entry.cause}
       </span>
       <span style={{ fontSize: '11px', color: '#b0aca8', marginTop: '4px' }}>
