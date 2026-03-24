@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRepoAnalysis } from '@/hooks/useRepoAnalysis'
 import SearchForm from '@/components/SearchForm'
 import LoadingState from '@/components/LoadingState'
@@ -18,6 +18,7 @@ export default function Page() {
   const { url, setUrl, certificate, error, loading, analyze, reset } = useRepoAnalysis()
   const [buried, setBuried] = useState<number | null>(null)
   const [statsLoading, setStatsLoading] = useState(true)
+  const restoredRef = useRef(false)
 
   useEffect(() => {
     fetch('/api/stats')
@@ -26,6 +27,17 @@ export default function Page() {
       .catch(() => {})
       .finally(() => setStatsLoading(false))
   }, [])
+
+  useEffect(() => {
+    if (restoredRef.current) return
+    restoredRef.current = true
+    if (typeof window === 'undefined') return
+    const repo = new URLSearchParams(window.location.search).get('repo')
+    if (!repo) return
+    const restoredUrl = `https://github.com/${repo}`
+    setUrl(restoredUrl)
+    analyze(restoredUrl)
+  }, [analyze, setUrl])
 
   function handleSelect(selectedUrl: string) {
     setUrl(selectedUrl)

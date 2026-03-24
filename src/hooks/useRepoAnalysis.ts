@@ -27,6 +27,13 @@ export function useRepoAnalysis() {
         setError({ message: data.error, retryAfter: data.retryAfter })
       } else {
         setCertificate(data)
+        // Keep current certificate restorable after refresh/navigation.
+        if (typeof window !== 'undefined') {
+          const params = new URLSearchParams(window.location.search)
+          params.set('repo', data.repoData.fullName)
+          const next = `${window.location.pathname}?${params.toString()}`
+          window.history.replaceState(null, '', next)
+        }
         fetch('/api/stats', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ counter: 'buried' }) }).catch(() => {})
         // Save to localStorage for "Recently Buried"
         try {
@@ -53,6 +60,12 @@ export function useRepoAnalysis() {
     setCertificate(null)
     setError(null)
     setUrl('')
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search)
+      params.delete('repo')
+      const next = params.toString() ? `${window.location.pathname}?${params.toString()}` : window.location.pathname
+      window.history.replaceState(null, '', next)
+    }
   }
 
   return { url, setUrl, certificate, error, loading, analyze, reset }
