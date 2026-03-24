@@ -396,8 +396,8 @@ a.subpage-inline-mail {
 }
 
 .site-footer--compact {
-  margin-top: 14px;
-  padding-top: 28px;
+  margin-top: 6px;
+  padding-top: 14px;
 }
 
 .homepage-cert-preview {
@@ -495,7 +495,7 @@ a.subpage-inline-mail {
 :root { --cert-scale: 1; }
 
 @media (max-width: 520px) {
-  :root { --cert-scale: calc(100vw / 520px); }
+  :root { --cert-scale: calc(100vw / 480px); }
 }
 
 /* ── Mobile ── */
@@ -506,7 +506,12 @@ a.subpage-inline-mail {
   .page-shell-main { padding-top: 34px; }
 
   /* Certificate: handled by CSS var --cert-scale */
-  .certificate-scroll-zone { width: 100%; padding: 0; margin: 0; overflow: visible; }
+  .certificate-scroll-zone {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: 0;
+    overflow: visible;
+  }
 
   /* Certificate action buttons: outside zoom wrapper, full width */
   .cert-actions { flex-direction: column !important; width: 100% !important; }
@@ -540,6 +545,11 @@ a.subpage-inline-mail {
 
   .homepage-cert-preview {
     height: 220px;
+  }
+
+  .page-shell-body--subpage {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   /* Footer: larger tap targets */
