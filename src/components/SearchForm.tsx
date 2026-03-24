@@ -166,37 +166,37 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
         </p>
       )}
 
-      {/* Random dead repo button */}
-      <div className="chips-section" style={{ display: 'flex', justifyContent: 'center', marginTop: '8px', marginBottom: '8px' }}>
+      {/* Random dead repo */}
+      <div className="chips-section" style={{ display: 'flex', justifyContent: 'center', marginTop: '6px', marginBottom: '8px' }}>
         <button
           type="button"
           onClick={handleRandom}
           disabled={randomLoading || loading}
           style={{
-            fontFamily: MONO,
-            fontSize: '12px',
-            letterSpacing: '0.06em',
-            background: '#fff',
-            border: '1px solid #0a0a0a',
-            borderRadius: '0px',
-            padding: '10px 20px',
-            minHeight: '44px',
+            fontFamily: FONT,
+            fontSize: '13px',
+            fontWeight: 500,
+            color: randomLoading || loading ? '#aaa' : '#5f5f5f',
+            background: 'transparent',
+            border: 'none',
+            padding: '6px 4px',
             cursor: randomLoading || loading ? 'wait' : 'pointer',
             display: 'inline-flex',
             alignItems: 'center',
-            gap: '8px',
-            transition: 'background 0.12s, opacity 0.12s',
+            gap: '6px',
+            textDecoration: 'underline',
+            textUnderlineOffset: '3px',
+            textDecorationColor: 'rgba(0,0,0,0.2)',
+            transition: 'color 0.15s',
             WebkitTapHighlightColor: 'transparent',
             touchAction: 'manipulation',
           }}
-          onMouseEnter={e => { e.currentTarget.style.background = '#faf7f3' }}
-          onMouseLeave={e => { e.currentTarget.style.background = '#fff' }}
-          onMouseDown={e => { e.currentTarget.style.opacity = '0.85' }}
-          onMouseUp={e => { e.currentTarget.style.opacity = '1' }}
+          onMouseEnter={e => { e.currentTarget.style.color = '#1f1f1f' }}
+          onMouseLeave={e => { e.currentTarget.style.color = '#5f5f5f' }}
         >
           {randomLoading
-            ? <><span className="btn-spinner" style={{ borderColor: 'rgba(0,0,0,0.2)', borderTopColor: '#0a0a0a' }} />fetching a corpse...</>
-            : <>🎲 bury a random dead repo</>
+            ? 'finding a corpse...'
+            : 'or pick a random dead repo →'
           }
         </button>
       </div>
