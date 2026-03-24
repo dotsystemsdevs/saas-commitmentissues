@@ -16,8 +16,8 @@ export default function SubpageShell({ subtitle, title, microcopy, headerExtra, 
   return (
     <main className="page-shell-main">
       <div className="page-shell-inner">
-        <Link href="/" className="subpage-back-link">
-          back
+        <Link href="/" className="subpage-back-link" aria-label="Back">
+          ←
         </Link>
         <PageHero subtitle={subtitle} title={title} microcopy={microcopy} brandHref="/" />
         {headerExtra ? <div className="page-hero-extra">{headerExtra}</div> : null}

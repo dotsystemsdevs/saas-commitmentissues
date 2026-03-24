@@ -170,7 +170,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
           onClick={() => { track('issue_another_clicked'); onReset() }}
           aria-label="Back"
         >
-          back
+          ←
         </button>
 
         <div className="certificate-actions-right" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -178,20 +178,24 @@ export default function CertificateCard({ cert, onReset }: Props) {
             className="certificate-action-a4"
             type="button"
             onClick={() => handleDownload(3, 'certificate')}
-            aria-label="Download A4"
+            aria-label="Download certificate"
             style={{
+              width: '44px',
+              height: '44px',
               border: '1px solid #0a0a0a',
               background: '#f6f6f6',
               color: '#0a0a0a',
-              minHeight: '44px',
-              padding: '0 10px',
-              fontFamily: UI,
-              fontSize: '12px',
-              fontWeight: 700,
-              letterSpacing: '0.04em',
+              padding: 0,
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
-            A4
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M12 3v12"></path>
+              <path d="M7 10l5 5 5-5"></path>
+              <path d="M4 20h16"></path>
+            </svg>
           </button>
 
           <button
