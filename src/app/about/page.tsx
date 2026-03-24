@@ -20,7 +20,7 @@ const SECTIONS = [
     body: "No accounts, no emails, no tracking cookies. We only process the URL you submit to generate the certificate, then move on.",
   },
   {
-    title: 'Support the Undertaker ☕',
+    title: 'Support the Undertaker ⚰️',
     body: "This site runs on a cheap server and a questionable amount of free time. If it made you laugh, a coffee keeps the lights on.",
     coffee: true,
   },
@@ -66,7 +66,29 @@ export default function AboutPage() {
               ) : null}
             </p>
             {coffee ? (
-              <a href="https://buymeacoffee.com/commitmentissues" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: '12px', fontFamily: `var(--font-courier), monospace`, fontSize: '12px', color: '#555', textDecoration: 'none', letterSpacing: '0.04em' }}>
+              <a
+                className="coffee-btn"
+                href="https://buymeacoffee.com/commitmentissues"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginTop: '12px',
+                  minHeight: '42px',
+                  padding: '0 14px',
+                  border: '2px solid #0a0a0a',
+                  background: '#f7f7f7',
+                  color: '#1f1f1f',
+                  textDecoration: 'none',
+                  fontFamily: `var(--font-courier), monospace`,
+                  fontSize: '12px',
+                  fontWeight: 700,
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                }}
+              >
                 Keep the server alive →
               </a>
             ) : null}
