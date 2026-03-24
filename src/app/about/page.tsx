@@ -20,7 +20,7 @@ const SECTIONS = [
     body: "Nothing. No accounts, no emails, no stored URLs. No cookies, no tracking. The repo URL you type never leaves your browser until you hit submit — and we don't store it after.",
   },
   {
-    title: 'Keep me alive',
+    title: 'Cause of death (for the server)',
     body: "This site runs on a cheap server and a questionable amount of free time. No VC money, no team, no plan. If it made you laugh, a coffee keeps the lights on.",
     coffee: true,
   },

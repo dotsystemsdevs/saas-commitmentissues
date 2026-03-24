@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import SubpageShell from '@/components/SubpageShell'
 
 export default function NotFound() {
@@ -13,9 +14,13 @@ export default function NotFound() {
           fontSize: '13px',
           color: '#b0aca8',
           letterSpacing: '0.04em',
+          marginBottom: '28px',
         }}>
           Nothing here. Not even a last commit.
         </p>
+        <Link href="/" className="subpage-faq-cta">
+          bury something that exists →
+        </Link>
       </div>
     </SubpageShell>
   )
