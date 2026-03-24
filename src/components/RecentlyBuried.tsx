@@ -78,9 +78,16 @@ export default function RecentlyBuried({ onSelect }: Props) {
               <span style={{ fontSize: '14px', fontStyle: 'italic', color: '#4d4d4d', lineHeight: 1.6, fontWeight: 500, marginTop: '2px' }}>
                 {entry.cause}
               </span>
-              <span style={{ fontFamily: MONO, fontSize: '13px', fontWeight: 700, color: '#8B0000', marginTop: 'auto' }}>
-                {entry.score}/10
-              </span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginTop: 'auto' }}>
+                <span style={{ fontSize: '12px', color: '#787878' }}>
+                  {entry.analyzedAt
+                    ? new Date(entry.analyzedAt).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })
+                    : ''}
+                </span>
+                <span style={{ fontFamily: MONO, fontSize: '13px', fontWeight: 700, color: '#8B0000' }}>
+                  {entry.score}/10
+                </span>
+              </div>
             </button>
           ))}
         </div>
