@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import SubpageShell from '@/components/SubpageShell'
 
 const UI = `var(--font-dm), -apple-system, sans-serif`
@@ -21,6 +20,11 @@ const SECTIONS = [
     body: "Nothing. No accounts, no emails, no stored URLs. No cookies, no tracking. The repo URL you type never leaves your browser until you hit submit — and we don't store it after.",
   },
   {
+    title: 'Keep me alive',
+    body: "This site runs on a cheap server and a questionable amount of free time. No VC money, no team, no plan. If it made you laugh, a coffee keeps the lights on.",
+    coffee: true,
+  },
+  {
     title: 'Contact',
     body: '',
     email: 'dot.systems@proton.me',
@@ -35,7 +39,7 @@ export default function AboutPage() {
       microcopy="Last updated March 2026"
     >
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        {SECTIONS.map(({ title, body, email }, i) => (
+        {SECTIONS.map(({ title, body, email, coffee }, i) => (
           <div
             key={title}
             className="faq-row"
@@ -60,24 +64,16 @@ export default function AboutPage() {
               {email ? (
                 <a href={`mailto:${email}`} className="subpage-inline-mail">{email}</a>
               ) : null}
+              {coffee ? (
+                <a href="https://buymeacoffee.com/commitmentissues" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: '12px', fontFamily: `var(--font-courier), monospace`, fontSize: '12px', color: '#938882', textDecoration: 'none', letterSpacing: '0.04em' }}>
+                  ☕ buy me a coffee →
+                </a>
+              ) : null}
             </p>
           </div>
         ))}
       </div>
 
-      <div style={{ paddingTop: '36px', paddingBottom: '8px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
-        <Link href="/" className="subpage-faq-cta">
-          issue a certificate →
-        </Link>
-        <a
-          href="https://buymeacoffee.com/commitmentissues"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ fontFamily: `var(--font-courier), monospace`, fontSize: '11px', color: '#b0aca8', textDecoration: 'none', letterSpacing: '0.04em' }}
-        >
-          ☕ keep me alive
-        </a>
-      </div>
     </SubpageShell>
   )
 }
