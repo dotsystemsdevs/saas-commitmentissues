@@ -1,5 +1,9 @@
 import { RepoData } from './types'
 
+const COMMITMENTISSUES_REPO = 'dotsystemsdevs/commitmentissues'
+const COMMITMENTISSUES_CAUSE = 'Monetized before loved.'
+const COMMITMENTISSUES_LAST_WORDS = "should've farmed laughs before revenue."
+
 const KNOWN_REPO_CAUSES: Record<string, string> = {
   'bower/bower': 'npm install happened and nobody looked back',
   'atom/atom': 'GitHub shipped VS Code, then sunset Atom in public',
@@ -35,6 +39,10 @@ export function getDeathLabel(index: number): string {
 }
 
 export function determineCauseOfDeath(repo: RepoData): string {
+  if (repo.fullName.toLowerCase() === COMMITMENTISSUES_REPO) {
+    return COMMITMENTISSUES_CAUSE
+  }
+
   const knownRepoCause = KNOWN_REPO_CAUSES[repo.fullName.toLowerCase()]
   if (knownRepoCause) return knownRepoCause
 
@@ -117,6 +125,10 @@ export function determineCauseOfDeath(repo: RepoData): string {
 }
 
 export function generateLastWords(repo: RepoData): string {
+  if (repo.fullName.toLowerCase() === COMMITMENTISSUES_REPO) {
+    return COMMITMENTISSUES_LAST_WORDS
+  }
+
   const now = new Date()
   const lastCommit = new Date(repo.lastCommitDate)
   const daysSince = (now.getTime() - lastCommit.getTime()) / (1000 * 60 * 60 * 24)
