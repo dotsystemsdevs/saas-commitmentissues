@@ -629,7 +629,7 @@ a.subpage-inline-mail {
   .input-submit-button {
     width: 100%;
     border-left: none !important;
-    border-top: 1px solid rgba(0,0,0,0.1) !important;
+    border-top: none !important;
   }
 
   .input-button-wrapper:focus-within {

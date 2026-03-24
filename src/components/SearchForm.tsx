@@ -129,7 +129,6 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
             background: '#fff',
             color: '#0a0a0a',
             border: 'none',
-            borderLeft: '2px solid #0a0a0a',
             cursor: loading ? 'wait' : 'pointer',
             display: 'flex',
             alignItems: 'center',
