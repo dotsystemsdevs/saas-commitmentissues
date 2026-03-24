@@ -263,6 +263,11 @@ button {
   to   { transform: translateX(-50%); }
 }
 
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
 
 /* ── Button spinner ── */
 @keyframes spin {
