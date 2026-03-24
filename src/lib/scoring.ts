@@ -1,7 +1,7 @@
 import { RepoData } from './types'
 
 const KNOWN_REPO_CAUSES: Record<string, string> = {
-  'bower/bower': 'npm and Yarn took over, then the maintainers published the eulogy themselves',
+  'bower/bower': 'npm install happened and nobody looked back',
   'atom/atom': 'GitHub shipped VS Code, then sunset Atom in public',
   'adobe/brackets': 'Adobe handed it to the community after VS Code won the editor war',
   'angularjs/angular.js': 'AngularJS hit official end-of-life when modern Angular replaced it',
@@ -66,7 +66,7 @@ export function determineCauseOfDeath(repo: RepoData): string {
     },
     {
       score: repo.stargazersCount > 200 && daysSince > 365 ? 7 : 0,
-      cause: 'Started strong. Never finished.',
+      cause: "The stars couldn't save it",
     },
     {
       score: repo.openIssuesCount > 50 ? 7 : 0,

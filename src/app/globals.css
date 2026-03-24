@@ -409,7 +409,7 @@ a.subpage-inline-mail {
 }
 
 .site-footer--compact {
-  margin-top: auto;
+  margin-top: 36px;
   padding-top: 26px;
 }
 
@@ -701,9 +701,6 @@ a.subpage-inline-mail {
     flex: 0 0 auto !important;
   }
 
-  .certificate-card {
-    max-width: 100% !important;
-  }
 
   /* Certificate action buttons: outside zoom wrapper, full width */
   .cert-actions { flex-direction: column !important; width: 100% !important; }

@@ -294,6 +294,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
           ref={wrapperRef}
           style={{
             width: '794px',
+            flexShrink: 0,
             transformOrigin: 'top center',
             transform: 'scale(var(--cert-ui-scale, 0.604))',
             marginBottom: 'calc((1123px * var(--cert-ui-scale, 0.604)) - 1123px)',

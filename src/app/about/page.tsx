@@ -34,7 +34,7 @@ const SECTIONS = [
 export default function AboutPage() {
   return (
     <SubpageShell
-      title="About"
+      title="The Mortician"
       subtitle="Everything you need to know before the funeral."
       microcopy="Last updated March 2026"
     >
