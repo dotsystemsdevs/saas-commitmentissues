@@ -481,6 +481,19 @@ a.subpage-inline-mail {
   margin: 0;
 }
 
+/* Certificate view actions */
+.certificate-card-shell {
+  width: min(100%, 480px);
+}
+
+.certificate-actions-right {
+  min-width: 0;
+}
+
+.certificate-action-repo {
+  min-width: 0;
+}
+
 
 @layer base {
   html { scroll-behavior: smooth; }
@@ -520,9 +533,67 @@ a.subpage-inline-mail {
   .certificate-scroll-zone {
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    padding: 0 16px;
+    padding: 0 12px;
     box-sizing: border-box;
     overflow: visible;
+  }
+
+  .certificate-card-shell {
+    max-width: 100% !important;
+  }
+
+  .certificate-top-actions {
+    gap: 8px !important;
+    align-items: flex-start !important;
+  }
+
+  .certificate-action-back {
+    width: 40px !important;
+    height: 40px !important;
+    flex: 0 0 40px !important;
+    font-size: 20px !important;
+  }
+
+  .certificate-actions-right {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 6px !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  .certificate-action-about,
+  .certificate-action-a4,
+  .certificate-action-share {
+    min-height: 40px !important;
+    height: 40px !important;
+  }
+
+  .certificate-action-share {
+    width: 40px !important;
+    min-width: 40px !important;
+  }
+
+  .certificate-action-a4,
+  .certificate-action-about {
+    padding: 0 8px !important;
+    font-size: 11px !important;
+    letter-spacing: 0.02em !important;
+    white-space: nowrap !important;
+    flex: 0 0 auto !important;
+  }
+
+  .certificate-action-repo {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding: 0 8px !important;
+    gap: 6px !important;
+    font-size: 13px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
   }
 
   /* Certificate action buttons: outside zoom wrapper, full width */

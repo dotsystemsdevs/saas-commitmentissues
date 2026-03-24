@@ -150,9 +150,10 @@ export default function CertificateCard({ cert, onReset }: Props) {
   const UI = `var(--font-dm), -apple-system, sans-serif`
 
   return (
-    <div style={{ width: '100%', maxWidth: '480px', margin: '0 auto' }}>
+    <div className="certificate-card-shell" style={{ width: '100%', maxWidth: '480px', margin: '0 auto' }}>
       {/* ── Top actions: back left, repo/share right ── */}
       <div
+        className="certificate-top-actions"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -164,6 +165,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
         }}
       >
         <button
+          className="certificate-action-back"
           type="button"
           onClick={() => { track('issue_another_clicked'); onReset() }}
           aria-label="Back"
@@ -184,8 +186,29 @@ export default function CertificateCard({ cert, onReset }: Props) {
           ←
         </button>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+        <div className="certificate-actions-right" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
           <a
+            href="/about"
+            className="certificate-action-about"
+            style={{
+              border: '2px solid #0a0a0a',
+              background: '#fff',
+              color: '#0a0a0a',
+              minHeight: '44px',
+              padding: '0 10px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              textDecoration: 'none',
+              fontFamily: UI,
+              fontSize: '12px',
+              fontWeight: 700,
+              letterSpacing: '0.03em',
+            }}
+          >
+            ABOUT
+          </a>
+          <a
+            className="certificate-action-repo"
             href={`https://github.com/${r.fullName}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -209,6 +232,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
           </a>
 
           <button
+            className="certificate-action-a4"
             type="button"
             onClick={() => handleDownload(3, 'certificate')}
             aria-label="Download A4"
@@ -228,6 +252,7 @@ export default function CertificateCard({ cert, onReset }: Props) {
           </button>
 
           <button
+            className="certificate-action-share"
             type="button"
             onClick={handleShare}
             aria-label="Share death certificate"
