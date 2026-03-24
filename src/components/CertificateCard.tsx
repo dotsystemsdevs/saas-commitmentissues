@@ -21,7 +21,12 @@ function clamp(value: number, min: number, max: number) {
 
 function getCertificateUiScale(viewportWidth: number) {
   if (viewportWidth > 900) return DESKTOP_CERT_UI_SCALE
-  return clamp((viewportWidth - 170) / CERT_RENDER_WIDTH, 0.18, 0.32)
+  if (viewportWidth <= 640) {
+    // Mobile: keep certificate intentionally smaller but still comfortably readable.
+    return clamp((viewportWidth * 0.76) / CERT_RENDER_WIDTH, 0.30, 0.40)
+  }
+  // Tablet / small desktop: gradual ramp to desktop size.
+  return clamp((viewportWidth * 0.72) / CERT_RENDER_WIDTH, 0.42, DESKTOP_CERT_UI_SCALE)
 }
 
 const SOCIAL_BG = '#E8E8E8'

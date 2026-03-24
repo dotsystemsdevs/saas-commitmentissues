@@ -596,14 +596,6 @@ a.subpage-inline-mail {
 }
 
 
-/* ── Certificate UI scale (fixed 794x1123 render scaled visually) ── */
-:root { --cert-ui-scale: 0.604; }
-
-@media (max-width: 640px) {
-  /* Scale only the fixed canvas visually; layout stays pixel-locked. */
-  :root { --cert-ui-scale: clamp(0.20, calc((100vw - 148px) / 794), 0.30); }
-}
-
 /* ── Mobile ── */
 
 @media (max-width: 640px) {
@@ -611,11 +603,11 @@ a.subpage-inline-mail {
   main { padding-left: 16px !important; padding-right: 16px !important; }
   .page-shell-main { padding-top: calc(env(safe-area-inset-top) + 28px); }
 
-  /* Certificate: handled by CSS var --cert-ui-scale */
+  /* Certificate wrapper spacing only; scale is handled in CertificateCard.tsx */
   .certificate-scroll-zone {
     width: 100%;
     margin-left: 0;
-    padding: 14px 28px 0;
+    padding: 12px 20px 0;
     box-sizing: border-box;
     overflow-x: hidden;
   }
