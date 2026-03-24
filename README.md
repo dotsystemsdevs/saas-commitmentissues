@@ -16,7 +16,7 @@
 
 ## What it does
 
-You paste a GitHub repo URL. We run it through our **death index scoring algorithm** and generate an official, downloadable death certificate — complete with cause of death, last words, and a score from 0 to 10.
+You paste a GitHub repo URL. We run it through our **death index scoring algorithm** and generate an official, downloadable death certificate : complete with cause of death, last words, and a score from 0 to 10.
 
 ```
 https://github.com/facebook/react
@@ -43,7 +43,7 @@ https://github.com/facebook/react
 
 **Maximum: 10.** 0 = alive. 10 = fossil.
 
-**Cause of death** is rule-based — the highest-scoring match wins:
+**Cause of death** is rule-based : the highest-scoring match wins:
 
 | Condition | Cause of Death |
 |-----------|---------------|
