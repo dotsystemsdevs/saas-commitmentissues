@@ -2,7 +2,6 @@
 
 import { FormEvent, useState } from 'react'
 import { track } from '@vercel/analytics'
-import { CTA_RED, CTA_RED_HOVER } from '@/lib/cta'
 import ClickSpark from '@/components/ClickSpark'
 
 const FONT = `var(--font-dm), -apple-system, sans-serif`
@@ -79,11 +78,11 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
       {/* Input + button — single row */}
       <div className="input-button-wrapper input-block" style={{
         display: 'flex',
-        border: `2px solid ${focused ? '#888' : '#e0e0e0'}`,
-        borderRadius: '14px',
+        border: `2px solid ${focused ? '#0a0a0a' : '#0a0a0a'}`,
+        borderRadius: '0px',
         overflow: 'hidden',
-        boxShadow: focused ? '0 0 0 3px rgba(22,10,6,0.08)' : '0 2px 12px rgba(0,0,0,0.1)',
-        transition: 'border-color 0.15s, box-shadow 0.15s',
+        boxShadow: 'none',
+        transition: 'border-color 0.15s',
         background: '#fff',
       }}>
         {/* Input */}
@@ -127,22 +126,22 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
             flexShrink: 0,
             padding: '0 20px',
             height: '52px',
-            background: CTA_RED,
-            color: '#fff',
-            border: '1px solid rgba(0,0,0,0.28)',
+            background: '#fff',
+            color: '#0a0a0a',
+            border: 'none',
+            borderLeft: '2px solid #0a0a0a',
             cursor: loading ? 'wait' : 'pointer',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             whiteSpace: 'nowrap',
-            transition: 'background 0.15s, box-shadow 0.15s',
+            transition: 'background 0.15s',
             userSelect: 'none',
             WebkitTapHighlightColor: 'transparent',
             touchAction: 'manipulation',
-            boxShadow: '0 2px 10px rgba(0,0,0,0.18)',
           }}
-          onMouseEnter={e => { if (!loading) e.currentTarget.style.background = CTA_RED_HOVER }}
-          onMouseLeave={e => { e.currentTarget.style.background = CTA_RED }}
+          onMouseEnter={e => { if (!loading) e.currentTarget.style.background = '#f4f1ed' }}
+          onMouseLeave={e => { e.currentTarget.style.background = '#fff' }}
           onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.97)' }}
           onMouseUp={e => { e.currentTarget.style.transform = 'translateY(0)' }}
         >
@@ -178,7 +177,7 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
                 fontSize: '12px',
                 background: '#fff',
                 border: '1px solid #0a0a0a',
-                borderRadius: '7px',
+                borderRadius: '0px',
                 padding: '10px 14px',
                 minHeight: '44px',
                 cursor: 'pointer',

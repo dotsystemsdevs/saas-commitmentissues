@@ -213,20 +213,25 @@
 .subpage-back-link {
   font-family: var(--font-dm), -apple-system, sans-serif;
   font-size: 13px;
-  color: #938882;
+  color: #0a0a0a;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   min-height: 44px;
-  padding: 10px 12px;
+  padding: 10px 14px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
-  transition: color 0.15s;
+  border: 2px solid #0a0a0a;
+  border-radius: 0;
+  background: #fff;
+  transition: color 0.15s, background 0.15s;
 }
 .subpage-back-link:hover {
-  color: #160A06;
+  color: #0a0a0a;
+  background: #f4f1ed;
 }
 
 /* ── Base interaction defaults ── */
@@ -437,12 +442,15 @@ a.subpage-inline-mail {
 
 .site-footer-nav a {
   font-size: 14px;
-  color: #6f6761;
+  color: #0a0a0a;
   text-decoration: none;
-  padding: 10px 8px;
+  padding: 8px 14px;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
+  border: 2px solid #0a0a0a;
+  border-radius: 0;
+  background: #fff;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
@@ -451,22 +459,14 @@ a.subpage-inline-mail {
   position: relative;
 }
 .site-footer-nav a::after {
-  content: '';
-  position: absolute;
-  left: 8px;
-  right: 8px;
-  bottom: 8px;
-  height: 1px;
-  background: #160A06;
-  transform: scaleX(0);
-  transition: transform 0.2s ease;
-  transform-origin: left;
+  content: none;
 }
 .site-footer-nav a:hover::after {
-  transform: scaleX(1);
+  transform: none;
 }
 .site-footer-nav a:hover {
-  color: #160A06;
+  color: #0a0a0a;
+  background: #f4f1ed;
   text-decoration: none !important;
 }
 

@@ -22,7 +22,7 @@ export default function SiteFooter({ compact = false }: SiteFooterProps) {
     <footer className={`site-footer${compact ? ' site-footer--compact' : ''}`}>
       <nav className="site-footer-nav" aria-label="Footer">
         {LINKS.map(({ href, label }) => (
-          <a key={href} href={href} style={{ fontFamily: FONT }}>{label}</a>
+          <a key={href} href={href} style={{ fontFamily: FONT, border: '2px solid #0a0a0a', padding: '8px 14px', borderRadius: '0', color: '#0a0a0a' }}>{label}</a>
         ))}
       </nav>
       <a
@@ -36,14 +36,17 @@ export default function SiteFooter({ compact = false }: SiteFooterProps) {
           gap: '6px',
           fontFamily: MONO,
           fontSize: '12px',
-          color: '#7f7670',
+          color: '#0a0a0a',
+          border: '2px solid #0a0a0a',
+          borderRadius: '0',
           textDecoration: 'none',
           letterSpacing: '0.04em',
-          padding: '4px 0',
-          width: '100%',
+          padding: '8px 14px',
+          width: 'auto',
+          margin: '0 auto',
         }}
-        onMouseEnter={e => (e.currentTarget.style.color = '#160A06')}
-        onMouseLeave={e => (e.currentTarget.style.color = '#b0aca8')}
+        onMouseEnter={e => (e.currentTarget.style.background = '#f4f1ed')}
+        onMouseLeave={e => (e.currentTarget.style.background = '#fff')}
       >
         <GitHubIcon />
         Open source on GitHub
