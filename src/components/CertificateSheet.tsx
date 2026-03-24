@@ -93,10 +93,10 @@ const CertificateSheet = forwardRef<HTMLDivElement, Props>(
 
           {/* CAUSE */}
           <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '3% 0', borderBottom: '1px solid #C4A882' }}>
-            <p style={{ ...LABEL, margin: '0 0 3% 0' }}>
-              cause of death
+            <p style={{ ...LABEL, margin: '0 0 2% 0', fontSize: '10px' }}>
+              CAUSE OF DEATH
             </p>
-            <p style={{ fontFamily: UI, fontStyle: 'italic', fontWeight: 500, fontSize: '1.25rem', color: '#8B0000', lineHeight: 1.45, maxWidth: '24ch', margin: 0 }}>
+            <p style={{ fontFamily: UI, fontStyle: 'italic', fontWeight: 600, fontSize: '22px', color: '#8B0000', lineHeight: 1.4, maxWidth: '24ch', margin: '16px 0' }}>
               {cert.causeOfDeath}
             </p>
             {showStamp && (

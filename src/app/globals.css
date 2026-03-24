@@ -396,8 +396,23 @@ a.subpage-inline-mail {
 }
 
 .site-footer--compact {
-  margin-top: 24px;
+  margin-top: 14px;
   padding-top: 28px;
+}
+
+.homepage-cert-preview {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 300px;
+  overflow: hidden;
+  transform: scale(0.7);
+  transform-origin: top center;
+  opacity: 0.85;
+  margin-top: 12px;
+  margin-bottom: 0;
+  pointer-events: none;
 }
 
 .site-footer-nav {
@@ -486,6 +501,7 @@ a.subpage-inline-mail {
 @media (max-width: 640px) {
   /* Page padding */
   main { padding-left: 16px !important; padding-right: 16px !important; }
+  .page-shell-main { padding-top: 34px; }
 
   /* Certificate: handled by CSS var --cert-scale */
   .certificate-scroll-zone { width: 100%; padding: 0; margin: 0; overflow: visible; }
@@ -494,11 +510,29 @@ a.subpage-inline-mail {
   .cert-actions { flex-direction: column !important; width: 100% !important; }
   .cert-buy-btn, .cert-share-btn { width: 100% !important; }
 
-  /* Hero: more breathing room on mobile */
-  .page-hero { padding-bottom: 20px; }
-  .page-hero-emoji { font-size: 52px; margin-bottom: 12px; }
-  .page-hero-title { margin-bottom: 14px; }
+  /* Hero: keep CTA above the fold on small screens */
+  .page-hero { padding-bottom: 10px; }
+  .page-hero-emoji { font-size: 46px; margin-bottom: 8px; }
+  .page-hero-title { font-size: clamp(2.2rem, 12vw, 2.8rem); margin-bottom: 10px; }
   .page-hero-sub { font-size: 15px; }
+
+  .input-button-wrapper {
+    flex-direction: column;
+  }
+
+  .input-submit-button {
+    width: 100%;
+    border-left: none !important;
+    border-top: 1px solid rgba(0,0,0,0.1) !important;
+  }
+
+  .input-button-wrapper:focus-within {
+    margin-bottom: 120px;
+  }
+
+  .homepage-cert-preview {
+    height: 260px;
+  }
 
   /* Footer: larger tap targets */
   footer a { font-size: 13px !important; padding: 4px 0; }
