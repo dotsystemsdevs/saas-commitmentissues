@@ -85,7 +85,6 @@ export default function Page() {
         </div>
       )}
 
-      {/* Graveyard — right below social proof */}
       {idle && (
         <div style={{ width: '100%', marginTop: '34px', paddingBottom: 0 }}>
           <div style={{ marginBottom: '14px', textAlign: 'center' }}>

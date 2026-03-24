@@ -195,7 +195,7 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
         >
           {randomLoading
             ? 'finding a corpse...'
-            : 'or pick a random dead repo →'
+            : 'or dig up a repo dead for 1+ year →'
           }
         </button>
       </div>
