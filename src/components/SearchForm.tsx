@@ -126,8 +126,8 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
             flexShrink: 0,
             padding: '0 20px',
             height: '52px',
-            background: '#fff',
-            color: '#0a0a0a',
+            background: '#0a0a0a',
+            color: '#fff',
             border: 'none',
             cursor: loading ? 'wait' : 'pointer',
             display: 'flex',
@@ -139,8 +139,8 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
             WebkitTapHighlightColor: 'transparent',
             touchAction: 'manipulation',
           }}
-          onMouseEnter={e => { if (!loading) e.currentTarget.style.background = '#f4f1ed' }}
-          onMouseLeave={e => { e.currentTarget.style.background = '#fff' }}
+          onMouseEnter={e => { e.currentTarget.style.background = '#0a0a0a' }}
+          onMouseLeave={e => { e.currentTarget.style.background = '#0a0a0a' }}
           onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.97)' }}
           onMouseUp={e => { e.currentTarget.style.transform = 'translateY(0)' }}
         >
