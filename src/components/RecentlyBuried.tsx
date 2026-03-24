@@ -24,6 +24,17 @@ export default function RecentlyBuried({ onSelect }: Props) {
 
   if (entries.length === 0) return null
 
+  function timeAgo(iso: string): string {
+    const seconds = Math.floor((Date.now() - new Date(iso).getTime()) / 1000)
+    if (seconds < 60) return 'just now'
+    const minutes = Math.floor(seconds / 60)
+    if (minutes < 60) return `${minutes}m ago`
+    const hours = Math.floor(minutes / 60)
+    if (hours < 24) return `${hours}h ago`
+    const days = Math.floor(hours / 24)
+    return `${days}d ago`
+  }
+
   // Match Famous Casualties px/s: 36 cards × 310px in 80s = 139.5 px/s
   const duration = Math.round((entries.length * 310) / 69.75)
 
@@ -72,9 +83,7 @@ export default function RecentlyBuried({ onSelect }: Props) {
           {entry.cause}
         </span>
         <span style={{ fontSize: '12px', color: '#787878', marginTop: '4px' }}>
-          {entry.analyzedAt
-            ? new Date(entry.analyzedAt).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })
-            : ''}
+          {entry.analyzedAt ? timeAgo(entry.analyzedAt) : ''}
         </span>
       </button>
     )
