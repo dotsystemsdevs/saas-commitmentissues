@@ -65,10 +65,18 @@ export default function AboutPage() {
         ))}
       </div>
 
-      <div style={{ paddingTop: '36px', paddingBottom: '8px', textAlign: 'center' }}>
+      <div style={{ paddingTop: '36px', paddingBottom: '8px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
         <Link href="/" className="subpage-faq-cta">
           issue a certificate →
         </Link>
+        <a
+          href="https://buymeacoffee.com/commitmentissues"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ fontFamily: `var(--font-courier), monospace`, fontSize: '11px', color: '#b0aca8', textDecoration: 'none', letterSpacing: '0.04em' }}
+        >
+          ☕ keep me alive
+        </a>
       </div>
     </SubpageShell>
   )

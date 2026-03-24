@@ -28,10 +28,12 @@ export default function Page() {
       {/* Hero + Search — hidden once certificate is shown */}
       {!certificate && (
         <>
-          <PageHero
-            subtitle="Drop a GitHub URL. We'll write the obituary it deserves."
-            microcopy={null}
-          />
+          <div style={{ marginTop: '32px' }}>
+            <PageHero
+              subtitle="Drop a GitHub URL. We'll write the obituary it deserves."
+              microcopy={null}
+            />
+          </div>
 
           <div style={{ width: '100%', marginTop: '12px' }}>
             <SearchForm url={url} setUrl={setUrl} onSubmit={() => analyze(url)} onSelect={handleSelect} loading={loading} />
