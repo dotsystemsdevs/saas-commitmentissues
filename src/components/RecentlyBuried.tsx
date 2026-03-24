@@ -94,7 +94,7 @@ export default function RecentlyBuried({ onSelect }: Props) {
           style={{
             display: 'flex',
             gap: '14px',
-            animation: 'marquee-reverse 80s linear infinite',
+            animation: 'marquee-reverse 22s linear infinite',
             width: 'max-content',
           }}
         >
