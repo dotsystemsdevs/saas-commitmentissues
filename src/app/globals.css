@@ -653,8 +653,8 @@ a.subpage-inline-mail {
 :root { --cert-scale: 1; }
 
 @media (max-width: 640px) {
-  /* Keep full 480px certificate visible inside page gutters on phones */
-  :root { --cert-scale: min(1, calc((100vw - 52px) / 480)); }
+  /* Force a clearly zoomed-out certificate on phones (no corner clipping). */
+  :root { --cert-scale: clamp(0.52, calc((100vw - 44px) / 560), 0.74); }
 }
 
 /* ── Mobile ── */
