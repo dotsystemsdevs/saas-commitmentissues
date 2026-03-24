@@ -11,12 +11,14 @@ Drop a GitHub URL. Get a shareable certificate in seconds.
 
 ## Screenshots
 
-Add product screenshots and one short export GIF here before launch:
+Drop product screenshots and one short export GIF here before launch:
 
 - `docs/screenshots/home.png`
 - `docs/screenshots/certificate.png`
 - `docs/screenshots/leaderboard.png`
 - `docs/screenshots/export.gif`
+
+Use lowercase file names for docs assets to keep paths predictable across platforms.
 
 ## How it works
 
@@ -104,8 +106,10 @@ src/
 
 Scoring logic is isolated in `src/lib/scoring.ts` so it is easy to test and iterate.
 
-## Contributing
+## Docs
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md).
+- Release notes: `docs/releases/`
+- Screenshots and GIFs: `docs/screenshots/`
+- Naming and structure rules: `docs/repository-conventions.md`
 
 Built by [Dot Systems](https://github.com/dotsystemsdevs)
