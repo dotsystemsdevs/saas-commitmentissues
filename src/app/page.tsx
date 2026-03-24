@@ -69,7 +69,7 @@ export default function Page() {
               counting graves...
             </p>
           )}
-          {!statsLoading && buried !== null && buried >= 100 && (
+          {!statsLoading && buried !== null && buried >= 1 && (
             <p style={{ fontFamily: FONT, fontSize: '14px', fontWeight: 600, color: '#4f4f4f', opacity: 0.92, textAlign: 'center', margin: '8px 0 0 0', letterSpacing: '0.02em' }}>
               {buried.toLocaleString()} repos buried
             </p>
