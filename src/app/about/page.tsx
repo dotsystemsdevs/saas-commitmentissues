@@ -38,7 +38,7 @@ export default function AboutPage() {
       subtitle="Everything you need to know before the funeral."
       microcopy="Last updated March 2026"
     >
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      <div className="about-cards" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {SECTIONS.map(({ title, body, email, coffee }, i) => (
           <div
             key={title}

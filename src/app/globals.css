@@ -658,6 +658,16 @@ a.subpage-inline-mail {
     padding-right: 20px;
   }
 
+  /* About cards: less cramped on phone */
+  .about-cards {
+    margin-left: -8px;
+    margin-right: -8px;
+  }
+
+  .about-cards > div {
+    padding: 20px 18px !important;
+  }
+
   /* Footer: keep links low-noise but tappable */
   footer a { font-size: 13px !important; padding: 4px 0; }
   .site-footer-nav a { font-size: 13px !important; padding: 6px 8px !important; min-height: 36px !important; }
