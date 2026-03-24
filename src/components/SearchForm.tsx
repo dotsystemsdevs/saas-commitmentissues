@@ -146,7 +146,7 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
           onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.97)' }}
           onMouseUp={e => { e.currentTarget.style.transform = 'translateY(0)' }}
         >
-          {loading ? <span className="btn-spinner" /> : 'See what killed it →'}
+          {loading ? <span className="btn-spinner" /> : 'Issue Death Certificate →'}
         </button>
         </ClickSpark>
       </div>
@@ -160,7 +160,7 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
       {/* TRY ONE OF THESE chips */}
       <div className="chips-container chips-section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', marginTop: '6px', marginBottom: '8px' }}>
         <span style={{ fontFamily: MONO, fontSize: '10px', letterSpacing: '0.18em', color: '#b0aca8', textTransform: 'uppercase' }}>
-          try one of these
+          start with a known corpse:
         </span>
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', justifyContent: 'center' }}>
           {EXAMPLES.map(({ owner, repo, url, color }, i) => (

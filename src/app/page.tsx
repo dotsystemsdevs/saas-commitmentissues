@@ -43,7 +43,7 @@ export default function Page() {
         <>
           <div style={{ marginTop: '0px' }}>
             <PageHero
-              subtitle="Paste a repo. We'll write the obituary it deserves."
+              subtitle="For projects that never got a goodbye."
               microcopy={null}
             />
           </div>
@@ -54,7 +54,7 @@ export default function Page() {
 
           {statsLoading && (
             <p style={{ fontFamily: MONO, fontSize: '11px', color: '#b0aca8', textAlign: 'center', margin: '4px 0 0 0', letterSpacing: '0.06em' }}>
-              loading burials...
+              counting graves...
             </p>
           )}
           {!statsLoading && buried !== null && buried >= 100 && (
@@ -78,7 +78,7 @@ export default function Page() {
         <div style={{ width: '100%', marginTop: '40px', paddingBottom: 0 }}>
           <div style={{ marginBottom: '14px', textAlign: 'center' }}>
             <p style={{ fontFamily: FONT, fontSize: '13px', fontWeight: 600, color: '#b0aca8', margin: 0, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-              Recently Buried
+              Fresh Graves
             </p>
           </div>
           <Leaderboard onSelect={handleSelect} />
