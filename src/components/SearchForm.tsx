@@ -134,14 +134,14 @@ export default function SearchForm({ url, setUrl, onSubmit, onSelect, loading }:
             alignItems: 'center',
             justifyContent: 'center',
             whiteSpace: 'nowrap',
-            transition: 'background 0.15s',
+            transition: 'background 0.15s, transform 0.08s',
             userSelect: 'none',
             WebkitTapHighlightColor: 'transparent',
             touchAction: 'manipulation',
           }}
           onMouseEnter={e => { e.currentTarget.style.background = '#0a0a0a' }}
           onMouseLeave={e => { e.currentTarget.style.background = '#0a0a0a' }}
-          onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.97)' }}
+          onMouseDown={e => { e.currentTarget.style.transform = 'translateY(1px)' }}
           onMouseUp={e => { e.currentTarget.style.transform = 'translateY(0)' }}
         >
           {loading ? <span className="btn-spinner" /> : 'Issue Death Certificate →'}
