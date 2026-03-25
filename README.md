@@ -131,3 +131,23 @@ Scoring logic lives in `src/lib/scoring.ts` so it stays easy to test and change.
 MIT — see repository license file.
 
 Built by [Dot Systems](https://github.com/dotsystemsdevs).
+
+## Chrome extension (MVP)
+
+A local MV3 extension is included under `extension/`.
+
+### Load unpacked in Chrome
+
+1. Open `chrome://extensions/`
+2. Enable **Developer mode**
+3. Click **Load unpacked**
+4. Select the repository folder `extension/`
+
+### Test flow
+
+1. Open a GitHub repo root page such as `https://github.com/vercel/next.js`
+2. Verify a tombstone badge appears near the repo header
+3. Click the badge to open the full certificate on `commitmentissues.dev`
+4. Navigate to another repo without full reload; verify no duplicate badge appears
+
+If the API is rate-limited or unavailable, the badge falls back to `Reaper busy`.
