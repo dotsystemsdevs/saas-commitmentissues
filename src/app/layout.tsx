@@ -94,7 +94,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             whiteSpace: 'nowrap',
           }}
         >
-          ☕ Coffee
+          ☕ Keep the lights on
         </a>
         {children}
         <Analytics />
