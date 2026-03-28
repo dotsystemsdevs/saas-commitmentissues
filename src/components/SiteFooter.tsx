@@ -1,13 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 
 const FONT = `var(--font-dm), -apple-system, sans-serif`
 const MONO = `var(--font-courier), 'Courier New', monospace`
 
 const LINKS = [
   { href: '/about', label: 'About' },
-  { href: '/terms', label: 'Terms' },
 ] as const
 
 const GitHubIcon = () => (
@@ -32,7 +32,7 @@ export default function SiteFooter({ compact = false }: SiteFooterProps) {
     <footer className={`site-footer${compact ? ' site-footer--compact' : ''}`}>
       <nav className="site-footer-nav" aria-label="Footer">
         {LINKS.map(({ href, label }) => (
-          <a key={href} href={href} className="alive-interactive" style={{ fontFamily: FONT }}>{label}</a>
+          <Link key={href} href={href} className="alive-interactive" style={{ fontFamily: FONT }}>{label}</Link>
         ))}
       </nav>
       <a

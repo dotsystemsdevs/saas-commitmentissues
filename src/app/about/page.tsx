@@ -29,6 +29,10 @@ const SECTIONS = [
     body: 'Questions, bugs, or legal threats:',
     email: 'dot.systems@proton.me',
   },
+  {
+    title: 'Terms',
+    body: "A parody tool — certificates are not legally valid documents. Data is from GitHub's public API; causes of death are algorithmic. Personal use only. By using the service you acknowledge that we process submitted public repo URLs, publish recent public burials on the homepage, and collect anonymous aggregate analytics. We may update these at any time. Continued use = acceptance.",
+  },
 ]
 
 export default function AboutPage() {
